@@ -1,0 +1,22 @@
+/* Base unit 8. Every margin, padding and gap is a multiple of 8 —
+   the only exceptions are 1px hairlines and 2px optical micro-adjustments. */
+:root{
+  --space-micro:4px;   /* icon padding, optical nudges */
+  --space-1:8px;       /* tightly related items */
+  --space-2:16px;      /* default gap inside a component */
+  --space-3:24px;      /* gap between components */
+  --space-4:32px;      /* section padding, mobile margin */
+  --space-6:48px;      /* gap between page sections */
+  --space-8:64px;      /* desktop page margin */
+  --space-12:96px;     /* hero / cover breathing room */
+
+  --grid-columns:12; /* @kind other */
+  --grid-gutter:24px;
+  --page-margin-desktop:64px;
+  --page-margin-mobile:24px;
+  --page-max-width:1280px;
+
+  /* Print (manual, §07) */
+  --print-margin-top:20mm;
+  --print-margin-side:18mm;
+}

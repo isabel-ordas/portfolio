@@ -1,0 +1,46 @@
+/* Base: black, white, and the four recycling-bin accents. Nothing else is brand color. */
+:root{
+  --paper-white:#FFFFFF;
+  --ink-black:#000000;
+
+  /* The four recycling-bin accents — all four together ONLY in the logo */
+  --accent-green:#2F7A3C;   /* glass */
+  --accent-yellow:#F2B705;  /* packaging */
+  --accent-blue:#1F5FA8;    /* paper & cardboard */
+  --accent-brown:#7A4B32;   /* organic waste */
+
+  /* Hover fills: the accent 15% lighter (manual, §08) */
+  --accent-green-hover:#3B9A4C;
+  --accent-yellow-hover:#F5C42E;
+  --accent-blue-hover:#2775CB;
+  --accent-brown-hover:#955C3D;
+
+  /* Neutral ramp — derived. Only --gray-300 is specified in the manual (chart gridlines). */
+  --gray-050:#FAFAFA;
+  --gray-100:#F1F1F1;
+  --gray-200:#E6E6E6;
+  --gray-300:#DADADA;
+  --gray-500:#9A9A9A;
+  --gray-700:#5C5C5C;
+  --gray-900:#1A1A1A;
+
+  /* Semantic aliases */
+  --surface-page:var(--paper-white);
+  --surface-card:var(--paper-white);
+  --surface-inverse:var(--ink-black);
+  --surface-subtle:var(--gray-100);
+
+  --text-body:var(--ink-black);
+  --text-muted:var(--gray-700);
+  --text-inverse:var(--paper-white);
+  --text-on-yellow:var(--ink-black);
+
+  --stroke-hairline:var(--ink-black);
+  --stroke-subtle:var(--gray-300);
+  --chart-gridline:var(--gray-300);
+  --chart-series:var(--gray-500);
+  --chart-highlight:var(--accent-green);
+
+  --accent-default:var(--accent-green);
+  --focus-ring:var(--accent-default);
+}

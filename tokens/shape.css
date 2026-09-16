@@ -1,0 +1,24 @@
+/* Flat geometry: sharp corners, hairline strokes, no shadows. */
+:root{
+  --radius-none:0;
+  --radius-pill:999px;   /* tags only, when a capsule is called for */
+  --radius-circle:50%;   /* the circle half of the logo vocabulary */
+
+  --border-width:1px;
+  --border-hairline:1px solid var(--stroke-hairline);
+  --border-subtle:1px solid var(--stroke-subtle);
+
+  --icon-size:24px;
+  --icon-stroke:1.62px;
+  --icon-grid:24; /* @kind other */
+
+  --shadow-none:none;
+
+  --focus-ring-width:2px;
+  --focus-ring-offset:2px;
+  --disabled-opacity:0.35; /* @kind other */
+  --hover-lighten:15%;
+
+  --logo-min-size:32px;      /* screen; 10mm in print */
+  --logo-clear-space:0.476;  /* × mark width = one shape width */
+}
