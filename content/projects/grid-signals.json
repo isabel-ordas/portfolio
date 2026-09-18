@@ -1,0 +1,13 @@
+{
+  "id": "grid-signals",
+  "title": "Grid signals",
+  "description": "Turning household energy data into a decision one person can act on.",
+  "domain": "Climate tech",
+  "stage": ["Design", "Build"],
+  "productSkills": ["Metrics & Validation", "Roadmapping"],
+  "toolsFrameworks": ["SQL", "Looker"],
+  "image": null,
+  "imageAlt": "",
+  "metric": null,
+  "caseStudy": null
+}

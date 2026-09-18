@@ -1,0 +1,31 @@
+{
+  "subtitle": "The Circular Product Builder",
+  "intro": "I'm the one who builds profitable products that are climate-positive.",
+  "body": [
+    "The best products come from pains you've actually lived. Mine: being a second-hand-first buyer, a zero-waste nerd who keeps running into missing solutions for everyday life. That's why I'm drawn to building products that turn resources nobody wants anymore into something worth paying for.",
+    "I've spent my whole professional life building products — first coding and delivering as a software developer, now discovering, prototyping and testing as a Product Manager, proving, every time, that circular doesn't mean less profitable."
+  ],
+  "closingQuote": "I work at the intersection of product thinking, hands-on building, and climate — and I make decisions that hold all three at once.",
+  "portrait": "assets/portrait.jpg",
+  "expertise": [
+    { "pillar": "Product Thinking", "items": [
+      { "text": "I ask customers the right questions — and turn the answers into insight, not just notes.", "linkedCaseStudy": null },
+      { "text": "I decide what's in and out of an MVP.", "linkedCaseStudy": null },
+      { "text": "I map the opportunity tree and justify why one solution wins over the rest.", "linkedCaseStudy": null },
+      { "text": "I can tell when an experiment worked — and when it didn't.", "linkedCaseStudy": null },
+      { "text": "I align engineering, design and leadership behind a single priority — even when they walked in with three different ones.", "linkedCaseStudy": null },
+      { "text": "I build the business case alongside the user case, so \"nice to have\" never wins by default.", "linkedCaseStudy": null }
+    ]},
+    { "pillar": "Build", "items": [
+      { "text": "I troubleshoot bugs once they ship.", "linkedCaseStudy": null },
+      { "text": "I size the effort behind a spec before anyone commits to a deadline.", "linkedCaseStudy": null },
+      { "text": "I know my way around a Docker deployment on AWS — enough to work with engineering, not just manage around them.", "linkedCaseStudy": null },
+      { "text": "I vibe-code prototypes to test ideas fast.", "linkedCaseStudy": null }
+    ]},
+    { "pillar": "Climate Impact", "items": [
+      { "text": "I read how a decision moves the needle on climate — for better or worse.", "linkedCaseStudy": null },
+      { "text": "I weigh that against corporate values — not just check the box on them.", "linkedCaseStudy": null }
+    ]}
+  ],
+  "tools": ["Notion", "FigJam", "Tally.so"]
+}

@@ -1,44 +1,31 @@
 const { Icon, Button, Tag, Divider, PullQuote, BarChart } = window.IsabelBrandSystem_b8d40d;
-const { TAG_COLORS } = window;
+const { TAG_COLORS, PRODUCT_SKILLS } = window;
 
-/* --- Editable placeholder data ------------------------------------------
-   `skills` is the pending taxonomy (should mirror the "Expertise" blocks on
-   the About page once that's finalized) — it drives the filter below and is
-   read generically from this array, nothing hardcoded in the UI itself.
-   `domainTags` are display-only now (colored via TAG_COLORS, not filtered).
-   `image` / `metric` are placeholders: fill them in per project when ready,
-   or leave null — both degrade gracefully. */
-const PROJECTS = [
-  { id:'home-in-order', eyebrow:'Case study', title:'Home in Order', accent:'green',
-    description:'A product on household mental load — who tracks what, and what it costs.',
-    domainTags:['Product discovery','Research'],
-    skills:['Discovery & Research','Metrics & Validation'],
-    image:null, imageAlt:'',
-    metric:{ value:'−23%', label:'Onboarding drop-off, six weeks after release.' } },
-  { id:'reuse-loops', eyebrow:'Case study', title:'Reuse loops', accent:'brown',
-    description:'Mapping where returnable packaging breaks down between shop and shelf.',
-    domainTags:['Circular economy','Operations'],
-    skills:['Discovery & Research','Strategic Framing'],
-    image:null, imageAlt:'', metric:null },
-  { id:'grid-signals', eyebrow:'Case study', title:'Grid signals', accent:'blue',
-    description:'Turning household energy data into a decision one person can act on.',
-    domainTags:['Climate tech','Data'],
-    skills:['Metrics & Validation','Delivery'],
-    image:null, imageAlt:'', metric:null },
-  { id:'talent-paths', eyebrow:'Internal', title:'Talent paths', accent:'yellow',
-    description:'A career framework built with the team it was written for.',
-    domainTags:['Talent development'],
-    skills:['Strategic Framing'],
-    image:null, imageAlt:'', metric:null }
-];
+const HOME_CONTENT = window.CONTENT.home;
 
-/* Set to null to drop the hero stat entirely — the hero collapses to one
-   column automatically, no other change needed. */
-const HERO_METRIC = {
-  value:'23%',
-  label:'Onboarding drop-off cut in six weeks on Home in Order.',
-  data:[{label:'W1',value:31},{label:'W2',value:28},{label:'W3',value:24},{label:'W4',value:8}]
-};
+/* Project data lives in /content/projects/*.json (see window.CONTENT) — the
+   portable source of truth. `domain` is a single sector/impact-area value,
+   colored via TAG_COLORS and shown as the eyebrow above the card title and
+   the case study H1. `stage` is a subset of Chrome.jsx STAGES (the full
+   product lifecycle) — drives the segmented StageBar on the card (compact)
+   and the case study header (full, with labels). `productSkills` is a
+   subset of Chrome.jsx PRODUCT_SKILLS, the closed vocabulary of specific PM
+   skills — drives the "Selected work" filter below (only skills actually
+   used by a project appear as filter pills) and the skill chips on the card
+   (top 2 + overflow) and case study page (all of them). `toolsFrameworks`
+   is freeform per project — not filtered, shown in full only on the case
+   study page. `image` / `metric` are placeholders: fill them in per
+   project's JSON when ready, or leave null — both degrade gracefully.
+   Only Bondly's data is grounded in real case-study content; the other
+   three are placeholder projects — edit their JSON freely once you have
+   real work to describe. */
+const PROJECTS = window.CONTENT.projects;
+
+/* Set home.json's `heroMetric` to an object like
+   { value, label, data:[{label,value},...] } to bring the hero stat back —
+   the hero grid switches to two columns again automatically, no other
+   change needed. */
+const HERO_METRIC = HOME_CONTENT.heroMetric;
 
 function ThumbnailPlaceholder() {
   return (
@@ -51,19 +38,23 @@ function ThumbnailPlaceholder() {
 
 function WorkCard({ project, go }) {
   const [hover, setHover] = React.useState(false);
+  const topSkills = project.productSkills.slice(0, 2);
+  const overflow = project.productSkills.length - topSkills.length;
   return (
     <a href="#" onClick={(e)=>{e.preventDefault();go('case')}}
        onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
        style={{display:'flex',flexDirection:'column',border:'var(--border-hairline)',background:'var(--surface-card)',textDecoration:'none',color:'var(--text-body)'}}>
       {project.image
-        ? <img src={project.image} alt={project.imageAlt || ''} style={{display:'block',width:'100%',aspectRatio:'16 / 9',objectFit:'cover',filter:'grayscale(1)',borderBottom:'var(--border-hairline)'}} />
+        ? <img src={`../../${project.image}`} alt={project.imageAlt || ''} style={{display:'block',width:'100%',aspectRatio:'16 / 9',objectFit:'cover',filter:'grayscale(1)',borderBottom:'var(--border-hairline)'}} />
         : <ThumbnailPlaceholder />}
       <div style={{padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-        <Eyebrow accent={project.accent}>{project.eyebrow}</Eyebrow>
+        <Eyebrow accent={TAG_COLORS[project.domain]}>{project.domain}</Eyebrow>
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
         <p style={{font:'var(--text-paragraph)',color:'var(--text-muted)',margin:0,textWrap:'pretty'}}>{project.description}</p>
+        <StageBar active={project.stage} compact />
         <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
-          {project.domainTags.map(t => <Tag key={t} accent={TAG_COLORS[t]}>{t}</Tag>)}
+          {topSkills.map(s => <Tag key={s}>{s}</Tag>)}
+          {overflow > 0 ? <Tag>{`+${overflow}`}</Tag> : null}
         </div>
         {project.metric ? (
           <div style={{display:'flex',alignItems:'baseline',gap:8,borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
@@ -71,7 +62,7 @@ function WorkCard({ project, go }) {
             <span style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>{project.metric.label}</span>
           </div>
         ) : (
-          <div style={{font:'var(--text-caption)',color:'var(--gray-500)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>Add a quantified outcome</div>
+          <div style={{font:'var(--text-caption)',color:'var(--text-muted)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>Add a quantified outcome</div>
         )}
         <span style={{display:'flex',alignItems:'center',gap:8,font:'var(--text-label)',color:hover ? 'var(--accent-green)' : 'var(--text-body)',transition:'var(--transition-color)'}}>
           View project <Icon name="arrow-right" size={16} style={{transform:hover?'translateX(4px)':'none',transition:'transform var(--duration-base) var(--ease-standard)'}} />
@@ -83,21 +74,21 @@ function WorkCard({ project, go }) {
 
 function Home({ go }) {
   const [filter, setFilter] = React.useState('All');
-  const skills = Array.from(new Set(PROJECTS.flatMap(p => p.skills)));
-  const filters = ['All', ...skills];
-  const shown = filter === 'All' ? PROJECTS : PROJECTS.filter(p => p.skills.includes(filter));
+  const usedSkills = PRODUCT_SKILLS.filter(s => PROJECTS.some(p => p.productSkills.includes(s)));
+  const filters = ['All', ...usedSkills];
+  const shown = filter === 'All' ? PROJECTS : PROJECTS.filter(p => p.productSkills.includes(filter));
   return (
     <Page title="Work">
       <section className="ds-two-col" style={{alignItems:'start'}}>
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
-          <Eyebrow>Product management · Circular economy</Eyebrow>
-          <h1 style={{font:'var(--text-display)',letterSpacing:'var(--tracking-display)',margin:0,textWrap:'pretty'}}>Product with purpose</h1>
+          <Eyebrow>{HOME_CONTENT.eyebrow}</Eyebrow>
+          <h1 style={{font:'var(--text-display)',letterSpacing:'var(--tracking-display)',margin:0,textWrap:'pretty'}}>{HOME_CONTENT.heading}</h1>
           <p style={{font:'var(--weight-regular) 20px/1.5 var(--font-body)',color:'var(--text-muted)',maxWidth:'46ch',textWrap:'pretty'}}>
-            I build digital products. For fifteen years that meant shipping software; now it means putting that craft to work on climate and social impact.
+            {HOME_CONTENT.intro}
           </p>
           <div style={{display:'flex',gap:'var(--space-2)',marginTop:'var(--space-1)'}}>
-            <Button variant="primary" icon="arrow-right" onClick={()=>go('case')}>View project</Button>
-            <Button variant="secondary" icon="download" iconPosition="left" onClick={()=>go('about')}>Download CV</Button>
+            <Button variant="primary" icon="arrow-right" onClick={()=>go('case')}>{HOME_CONTENT.primaryCta}</Button>
+            <Button variant="secondary" icon="download" iconPosition="left" onClick={()=>go('about')}>{HOME_CONTENT.secondaryCta}</Button>
           </div>
         </div>
         {HERO_METRIC ? (
@@ -118,7 +109,7 @@ function Home({ go }) {
 
       <section style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:'var(--space-3)',flexWrap:'wrap'}}>
-          <h2 style={{font:'var(--text-h1)',margin:0}}>Selected work</h2>
+          <h2 style={{font:'var(--text-h1)',margin:0}}>{HOME_CONTENT.selectedWorkHeading}</h2>
           <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
             {filters.map(f => (
               <Tag key={f} as="button" active={filter===f} onClick={()=>setFilter(f)} style={{cursor:'pointer',border:filter===f?'1px solid var(--ink-black)':'var(--border-subtle)'}}>{f}</Tag>
@@ -134,16 +125,14 @@ function Home({ go }) {
       <Divider variant="marker" spacing="var(--space-6)" />
 
       <section className="ds-two-col" style={{alignItems:'center'}}>
-        <PullQuote size="lg" accent="blue" attribution="Isabel — product notes">
-          Designing product means deciding which problem deserves our time.
+        <PullQuote size="lg" accent="blue" attribution={HOME_CONTENT.quote.attribution}>
+          {HOME_CONTENT.quote.text}
         </PullQuote>
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-          {[['Empowerment & talent development','Building with and for people, not only for the product.'],
-            ['Ethics, equity & sustainability','Decisions that distribute value fairly and respect the planet\'s limits.'],
-            ['Technology for positive impact','Technology as a tool in service of a real problem.']].map(([t,d]) => (
-            <div key={t} style={{borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
-              <div style={{font:'var(--text-label)'}}>{t}</div>
-              <div style={{font:'var(--text-caption)',color:'var(--text-muted)',marginTop:4}}>{d}</div>
+          {HOME_CONTENT.values.map(({title,description}) => (
+            <div key={title} style={{borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
+              <div style={{font:'var(--text-label)'}}>{title}</div>
+              <div style={{font:'var(--text-caption)',color:'var(--text-muted)',marginTop:4}}>{description}</div>
             </div>
           ))}
         </div>

@@ -1,81 +1,139 @@
-const { Button, Tag, Divider, PullQuote, BarChart, LineChart, Icon } = window.IsabelBrandSystem_b8d40d;
-const { TAG_COLORS } = window;
+const { Button, Tag, Divider, PullQuote, BarChart, Icon } = window.IsabelBrandSystem_b8d40d;
+const { TAG_COLORS, PROJECTS } = window;
+
+const project = PROJECTS.find(p => p.id === 'bondly');
+const caseStudy = project.caseStudy;
+
+/* The four founding assumptions, checked against research (from
+   project.caseStudy in /content/projects/bondly.json). This is the
+   centerpiece of the page on purpose — it's the clearest evidence of
+   discovery/user-insight skill: not just "I did interviews" but "here's
+   how the interviews changed my mind." */
+const HYPOTHESES = caseStudy.hypotheses;
+
+const RESEARCH_SCOPE = caseStudy.researchScope;
+
+function HeroImage() {
+  const [errored, setErrored] = React.useState(false);
+  if (errored) {
+    return (
+      <div style={{marginTop:'var(--space-6)',border:'var(--border-hairline)',background:'var(--gray-100)',height:360,display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:8}}>
+        <Icon name="eye" size={24} color="var(--gray-500)" />
+        <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>Hero image — B&amp;W cover shot, one accent max</span>
+      </div>
+    );
+  }
+  return (
+    <img src={`../../${project.image}`} onError={()=>setErrored(true)}
+         alt={project.imageAlt}
+         style={{display:'block',width:'100%',height:360,objectFit:'cover',marginTop:'var(--space-6)',border:'var(--border-hairline)',filter:'grayscale(1)'}} />
+  );
+}
+
+function VerdictTag({ verdict }) {
+  const color = verdict === 'False' ? 'var(--accent-brown)' : verdict.startsWith('Partly') ? 'var(--accent-yellow)' : 'var(--accent-green)';
+  return <span style={{font:'var(--text-caption)',fontWeight:'var(--weight-semibold)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color,whiteSpace:'nowrap'}}>{verdict}</span>;
+}
 
 function CaseStudy({ go }) {
   return (
-    <Page title="Home in Order — case study">
+    <Page title="Bondly — case study">
       <Button variant="ghost" icon="arrow-left" iconPosition="left" onClick={()=>go('home')}>All work</Button>
       <header className="ds-two-col" style={{alignItems:'end',marginTop:'var(--space-3)'}}>
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-          <Eyebrow>Case study · 2025</Eyebrow>
-          <h1 style={{font:'var(--text-display)',letterSpacing:'var(--tracking-display)',margin:0}}>Home in Order</h1>
-          <p style={{font:'var(--weight-regular) 20px/1.5 var(--font-body)',color:'var(--text-muted)',maxWidth:'44ch'}}>
-            A product on household mental load. I ran discovery, defined the first release and measured what changed.
+          <Eyebrow accent={TAG_COLORS[project.domain]}>{project.domain}</Eyebrow>
+          <h1 style={{font:'var(--text-display)',letterSpacing:'var(--tracking-display)',margin:0}}>{project.title}</h1>
+          <p style={{font:'var(--weight-regular) 20px/1.5 var(--font-body)',color:'var(--text-muted)',maxWidth:'46ch'}}>
+            {caseStudy.subhead}
           </p>
-          <div style={{display:'flex',gap:8,marginTop:'var(--space-1)',flexWrap:'wrap'}}>
-            {['Circular economy','Research','Product discovery'].map(t => <Tag key={t} accent={TAG_COLORS[t]}>{t}</Tag>)}
-          </div>
         </div>
         <dl style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'var(--space-2)',margin:0,borderTop:'var(--border-hairline)',paddingTop:'var(--space-2)'}}>
-          {[['Role','Product lead'],['Duration','6 weeks'],['Team','4 people'],['Outcome','−23% drop-off']].map(([k,v])=>(
-            <div key={k}>
-              <dt style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{k}</dt>
-              <dd style={{margin:'4px 0 0',font:'var(--text-label)'}}>{v}</dd>
+          {caseStudy.meta.map(({label,value})=>(
+            <div key={label}>
+              <dt style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{label}</dt>
+              <dd style={{margin:'4px 0 0',font:'var(--text-label)'}}>{value}</dd>
             </div>
           ))}
         </dl>
       </header>
 
-      <div style={{marginTop:'var(--space-6)',border:'var(--border-hairline)',background:'var(--gray-100)',height:360,display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:8}}>
-        <Icon name="eye" size={24} color="var(--gray-500)" />
-        <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>Hero image — B&amp;W product shot, one accent max</span>
+      <Divider spacing="var(--space-6)" />
+
+      <div className="ds-card-grid-3">
+        <div style={{display:'flex',flexDirection:'column',gap:8}}>
+          <Eyebrow accent="blue">Stage</Eyebrow>
+          <StageBar active={project.stage} />
+        </div>
+        <div style={{display:'flex',flexDirection:'column',gap:8}}>
+          <Eyebrow accent="blue">Product skills</Eyebrow>
+          <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
+            {project.productSkills.map(s => <Tag key={s} active>{s}</Tag>)}
+          </div>
+        </div>
+        <div style={{display:'flex',flexDirection:'column',gap:8}}>
+          <Eyebrow accent="blue">Tools &amp; frameworks</Eyebrow>
+          <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
+            {project.toolsFrameworks.map(t => <Tag key={t}>{t}</Tag>)}
+          </div>
+        </div>
       </div>
+
+      <HeroImage />
 
       <Divider variant="marker" spacing="var(--space-6)" />
 
       <section className="ds-two-col-rev">
-        <h2 style={{font:'var(--text-h2)',margin:0}}>The problem</h2>
+        <h2 style={{font:'var(--text-h2)',margin:0}}>{caseStudy.problem.heading}</h2>
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)',maxWidth:'62ch'}}>
-          <p>Households track chores in their heads. The work is invisible, unevenly split, and nobody agrees on how much of it there is.</p>
-          <p style={{color:'var(--text-muted)'}}>I interviewed 18 households over three weeks. Everyone described the same gap between what they thought they did and what a shared record showed.</p>
+          {caseStudy.problem.paragraphs.map((p,i) => (
+            <p key={i} style={i > 0 ? {color:'var(--text-muted)'} : undefined}>{p}</p>
+          ))}
         </div>
       </section>
 
       <Divider spacing="var(--space-6)" />
 
       <section className="ds-two-col-rev">
-        <h2 style={{font:'var(--text-h2)',margin:0}}>Key findings</h2>
+        <h2 style={{font:'var(--text-h2)',margin:0}}>What I assumed vs. what I found</h2>
         <div className="ds-2up">
           <div style={{display:'flex',flexDirection:'column',gap:8}}>
-            <Eyebrow accent="green">Self-reported vs logged hours</Eyebrow>
-            <BarChart height={180} accent="green" highlightIndex={3} valueFormat={(v)=>v+'%'}
-              data={[{label:'Cooking',value:38},{label:'Laundry',value:44},{label:'Admin',value:51},{label:'Planning',value:62}]} />
-            <p style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>62% under-report time spent on invisible chores.</p>
+            <Eyebrow accent="blue">Research at a glance</Eyebrow>
+            <BarChart height={180} accent="blue" highlightIndex={2} data={RESEARCH_SCOPE} />
+            <p style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>{caseStudy.researchSummary}</p>
           </div>
-          <div style={{display:'flex',flexDirection:'column',gap:8}}>
-            <Eyebrow accent="green">Task completion after weekly check-ins</Eyebrow>
-            <LineChart height={180} accent="green" labels={['W0','W1','W2','W3','W4']}
-              series={[{name:'Control',values:[20,22,21,24,25]},{name:'Weekly check-in',values:[20,41,48,56,61],highlight:true}]} />
-            <p style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>Check-ins doubled completion in week one.</p>
+          <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
+            <Eyebrow accent="blue">{caseStudy.hypothesesHeading}</Eyebrow>
+            {HYPOTHESES.map((h,i) => (
+              <div key={i} style={{borderTop:'var(--border-subtle)',paddingTop:8,display:'flex',flexDirection:'column',gap:2}}>
+                <div style={{display:'flex',justifyContent:'space-between',gap:8,alignItems:'baseline'}}>
+                  <span style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>{h.assumption}</span>
+                  <VerdictTag verdict={h.verdict} />
+                </div>
+                <p style={{margin:0,font:'var(--text-caption)'}}>{h.reality}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       <Divider spacing="var(--space-6)" />
 
-      <PullQuote accent="green" attribution="Participant 12 — discovery interview">
-        I did not know I was keeping a list until someone asked me to write it down.
+      <PullQuote accent="blue" attribution={caseStudy.pullQuote.attribution}>
+        {caseStudy.pullQuote.text}
       </PullQuote>
 
       <Divider spacing="var(--space-6)" />
 
       <section className="ds-two-col-rev">
-        <h2 style={{font:'var(--text-h2)',margin:0}}>What changed</h2>
+        <h2 style={{font:'var(--text-h2)',margin:0}}>{caseStudy.strategy.heading}</h2>
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
-          {[['−23%','Onboarding drop-off, six weeks after release.'],['2×','Weekly task completion in the check-in cohort.'],['18','Households interviewed before a line of code.']].map(([n,d])=>(
-            <div key={n} style={{display:'flex',gap:'var(--space-3)',alignItems:'baseline',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
-              <span style={{font:'var(--weight-semibold) 40px/1 var(--font-display)',minWidth:120}}>{n}</span>
-              <span style={{color:'var(--text-muted)'}}>{d}</span>
+          <p style={{color:'var(--text-muted)',maxWidth:'62ch'}}>
+            {caseStudy.strategy.paragraph}
+          </p>
+          {caseStudy.strategy.metrics.map(({value,description})=>(
+            <div key={value} style={{display:'flex',gap:'var(--space-3)',alignItems:'baseline',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
+              <span style={{font:'var(--weight-semibold) 40px/1 var(--font-display)',minWidth:120}}>{value}</span>
+              <span style={{color:'var(--text-muted)'}}>{description}</span>
             </div>
           ))}
           <div><Button variant="secondary" icon="arrow-right" onClick={()=>go('home')}>Next project</Button></div>

@@ -1,0 +1,54 @@
+{
+  "id": "bondly",
+  "title": "Bondly",
+  "description": "A digital-to-physical friendship platform for adults navigating unwanted loneliness — matched by life stage, not just interests.",
+  "domain": "Social impact",
+  "stage": ["Discovery", "Definition"],
+  "productSkills": ["User Research", "Competitive Analysis", "Strategic Framing", "Business Casing", "Metrics & Validation"],
+  "toolsFrameworks": ["Lean Canvas", "SWOT Analysis", "Typeform", "Mixpanel"],
+  "image": "assets/projects/bondly.jpg",
+  "imageAlt": "Three friends laughing together on a bench in a tulip field",
+  "metric": { "value": "40%", "label": "Target repeat-activity rate within 30 days, vs a 15% industry baseline." },
+  "caseStudy": {
+    "subhead": "A digital-to-physical friendship platform for adults (25–40) navigating unwanted loneliness. I led discovery, stress-tested my own assumptions against research, and shaped the strategy before any code was written.",
+    "meta": [
+      { "label": "Role", "value": "Product lead (solo)" },
+      { "label": "Duration", "value": "13 weeks" },
+      { "label": "Target", "value": "40% repeat rate, vs 15% baseline" }
+    ],
+    "problem": {
+      "heading": "The problem",
+      "paragraphs": [
+        "40%+ of young adults report unwanted loneliness, yet friendship apps lose 70%+ of users within three weeks — because they optimize for match volume, not the repeated, safe interactions that actually build trust.",
+        "Existing tools treat friendship like dating: 1-on-1 dates that feel like interviews, impersonal 30-person events, swipe mechanics that gamify connection — and nothing to support the jump from acquaintance to real friend."
+      ]
+    },
+    "researchScope": [
+      { "label": "Expert interviews", "value": 3 },
+      { "label": "User interviews", "value": 8 },
+      { "label": "Survey responses", "value": 19 },
+      { "label": "Competitors mapped", "value": 9 }
+    ],
+    "researchSummary": "3 expert + 8 user interviews, a 19-person survey and 9 competitors mapped before any design work started.",
+    "hypothesesHeading": "4 founding assumptions, checked",
+    "hypotheses": [
+      { "assumption": "Users struggle because they lack social skills or are introverted", "verdict": "False", "reality": "6 of 8 interviewees were social in comfortable settings — the friction was specific to meeting new people." },
+      { "assumption": "The main barrier is finding people with shared interests", "verdict": "Partly true", "reality": "Interests matter, but loneliness type and life stage predicted lasting connections better." },
+      { "assumption": "People prefer large events to meet many potential friends at once", "verdict": "False", "reality": "2–4 people was the “goldilocks zone” — intimate enough for depth, not as pressured as 1-on-1." },
+      { "assumption": "Digital-first relationships can work if done right", "verdict": "True, with a caveat", "reality": "It works as an intro — but has to move to in-person fast, or the connection fizzles." }
+    ],
+    "pullQuote": {
+      "text": "I'm tired of always being the one who reaches out. I need friendships where both people care.",
+      "attribution": "Carlos, 28 — user interview"
+    },
+    "strategy": {
+      "heading": "Strategy & what's next",
+      "paragraph": "Small groups (2–4 people), matched by life stage and loneliness type — not just interests — with a facilitated first activity instead of a blind coffee date. Before writing product code, I designed a manual pilot to test it: 30 beta users across 3 Barcelona cohorts.",
+      "metrics": [
+        { "value": "40%", "description": "Target: users who attend 2+ activities in 30 days (vs a 15% industry baseline)." },
+        { "value": "≥70%", "description": "Target: users reporting they felt closer to new friends after activity #2." },
+        { "value": "30", "description": "Beta users across 3 Barcelona cohorts for the manual pilot." }
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "fullName": "Isabel Ordás Arnal",
+  "location": "Barbastro, Somontano — Aragón, Spain",
+  "nav": [
+    { "id": "home", "label": "Work" },
+    { "id": "about", "label": "About" },
+    { "id": "writing", "label": "Writing" }
+  ],
+  "taxonomies": {
+    "tagColors": {
+      "Circular economy": "green",
+      "Product discovery": "green",
+      "Climate tech": "blue",
+      "Data": "blue",
+      "Research": "brown",
+      "Operations": "brown",
+      "Talent development": "yellow",
+      "Social impact": "blue"
+    },
+    "stages": ["Discovery", "Definition", "Design", "Build", "Launch", "Growth"],
+    "productSkills": [
+      "User Research", "Competitive Analysis", "Opportunity Mapping", "Strategic Framing",
+      "Roadmapping", "Prioritization", "Experiment Design", "Business Casing",
+      "Stakeholder Alignment", "Metrics & Validation", "Delivery Management"
+    ],
+    "pillars": ["Product Thinking", "Build", "Climate Impact"],
+    "pillarColors": {
+      "Product Thinking": "blue",
+      "Build": "yellow",
+      "Climate Impact": "green"
+    }
+  }
+}

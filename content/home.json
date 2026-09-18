@@ -1,0 +1,18 @@
+{
+  "eyebrow": "Product management · Circular economy",
+  "heading": "Product with purpose",
+  "intro": "I build digital products. For fifteen years that meant shipping software; now it means putting that craft to work on climate and social impact.",
+  "primaryCta": "View project",
+  "secondaryCta": "Download CV",
+  "heroMetric": null,
+  "selectedWorkHeading": "Selected work",
+  "quote": {
+    "text": "Designing product means deciding which problem deserves our time.",
+    "attribution": "Isabel — product notes"
+  },
+  "values": [
+    { "title": "Empowerment & talent development", "description": "Building with and for people, not only for the product." },
+    { "title": "Ethics, equity & sustainability", "description": "Decisions that distribute value fairly and respect the planet's limits." },
+    { "title": "Technology for positive impact", "description": "Technology as a tool in service of a real problem." }
+  ]
+}

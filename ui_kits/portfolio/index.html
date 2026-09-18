@@ -15,6 +15,33 @@
 </head>
 <body>
 <div id="root"></div>
+<script>
+/* Loads the portable content JSON (see /content) into window.CONTENT before
+   the component scripts below run. Uses a synchronous XHR (not fetch) so the
+   plain <script> loading order below stays intact with no bundler and no
+   async rewrite of the components. This means the page must be served over
+   http(s) — opening index.html directly via file:// will fail here, since
+   browsers block XHR/fetch to local files across the file:// origin. */
+(function(){
+  function loadJSON(path){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', path, false);
+    xhr.send(null);
+    if (xhr.status !== 0 && xhr.status !== 200) {
+      throw new Error('Failed to load ' + path + ' (status ' + xhr.status + '). This page must be served over http(s), not opened directly as a file.');
+    }
+    return JSON.parse(xhr.responseText);
+  }
+  var projectIds = ['bondly', 'reuse-loops', 'grid-signals', 'talent-paths'];
+  window.CONTENT = {
+    site: loadJSON('../../content/site.json'),
+    home: loadJSON('../../content/home.json'),
+    about: loadJSON('../../content/about.json'),
+    writing: loadJSON('../../content/writing.json'),
+    projects: projectIds.map(function(id){ return loadJSON('../../content/projects/' + id + '.json'); })
+  };
+})();
+</script>
 <script type="text/babel" src="Chrome.jsx"></script>
 <script type="text/babel" src="Home.jsx"></script>
 <script type="text/babel" src="CaseStudy.jsx"></script>

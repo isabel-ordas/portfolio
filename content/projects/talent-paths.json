@@ -1,0 +1,13 @@
+{
+  "id": "talent-paths",
+  "title": "Talent paths",
+  "description": "A career framework built with the team it was written for.",
+  "domain": "Talent development",
+  "stage": ["Discovery", "Definition"],
+  "productSkills": ["Stakeholder Alignment", "Strategic Framing"],
+  "toolsFrameworks": ["Notion", "Workshops"],
+  "image": null,
+  "imageAlt": "",
+  "metric": null,
+  "caseStudy": null
+}

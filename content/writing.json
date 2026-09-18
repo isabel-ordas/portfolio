@@ -1,0 +1,9 @@
+{
+  "eyebrow": "Writing",
+  "heading": "Notes on product and impact",
+  "posts": [
+    { "date": "Mar 2026", "title": "The requirement is never the problem", "blurb": "On discovery as an act of translation, not transcription.", "accent": "green" },
+    { "date": "Jan 2026", "title": "Four colors, one gesture", "blurb": "Why the recycling bin is the most universal interface in Europe.", "accent": "yellow" },
+    { "date": "Nov 2025", "title": "Counting invisible work", "blurb": "What household chore logs taught me about product metrics.", "accent": "blue" }
+  ]
+}
