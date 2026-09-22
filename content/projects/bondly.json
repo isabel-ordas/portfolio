@@ -1,54 +1,123 @@
 {
   "id": "bondly",
   "title": "Bondly",
-  "description": "A digital-to-physical friendship platform for adults navigating unwanted loneliness — matched by life stage, not just interests.",
+  "description": "Discovery research and personas for a digital-to-physical friendship platform addressing unwanted loneliness in adults 25–40.",
   "domain": "Social impact",
-  "stage": ["Discovery", "Definition"],
-  "productSkills": ["User Research", "Competitive Analysis", "Strategic Framing", "Business Casing", "Metrics & Validation"],
-  "toolsFrameworks": ["Lean Canvas", "SWOT Analysis", "Typeform", "Mixpanel"],
+  "stage": ["Discovery"],
+  "productSkills": ["User Research", "Insight Synthesis", "User Personas", "Competitive Analysis"],
+  "toolsFrameworks": ["Expert interviews", "User interviews", "Survey", "Competitive analysis"],
   "image": "assets/projects/bondly.jpg",
   "imageAlt": "Three friends laughing together on a bench in a tulip field",
-  "metric": { "value": "40%", "label": "Target repeat-activity rate within 30 days, vs a 15% industry baseline." },
+  "metric": { "value": "8", "label": "User interviews conducted, alongside 3 expert interviews and a 19-person survey." },
   "caseStudy": {
-    "subhead": "A digital-to-physical friendship platform for adults (25–40) navigating unwanted loneliness. I led discovery, stress-tested my own assumptions against research, and shaped the strategy before any code was written.",
+    "subhead": "A digital-to-physical friendship platform for adults (25–40) navigating unwanted loneliness. I helped design the research, ran interviews, and led the analysis that shaped the personas.",
+    "contextNote": "This case study covers the discovery phase of my Master's Final Project, developed with a team of five future Product Managers. It's presented as a research exercise rather than a shipped product, so the value here is in the process and the insight rather than an implementation.",
     "meta": [
-      { "label": "Role", "value": "Product lead (solo)" },
-      { "label": "Duration", "value": "13 weeks" },
-      { "label": "Target", "value": "40% repeat rate, vs 15% baseline" }
+      { "label": "Role", "value": "Survey design, 2 of 8 user interviews, results analysis" },
+      { "label": "Team", "value": "5 future PMs — Nuclio Digital School TFM" }
     ],
-    "problem": {
-      "heading": "The problem",
-      "paragraphs": [
-        "40%+ of young adults report unwanted loneliness, yet friendship apps lose 70%+ of users within three weeks — because they optimize for match volume, not the repeated, safe interactions that actually build trust.",
-        "Existing tools treat friendship like dating: 1-on-1 dates that feel like interviews, impersonal 30-person events, swipe mechanics that gamify connection — and nothing to support the jump from acquaintance to real friend."
-      ]
-    },
-    "researchScope": [
-      { "label": "Expert interviews", "value": 3 },
-      { "label": "User interviews", "value": 8 },
-      { "label": "Survey responses", "value": 19 },
-      { "label": "Competitors mapped", "value": 9 }
-    ],
-    "researchSummary": "3 expert + 8 user interviews, a 19-person survey and 9 competitors mapped before any design work started.",
-    "hypothesesHeading": "4 founding assumptions, checked",
-    "hypotheses": [
-      { "assumption": "Users struggle because they lack social skills or are introverted", "verdict": "False", "reality": "6 of 8 interviewees were social in comfortable settings — the friction was specific to meeting new people." },
-      { "assumption": "The main barrier is finding people with shared interests", "verdict": "Partly true", "reality": "Interests matter, but loneliness type and life stage predicted lasting connections better." },
-      { "assumption": "People prefer large events to meet many potential friends at once", "verdict": "False", "reality": "2–4 people was the “goldilocks zone” — intimate enough for depth, not as pressured as 1-on-1." },
-      { "assumption": "Digital-first relationships can work if done right", "verdict": "True, with a caveat", "reality": "It works as an intro — but has to move to in-person fast, or the connection fizzles." }
-    ],
-    "pullQuote": {
-      "text": "I'm tired of always being the one who reaches out. I need friendships where both people care.",
-      "attribution": "Carlos, 28 — user interview"
-    },
-    "strategy": {
-      "heading": "Strategy & what's next",
-      "paragraph": "Small groups (2–4 people), matched by life stage and loneliness type — not just interests — with a facilitated first activity instead of a blind coffee date. Before writing product code, I designed a manual pilot to test it: 30 beta users across 3 Barcelona cohorts.",
-      "metrics": [
-        { "value": "40%", "description": "Target: users who attend 2+ activities in 30 days (vs a 15% industry baseline)." },
-        { "value": "≥70%", "description": "Target: users reporting they felt closer to new friends after activity #2." },
-        { "value": "30", "description": "Beta users across 3 Barcelona cohorts for the manual pilot." }
-      ]
-    }
+    "sections": [
+      {
+        "type": "text",
+        "heading": "My role",
+        "paragraphs": [
+          "I worked on the design of the survey and the interview guide, conducted 2 of the 8 user interviews myself, and led the analysis of the results across both the interviews and the survey."
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The problem",
+        "paragraphs": [
+          "More than 40% of young adults (25–40) experience unwanted loneliness, yet existing friendship apps see a 70%+ drop-off rate within three weeks — largely because they optimize for volume of matches instead of sustained relationship-building.",
+          "Current solutions tend to treat friendship like dating: 1-on-1 coffee dates that feel like job interviews, impersonal events with 30 or more people, and swipe-based matching that turns connection into a game. None of them really support the transition from acquaintance to real friend."
+        ]
+      },
+      {
+        "type": "hypotheses",
+        "heading": "What I assumed vs. what I found",
+        "keyRealization": "The problem isn't really about finding people. It's about creating the right context for an authentic friendship to develop.",
+        "researchScope": [
+          { "label": "Experts", "value": 3 },
+          { "label": "Interviews", "value": 8 },
+          { "label": "Survey", "value": 19 },
+          { "label": "Competitors", "value": 9 }
+        ],
+        "researchSummary": "3 expert interviews + 8 user interviews, a 19-person survey and 9 competitors mapped before any design work started.",
+        "items": [
+          { "assumption": "Users struggle because they lack social skills or are introverted", "verdict": "False", "reality": "Six of eight interviewees identified as introverted when meeting new people, but were actually quite social once they were in a comfortable setting." },
+          { "assumption": "The main barrier is finding people with shared interests", "verdict": "Partly true", "reality": "Shared interests matter, but type of loneliness and life stage turned out to be more predictive of a lasting connection." },
+          { "assumption": "People prefer large events, so they can meet more potential friends at once", "verdict": "False", "reality": "A group of 2 to 4 people was consistently the “goldilocks zone,” intimate enough for real depth without the pressure of a 1-on-1." },
+          { "assumption": "Digital-first relationships can work if the product is designed well", "verdict": "True, with a caveat", "reality": "A digital introduction works, but the relationship needs to move in person fairly quickly or it tends to fizzle out." }
+        ]
+      },
+      {
+        "type": "list",
+        "heading": "Research approach",
+        "ordered": false,
+        "items": [
+          "Expert interviews (n=3) with psychologists and social researchers, to understand loneliness from a clinical and sociological angle",
+          "User interviews (n=8) with adults aged 25–40 who had experienced loneliness",
+          "User survey (n=19) to validate the patterns that had surfaced in the interviews",
+          "Competitive analysis of nine platforms, including Bumble BFF, Meetup, Patook, and Hey! VINA"
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Key insights",
+        "paragraphs": [
+          "From the expert interviews, three things stood out. Loneliness isn't the same as isolation; it's about the quality of a person's connections, not how many they have. Adults aged 25–40 are increasingly vulnerable to it, partly because of a broader cultural shift toward individualism and the loss of shared community spaces. And digital tools can genuinely help, but only when they're designed to move people toward in-person connection rather than to maximize app engagement.",
+          "The user interviews surfaced four recurring moments when loneliness tended to become acute: relocating to a new city for work or study, going through a separation or divorce and losing a shared friend group, becoming a new parent and feeling exhausted and socially cut off, and career burnout leaving no energy left for meeting new people. These triggers map fairly directly onto the personas below (Carlos and relocation, Ana and separation, Laura and new parenthood), and they're a big part of why the matching approach ended up being built around emotional needs rather than shared interests alone."
+        ]
+      },
+      {
+        "type": "table",
+        "heading": "Survey findings (n=19)",
+        "columns": ["Finding", "Data"],
+        "rows": [
+          ["Top loneliness trigger", "Not feeling identified with their current social group (84%)"],
+          ["Preferred first meetup size", "2–3 people"],
+          ["Preferred first contact type", "A themed activity rather than a blind coffee date"],
+          ["Main safety concern", "Catfishing or fake profiles"],
+          ["Retention blocker", "It felt like a game rather than real friendship-building"]
+        ],
+        "note": "Market gap: no existing platform combines small-group facilitation (2–4 people), support for the digital-to-physical progression, and matching based on type of loneliness and life stage rather than interests alone."
+      },
+      {
+        "type": "personas",
+        "heading": "Personas",
+        "items": [
+          {
+            "name": "Carlos, 28",
+            "label": "The Reciprocity Seeker",
+            "description": "Relocated to a new city for work. He has colleagues but no real friends, and feels like his relationships are one-sided. He tried Bumble BFF and had two coffee dates, both of which fizzled out.",
+            "quote": "I'm tired of always being the one who reaches out. I need friendships where both people care.",
+            "needs": "Looking for matches with people who also value reciprocity, a small-group setting that feels less intimidating than 1-on-1 pressure, and shared activities that take some of the weight off pure conversation."
+          },
+          {
+            "name": "Ana, 32",
+            "label": "The Healing Heart",
+            "description": "Went through a recent separation and lost her shared friend group along with it. She needs emotional safety before she can be vulnerable again, so she avoids dating apps entirely and found women's circles a bit too “woo-woo” for her taste.",
+            "quote": "I need people who understand what I'm going through. Not pity, just presence.",
+            "needs": "Looking for people navigating similar life transitions, and a chance to build trust gradually rather than being pushed into forced intimacy."
+          },
+          {
+            "name": "Laura, 38",
+            "label": "The Overwhelmed Caregiver",
+            "description": "A new mother who's also caring for a sick parent, and feeling exhausted and isolated as a result. Mom groups feel competitive to her, and she simply doesn't have the time or energy left for the usual effort of making new friends.",
+            "quote": "I need a tribe that understands this chaos. Not judgment about messy hair or being 10 minutes late.",
+            "needs": "Needs matches with others in equally demanding life stages, flexible and low-pressure ways to connect, and permission to show up imperfect."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Reflection",
+        "paragraphs": [
+          "As a software engineer for over 15 years, I was trained to solve technical problems. How do I make this faster? How do I scale this?",
+          "Bondly pushed me toward different questions. Should this even be built in the first place? What do users actually need, based on what their behavior reveals rather than what they say? How should success be measured, in terms of the depth of a friendship rather than the number of matches?",
+          "The hardest part wasn't the research or the frameworks. It was learning to let go of solutions. In engineering, you're rewarded for solving problems quickly. In product, you're rewarded for really understanding the problem before you build anything at all."
+        ]
+      }
+    ]
   }
 }

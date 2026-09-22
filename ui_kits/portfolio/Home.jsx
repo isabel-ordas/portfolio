@@ -15,10 +15,7 @@ const HOME_CONTENT = window.CONTENT.home;
    (top 2 + overflow) and case study page (all of them). `toolsFrameworks`
    is freeform per project — not filtered, shown in full only on the case
    study page. `image` / `metric` are placeholders: fill them in per
-   project's JSON when ready, or leave null — both degrade gracefully.
-   Only Bondly's data is grounded in real case-study content; the other
-   three are placeholder projects — edit their JSON freely once you have
-   real work to describe. */
+   project's JSON when ready, or leave null — both degrade gracefully. */
 const PROJECTS = window.CONTENT.projects;
 
 /* Set home.json's `heroMetric` to an object like
@@ -41,7 +38,7 @@ function WorkCard({ project, go }) {
   const topSkills = project.productSkills.slice(0, 2);
   const overflow = project.productSkills.length - topSkills.length;
   return (
-    <a href="#" onClick={(e)=>{e.preventDefault();go('case')}}
+    <a href="#" onClick={(e)=>{e.preventDefault();go('case', project.id)}}
        onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
        style={{display:'flex',flexDirection:'column',border:'var(--border-hairline)',background:'var(--surface-card)',textDecoration:'none',color:'var(--text-body)'}}>
       {project.image
@@ -87,7 +84,7 @@ function Home({ go }) {
             {HOME_CONTENT.intro}
           </p>
           <div style={{display:'flex',gap:'var(--space-2)',marginTop:'var(--space-1)'}}>
-            <Button variant="primary" icon="arrow-right" onClick={()=>go('case')}>{HOME_CONTENT.primaryCta}</Button>
+            <Button variant="primary" icon="arrow-right" onClick={()=>go('case', PROJECTS[0] && PROJECTS[0].id)}>{HOME_CONTENT.primaryCta}</Button>
             <Button variant="secondary" icon="download" iconPosition="left" onClick={()=>go('about')}>{HOME_CONTENT.secondaryCta}</Button>
           </div>
         </div>

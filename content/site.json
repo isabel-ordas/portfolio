@@ -3,8 +3,7 @@
   "location": "Barbastro, Somontano — Aragón, Spain",
   "nav": [
     { "id": "home", "label": "Work" },
-    { "id": "about", "label": "About" },
-    { "id": "writing", "label": "Writing" }
+    { "id": "about", "label": "About" }
   ],
   "taxonomies": {
     "tagColors": {
@@ -15,13 +14,15 @@
       "Research": "brown",
       "Operations": "brown",
       "Talent development": "yellow",
-      "Social impact": "blue"
+      "Social impact": "blue",
+      "Marketplace / C2C": "yellow"
     },
     "stages": ["Discovery", "Definition", "Design", "Build", "Launch", "Growth"],
     "productSkills": [
       "User Research", "Competitive Analysis", "Opportunity Mapping", "Strategic Framing",
       "Roadmapping", "Prioritization", "Experiment Design", "Business Casing",
-      "Stakeholder Alignment", "Metrics & Validation", "Delivery Management"
+      "Stakeholder Alignment", "Metrics & Validation", "Delivery Management",
+      "Insight Synthesis", "User Personas", "Quantitative Reasoning", "User Segmentation"
     ],
     "pillars": ["Product Thinking", "Build", "Climate Impact"],
     "pillarColors": {

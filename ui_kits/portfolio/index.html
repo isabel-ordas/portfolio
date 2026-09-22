@@ -32,7 +32,7 @@
     }
     return JSON.parse(xhr.responseText);
   }
-  var projectIds = ['bondly', 'reuse-loops', 'grid-signals', 'talent-paths'];
+  var projectIds = ['bondly', 'wallapop'];
   window.CONTENT = {
     site: loadJSON('../../content/site.json'),
     home: loadJSON('../../content/home.json'),
@@ -49,12 +49,13 @@
 <script type="text/babel">
 function App(){
   const [route,setRoute] = React.useState('home');
-  const go = (r) => { setRoute(r); window.scrollTo(0,0); };
+  const [caseId,setCaseId] = React.useState(PROJECTS[0] ? PROJECTS[0].id : null);
+  const go = (r, id) => { setRoute(r); if (id) setCaseId(id); window.scrollTo(0,0); };
   const View = { home: Home, case: CaseStudy, about: About, writing: Writing }[route] || Home;
   return (
     <div>
       <Header route={route} go={go} />
-      <View go={go} />
+      <View go={go} id={caseId} />
       <Footer go={go} />
     </div>
   );
