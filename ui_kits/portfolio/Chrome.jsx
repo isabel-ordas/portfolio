@@ -8,6 +8,8 @@ const SITE = window.CONTENT.site;
 const FULL_NAME = SITE.fullName;
 const LOCATION = SITE.location;
 const NAV = SITE.nav;
+const CONTACT = SITE.contact;
+const CV_URL = `../../${SITE.cvUrl}`;
 
 /* Fixed domain → accent mapping so a category tag always reads in the same
    color everywhere on the site. Extend freely as new domains show up;
@@ -47,7 +49,7 @@ function Header({ route, go }) {
                style={{font:'var(--text-label)',textDecoration:'none',color:'var(--text-body)',
                        borderBottom: route===id ? '2px solid var(--accent-green)' : '2px solid transparent',paddingBottom:4}}>{label}</a>
           ))}
-          <Button variant="primary" accent="black" size="sm" icon="mail" iconPosition="left" onClick={()=>go('about')}>Contact</Button>
+          <Button variant="primary" accent="black" size="sm" icon="mail" iconPosition="left" href={`mailto:${CONTACT.email}`}>Contact</Button>
         </nav>
       </div>
     </header>
@@ -63,9 +65,9 @@ function Footer({ go }) {
           <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{LOCATION}</span>
         </div>
         <div style={{display:'flex',gap:'var(--space-3)',alignItems:'center'}}>
-          <a href="#" onClick={(e)=>e.preventDefault()} style={{display:'flex',border:0}}><Icon name="linkedin" size={20} title="LinkedIn" /></a>
-          <a href="#" onClick={(e)=>e.preventDefault()} style={{display:'flex',border:0}}><Icon name="mail" size={20} title="Email" /></a>
-          <a href="#" onClick={(e)=>{e.preventDefault();go('about')}} style={{font:'var(--text-label)'}}>Download CV</a>
+          <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" style={{display:'flex',border:0}}><Icon name="linkedin" size={20} title="LinkedIn" /></a>
+          <a href={`mailto:${CONTACT.email}`} style={{display:'flex',border:0}}><Icon name="mail" size={20} title="Email" /></a>
+          <a href={CV_URL} download style={{font:'var(--text-label)'}}>Download CV</a>
         </div>
       </div>
     </footer>
@@ -113,4 +115,4 @@ function StageBar({ active = [], compact = false }) {
   );
 }
 
-Object.assign(window, { Header, Footer, Page, Eyebrow, StageBar, TAG_COLORS, PILLARS, PILLAR_COLORS, STAGES, PRODUCT_SKILLS, FULL_NAME, LOCATION });
+Object.assign(window, { Header, Footer, Page, Eyebrow, StageBar, TAG_COLORS, PILLARS, PILLAR_COLORS, STAGES, PRODUCT_SKILLS, FULL_NAME, LOCATION, CONTACT, CV_URL });

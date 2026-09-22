@@ -1,6 +1,11 @@
 {
   "fullName": "Isabel Ordás Arnal",
   "location": "Barbastro, Somontano — Aragón, Spain",
+  "contact": {
+    "email": "isaordas@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/iordas/"
+  },
+  "cvUrl": "assets/cv/CV_IsabelOrdasArnal_PM.pdf",
   "nav": [
     { "id": "home", "label": "Work" },
     { "id": "about", "label": "About" }

@@ -1,5 +1,5 @@
 const { Button, Divider, Icon, PullQuote } = window.IsabelBrandSystem_b8d40d;
-const { FULL_NAME, LOCATION, PILLAR_COLORS } = window;
+const { FULL_NAME, LOCATION, PILLAR_COLORS, CV_URL } = window;
 
 const ABOUT_CONTENT = window.CONTENT.about;
 
@@ -60,7 +60,7 @@ function About({ go }) {
             <PullQuote size="lg" accent="blue">{CLOSING_QUOTE}</PullQuote>
           </div>
           <div style={{display:'flex',gap:'var(--space-2)',marginTop:'var(--space-2)'}}>
-            <Button variant="secondary" icon="download" iconPosition="left">Download CV</Button>
+            <Button variant="secondary" icon="download" iconPosition="left" href={CV_URL} download>Download CV</Button>
           </div>
         </div>
         <div style={{border:'var(--border-hairline)',padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>

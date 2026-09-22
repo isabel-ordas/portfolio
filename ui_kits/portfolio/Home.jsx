@@ -1,5 +1,5 @@
 const { Icon, Button, Tag, Divider, PullQuote, BarChart } = window.IsabelBrandSystem_b8d40d;
-const { TAG_COLORS, PRODUCT_SKILLS } = window;
+const { TAG_COLORS, PRODUCT_SKILLS, CV_URL } = window;
 
 const HOME_CONTENT = window.CONTENT.home;
 
@@ -85,7 +85,7 @@ function Home({ go }) {
           </p>
           <div style={{display:'flex',gap:'var(--space-2)',marginTop:'var(--space-1)'}}>
             <Button variant="primary" icon="arrow-right" onClick={()=>go('case', PROJECTS[0] && PROJECTS[0].id)}>{HOME_CONTENT.primaryCta}</Button>
-            <Button variant="secondary" icon="download" iconPosition="left" onClick={()=>go('about')}>{HOME_CONTENT.secondaryCta}</Button>
+            <Button variant="secondary" icon="download" iconPosition="left" href={CV_URL} download>{HOME_CONTENT.secondaryCta}</Button>
           </div>
         </div>
         {HERO_METRIC ? (
