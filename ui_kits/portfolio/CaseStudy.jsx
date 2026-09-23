@@ -4,7 +4,7 @@ const { TAG_COLORS, PROJECTS } = window;
 /* Case studies are data-driven (project.caseStudy in /content/projects/*.json)
    so a new project only needs a JSON entry, not a new page. `caseStudy.sections`
    is an ordered list of typed blocks — see the switch in <Section> below for the
-   supported types (text, hypotheses, table, list, personas, definition). Keep
+   supported types (text, hypotheses, table, list, personas, definition, gallery). Keep
    the vocabulary closed: extend it deliberately when a new case study needs a
    genuinely new shape, rather than growing a one-off per project. */
 
@@ -129,6 +129,7 @@ function DefinitionSection({ section }) {
     <section className="ds-two-col-rev">
       <SectionHeading>{section.heading}</SectionHeading>
       <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)',maxWidth:'62ch'}}>
+        {section.intro ? <p style={{margin:0}}>{section.intro}</p> : null}
         {section.items.map((d,i) => (
           <div key={i} style={{borderTop:i>0?'var(--border-subtle)':'none',paddingTop:i>0?8:0}}>
             <span style={{font:'var(--text-label)'}}>{d.term}</span>
@@ -165,6 +166,41 @@ function PersonasSection({ section }) {
   );
 }
 
+/* Screenshots and boards stay in color (unlike the B&W hero/card photos):
+   they're evidence, not mood. `layout: "scroll"` is for one tall image
+   (a board, a stacked storyboard) shown in a bounded scroll frame;
+   `layout: "grid"` tiles 16:9 slides two-up. Every image links to its
+   full-size file so small text stays readable. */
+function GalleryImage({ image, scroll }) {
+  return (
+    <figure style={{margin:0,display:'flex',flexDirection:'column',gap:8}}>
+      <a href={`/${image.src}`} target="_blank" rel="noopener" aria-label={`${image.alt} (open full size)`}
+         style={{display:'block',border:'var(--border-hairline)',overflow:scroll?'auto':'hidden',maxHeight:scroll?'70vh':'none',background:'var(--paper-white)'}}>
+        <img src={`/${image.src}`} alt={image.alt} loading="lazy" style={{display:'block',width:'100%',height:'auto'}} />
+      </a>
+      {image.caption ? (
+        <figcaption style={{display:'flex',justifyContent:'space-between',gap:'var(--space-2)',font:'var(--text-caption)',color:'var(--text-muted)'}}>
+          <span>{image.caption}</span>
+          <a href={`/${image.src}`} target="_blank" rel="noopener" style={{whiteSpace:'nowrap',color:'var(--text-muted)'}}>Full size</a>
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+function GallerySection({ section }) {
+  const scroll = section.layout === 'scroll';
+  return (
+    <section style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
+      <SectionHeading>{section.heading}</SectionHeading>
+      {section.intro ? <p style={{margin:0,maxWidth:'62ch',color:'var(--text-muted)'}}>{section.intro}</p> : null}
+      <div className={scroll ? undefined : 'ds-2up'} style={{display:'grid',gap:'var(--space-3)'}}>
+        {section.images.map((img,i) => <GalleryImage key={i} image={img} scroll={scroll} />)}
+      </div>
+    </section>
+  );
+}
+
 function Section({ section }) {
   switch (section.type) {
     case 'text': return <TextSection section={section} />;
@@ -173,6 +209,7 @@ function Section({ section }) {
     case 'list': return <ListSection section={section} />;
     case 'definition': return <DefinitionSection section={section} />;
     case 'personas': return <PersonasSection section={section} />;
+    case 'gallery': return <GallerySection section={section} />;
     default: return null;
   }
 }

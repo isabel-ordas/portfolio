@@ -1,0 +1,97 @@
+{
+  "id": "vinted",
+  "title": "Vinted",
+  "description": "A timed product sense exercise followed by rapid AI-assisted prototyping across two tools, simulating a vibe coding interview for Vinted.",
+  "domain": "Marketplace / C2C",
+  "stage": ["Discovery", "Definition", "Design"],
+  "productSkills": ["Product Sense", "Rapid Prototyping", "PRD Writing", "AI-Assisted Design", "User Segmentation", "Prioritization"],
+  "toolsFrameworks": ["FigJam", "Claude Code", "Magic Patterns"],
+  "image": "assets/projects/vinted/magicpatterns-01-cover.jpg",
+  "imageAlt": "Cover of the Ask before you buy concept: a phone showing a Vinted listing with pre-translated questions under the price",
+  "metric": { "value": "5", "label": "Prototype directions explored from a single PRD with Claude Code." },
+  "caseStudy": {
+    "subhead": "Ask before you buy: a simulated vibe coding interview. Thirty minutes of product sense on cross-border buyer trust, then the same PRD prototyped in two different AI tools.",
+    "contextNote": "This is a simulated vibe coding interview: a timed product sense exercise, followed immediately by rapid AI-assisted prototyping. I ran it solo, as practice for real product interviews that increasingly include a prototyping round.",
+    "meta": [
+      { "label": "Role", "value": "Self-initiated, solo" },
+      { "label": "Status", "value": "Prototyping exercise — not built" }
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "heading": "My role",
+        "paragraphs": [
+          "Solo, start to finish. I framed the problem and wrote the PRD myself under a time box, then prompted Claude Code to prototype the solution, and separately took the same direction into Magic Patterns to see how a second AI tool would interpret the same brief."
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Problem",
+        "paragraphs": [
+          "The starting point was personal: my sister hesitates to buy from sellers in other EU countries on second-hand platforms, mainly because of the language barrier and uncertainty around international shipping. That hesitation is a real, common failure point in cross-border C2C, and it's what I chose to frame and prototype a fix for."
+        ]
+      },
+      {
+        "type": "definition",
+        "heading": "Product sense, under a clock",
+        "intro": "Before opening any prototyping tool, I gave myself 30 minutes to frame the problem properly on a FigJam board, the way a real vibe coding interview would start.",
+        "items": [
+          { "term": "Clarifying the scope first", "description": "I treated cross-border as intra-EU for this exercise, and noted early that trust affects buyers and sellers differently, which shaped where I looked for the sharpest problem." },
+          { "term": "Segmenting the cross-border user", "description": "Roughly 5% of a marketplace's users buy cross-border, and within that group the motivation splits three ways: price-driven (cheaper abroad), selection-driven (not available locally), and curiosity, with no strong intent. That split mattered for scoping the solution to the segments actually worth solving for." },
+          { "term": "The reframe", "description": "Three candidate problems came out of this: trust in pre-purchase communication (different language, and what happens if something goes wrong), unfamiliar sizing and brands (a comprehension issue, not a trust issue), and missing delivery information post-purchase (a seller-side, post-purchase issue). I prioritized pre-purchase communication trust, because it blocks the buying decision before commitment, while the other two sit either later in the journey or outside what a buyer needs resolved before they'll click buy." },
+          { "term": "The PRD, scoped tightly", "description": "Goal: reduce buyer hesitation on cross-border purchases by giving them a fast, language-barrier-free way to resolve key questions with the seller before committing. In scope: 3 to 4 predefined, tappable questions. Explicitly out of scope: free-form translated chat, custom buyer-written questions, and post-purchase delivery, since a real interview rewards precise scoping, not an unbounded feature. Success was framed with a leading metric (percentage of question threads that end with the buyer adding the item to cart or starting checkout) and a lagging one (cross-border purchase conversion rate)." }
+        ]
+      },
+      {
+        "type": "gallery",
+        "heading": "The reasoning board",
+        "layout": "scroll",
+        "images": [
+          { "src": "assets/projects/vinted/product-sense-board.jpg", "alt": "FigJam board branching from clarifications, user, problem, solution, and PRD into the reasoning behind each decision", "caption": "The 30-minute FigJam board, from clarifying questions down to the PRD and its success metrics." }
+        ]
+      },
+      {
+        "type": "definition",
+        "heading": "Prototyping, in minutes",
+        "intro": "This is the part of the exercise I most wanted to demonstrate: a well-scoped PRD turns prototyping into something that takes minutes, not days, which is exactly what lets you test whether an idea actually resonates before investing further.",
+        "items": [
+          { "term": "Claude Code: five directions, fast", "description": "I prompted Claude Code to prototype the PRD, and rather than settling on one interpretation, it produced five distinct directions in the same short window: a tappable question band on the listing (Quick Ask), a reply-time-estimate framing before asking (Ask and Wait), instant category-based FAQ answers with no live message at all (Smart Ask), social proof from other cross-border buyers' questions (Others Asked), and a seller-responsiveness trust signal (Reply Radar). Seeing five working interpretations of the same brief, that fast, was the clearest signal of how far a tight PRD can stretch a prototyping tool." },
+          { "term": "Magic Patterns: the same direction, polished", "description": "I then took \"Ask before you buy,\" the direction closest to the PRD's core scope, into Magic Patterns to see how a second tool would handle it. The output was noticeably more presentation-ready: a full walkthrough of a buyer discovering the prompt on the listing, seeing answers other buyers already got, tapping a ready-made question, watching it translate and send, and reading the seller's reply back in their own language." }
+        ]
+      },
+      {
+        "type": "gallery",
+        "heading": "Five directions from one PRD",
+        "layout": "scroll",
+        "images": [
+          { "src": "assets/projects/vinted/exploration-grid.jpg", "alt": "Five mobile flow storyboards generated with Claude Code: Quick Ask, Ask and Wait, Smart Ask, Others Asked, and Reply Radar", "caption": "Claude Code storyboards for Quick Ask, Ask and Wait, Smart Ask, Others Asked, and Reply Radar." }
+        ]
+      },
+      {
+        "type": "gallery",
+        "heading": "The chosen direction, polished",
+        "layout": "grid",
+        "images": [
+          { "src": "assets/projects/vinted/magicpatterns-02-flow-overview.jpg", "alt": "Five-step flow: discover, learn, tap, send, understand", "caption": "The flow, from hesitation to checkout in five steps." },
+          { "src": "assets/projects/vinted/magicpatterns-03-step-discover.jpg", "alt": "Listing screen with an Ask before you buy prompt showing what other buyers asked, next to the Buy now button", "caption": "Discover: answers start on the listing, right under the price." },
+          { "src": "assets/projects/vinted/magicpatterns-04-step-understand.jpg", "alt": "Question sheet where the seller's reply in Lithuanian appears translated into English", "caption": "Understand: the seller's reply arrives translated, with Buy now right below it." },
+          { "src": "assets/projects/vinted/magicpatterns-05-closing-stats.jpg", "alt": "Closing slide: trust, built before checkout", "caption": "The closing slide of the Magic Patterns deck." }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "What I'd take from comparing the two",
+        "paragraphs": [
+          "Claude Code was better for divergence: cheap enough to explore five real directions and compare them side by side before committing to one. Magic Patterns was better for convergence: turning the chosen direction into something closer to what you'd actually put in front of a stakeholder or a user. Neither tool is strictly better, they're suited to different points in the process, and knowing which one to reach for at each stage is itself a skill worth having as AI-assisted prototyping becomes a normal part of product work."
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Reflection",
+        "paragraphs": [
+          "What stood out most wasn't the prototypes themselves, it was how much the upfront product sense work did for the speed of everything after it. A clear problem, a tight PRD, and an explicit out-of-scope list meant the prototyping stage barely had to think, it just had to execute against a brief that was already unambiguous. That's the real takeaway for how I want to work: the fastest prototyping tool still depends entirely on the quality of the thinking you hand it."
+        ]
+      }
+    ]
+  }
+}
