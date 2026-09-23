@@ -19,7 +19,7 @@ function HeroImage({ project }) {
     );
   }
   return (
-    <img src={`../../${project.image}`} onError={()=>setErrored(true)}
+    <img src={`/${project.image}`} onError={()=>setErrored(true)}
          alt={project.imageAlt}
          style={{display:'block',width:'100%',height:360,objectFit:'cover',marginTop:'var(--space-6)',border:'var(--border-hairline)',filter:'grayscale(1)'}} />
   );

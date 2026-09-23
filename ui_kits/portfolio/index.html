@@ -5,17 +5,37 @@
 <head>
 <meta charset="utf-8">
 <title>Isabel Ordás Arnal — Product with purpose</title>
-<link rel="stylesheet" href="../../styles.css">
-<script>window.__dsIconBase='../../assets/icons/';</script>
+<link rel="stylesheet" href="/styles.css">
+<script>window.__dsIconBase='/assets/icons/';</script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script src="../../_ds_bundle.js"></script>
+<script src="/_ds_bundle.js"></script>
 <style>body{margin:0;background:var(--surface-page)}</style>
 </head>
 <body>
 <div id="root"></div>
 <script>
+/* Client-side routing, native History API — no React Router, no bundler.
+   Work/About/Writing each get a real, bookmarkable URL. `pathToRoute` and
+   `routeToPath` are the single source of truth for that mapping, shared by
+   the nav links (Chrome.jsx) and the App component below. Case-study pages
+   stay purely client-state (no URL) — see the pasted spec that scoped this
+   to Work/About/Writing only.
+   For direct hits on /work, /about, /writing to not 404, the host must
+   rewrite unmatched paths to this file (see /vercel.json) while still
+   serving real static files (this HTML, the .jsx files, content/*.json,
+   assets/*) as-is — which is why every reference below is root-absolute
+   rather than relative: a relative path resolves against the *visited*
+   URL (e.g. "/about"), not against where this file actually lives. */
+(function(){
+  var ROUTE_BY_PATH = { '/': 'home', '/work': 'home', '/about': 'about', '/writing': 'writing' };
+  var PATH_BY_ROUTE = { home: '/work', about: '/about', writing: '/writing' };
+  window.Router = {
+    pathToRoute: function(pathname){ return ROUTE_BY_PATH[pathname] || 'home'; },
+    routeToPath: function(route){ return PATH_BY_ROUTE[route] || '/work'; }
+  };
+})();
 /* Loads the portable content JSON (see /content) into window.CONTENT before
    the component scripts below run. Uses a synchronous XHR (not fetch) so the
    plain <script> loading order below stays intact with no bundler and no
@@ -34,23 +54,39 @@
   }
   var projectIds = ['bondly', 'wallapop'];
   window.CONTENT = {
-    site: loadJSON('../../content/site.json'),
-    home: loadJSON('../../content/home.json'),
-    about: loadJSON('../../content/about.json'),
-    writing: loadJSON('../../content/writing.json'),
-    projects: projectIds.map(function(id){ return loadJSON('../../content/projects/' + id + '.json'); })
+    site: loadJSON('/content/site.json'),
+    home: loadJSON('/content/home.json'),
+    about: loadJSON('/content/about.json'),
+    writing: loadJSON('/content/writing.json'),
+    projects: projectIds.map(function(id){ return loadJSON('/content/projects/' + id + '.json'); })
   };
 })();
 </script>
-<script type="text/babel" src="Chrome.jsx"></script>
-<script type="text/babel" src="Home.jsx"></script>
-<script type="text/babel" src="CaseStudy.jsx"></script>
-<script type="text/babel" src="About.jsx"></script>
+<script type="text/babel" src="/ui_kits/portfolio/Chrome.jsx"></script>
+<script type="text/babel" src="/ui_kits/portfolio/Home.jsx"></script>
+<script type="text/babel" src="/ui_kits/portfolio/CaseStudy.jsx"></script>
+<script type="text/babel" src="/ui_kits/portfolio/About.jsx"></script>
 <script type="text/babel">
 function App(){
-  const [route,setRoute] = React.useState('home');
+  const [route,setRoute] = React.useState(() => window.Router.pathToRoute(window.location.pathname));
   const [caseId,setCaseId] = React.useState(PROJECTS[0] ? PROJECTS[0].id : null);
-  const go = (r, id) => { setRoute(r); if (id) setCaseId(id); window.scrollTo(0,0); };
+
+  const go = (r, id) => {
+    if (id) setCaseId(id);
+    setRoute(r);
+    if (r !== 'case') {
+      const path = window.Router.routeToPath(r);
+      if (window.location.pathname !== path) window.history.pushState({}, '', path);
+    }
+    window.scrollTo(0,0);
+  };
+
+  React.useEffect(() => {
+    const onPopState = () => setRoute(window.Router.pathToRoute(window.location.pathname));
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
   const View = { home: Home, case: CaseStudy, about: About, writing: Writing }[route] || Home;
   return (
     <div>

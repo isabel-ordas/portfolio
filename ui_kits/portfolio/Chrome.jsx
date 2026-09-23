@@ -9,7 +9,7 @@ const FULL_NAME = SITE.fullName;
 const LOCATION = SITE.location;
 const NAV = SITE.nav;
 const CONTACT = SITE.contact;
-const CV_URL = `../../${SITE.cvUrl}`;
+const CV_URL = `/${SITE.cvUrl}`;
 
 /* Fixed domain → accent mapping so a category tag always reads in the same
    color everywhere on the site. Extend freely as new domains show up;
@@ -38,14 +38,14 @@ function Header({ route, go }) {
   return (
     <header style={{position:'sticky',top:0,zIndex:10,background:'var(--paper-white)',borderBottom:'var(--border-hairline)'}}>
       <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',padding:'24px 0',display:'flex',alignItems:'center',justifyContent:'space-between',gap:'var(--space-4)',flexWrap:'wrap'}}>
-        <a href="#" onClick={(e)=>{e.preventDefault();go('home')}} aria-label={`${FULL_NAME} — home`}
+        <a href={window.Router.routeToPath('home')} onClick={(e)=>{e.preventDefault();go('home')}} aria-label={`${FULL_NAME} — home`}
            style={{display:'inline-flex',alignItems:'center',gap:12,border:0,textDecoration:'none'}}>
           <Logo size={36} />
           <span aria-hidden="true" style={{font:'var(--weight-semibold) 20px/1 var(--font-display)',letterSpacing:'var(--tracking-heading)',color:'var(--ink-black)'}}>IOA</span>
         </a>
         <nav style={{display:'flex',alignItems:'center',gap:'var(--space-4)'}}>
           {NAV.map(({id,label}) => (
-            <a key={id} href="#" onClick={(e)=>{e.preventDefault();go(id)}}
+            <a key={id} href={window.Router.routeToPath(id)} onClick={(e)=>{e.preventDefault();go(id)}}
                style={{font:'var(--text-label)',textDecoration:'none',color:'var(--text-body)',
                        borderBottom: route===id ? '2px solid var(--accent-green)' : '2px solid transparent',paddingBottom:4}}>{label}</a>
           ))}

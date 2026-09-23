@@ -34,7 +34,7 @@ function Portrait() {
     );
   }
   return (
-    <img src={`../../${PORTRAIT_SRC}`} onError={()=>setErrored(true)}
+    <img src={`/${PORTRAIT_SRC}`} onError={()=>setErrored(true)}
          alt={`${FULL_NAME} — black and white portrait`}
          style={{display:'block',width:'100%',aspectRatio:'4 / 5',objectFit:'cover',objectPosition:'center top',filter:'grayscale(1)'}} />
   );

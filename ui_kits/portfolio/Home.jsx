@@ -42,7 +42,7 @@ function WorkCard({ project, go }) {
        onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
        style={{display:'flex',flexDirection:'column',border:'var(--border-hairline)',background:'var(--surface-card)',textDecoration:'none',color:'var(--text-body)'}}>
       {project.image
-        ? <img src={`../../${project.image}`} alt={project.imageAlt || ''} style={{display:'block',width:'100%',aspectRatio:'16 / 9',objectFit:'cover',filter:'grayscale(1)',borderBottom:'var(--border-hairline)'}} />
+        ? <img src={`/${project.image}`} alt={project.imageAlt || ''} style={{display:'block',width:'100%',aspectRatio:'16 / 9',objectFit:'cover',filter:'grayscale(1)',borderBottom:'var(--border-hairline)'}} />
         : <ThumbnailPlaceholder />}
       <div style={{padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
         <Eyebrow accent={TAG_COLORS[project.domain]}>{project.domain}</Eyebrow>
