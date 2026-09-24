@@ -6,8 +6,8 @@
   "stage": ["Discovery", "Definition"],
   "productSkills": ["Quantitative Reasoning", "User Segmentation", "Prioritization", "Experiment Design", "Business Casing"],
   "toolsFrameworks": ["Segmentation matrix", "Weighted scoring (ICE-style)", "A/B test design"],
-  "image": null,
-  "imageAlt": "",
+  "image": "assets/projects/wallapop/cover.jpg",
+  "imageAlt": "A woman kneeling on a rug at home, sorting a leather bag, sweaters, books, a camera, and records she no longer uses",
   "metric": { "value": "€2.66M–€7.97M", "label": "Potential revenue from activating an estimated 8.5M addressable dormant sellers." },
   "caseStudy": {
     "subhead": "Activating dormant sellers: a segmentation and prioritization exercise on a C2C marketplace. I reframed the problem into actionable segments, scored candidate solutions, and designed the top experiment.",

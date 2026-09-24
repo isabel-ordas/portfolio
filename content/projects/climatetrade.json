@@ -1,0 +1,68 @@
+{
+  "id": "climatetrade",
+  "title": "ClimateTrade",
+  "description": "Product decisions, collaborative and solo, made as Tech Lead of a developer squad on a blockchain-based carbon credit marketplace.",
+  "domain": "Climate tech",
+  "stage": ["Definition", "Build", "Launch", "Growth"],
+  "productSkills": ["Cross-functional Leadership", "Stakeholder Alignment", "Prioritization", "Data-Informed Decision Making", "Developer Mentoring", "AI-Assisted Team Workflows"],
+  "toolsFrameworks": ["SQL", "Data Warehouse / Metabase", "AWS", "B2B API integrations", "Cursor"],
+  "image": "assets/projects/climatetrade/cover.jpg",
+  "imageAlt": "Isometric illustration of forest and project tiles connected through a central block to a stack of servers",
+  "metric": { "value": "Days → instant", "label": "Client invoice wait time after the billing redesign." },
+  "caseStudy": {
+    "subhead": "Product decisions from inside a developer squad. Leading the squad as Tech Lead for a blockchain-based carbon credit marketplace, and the product decisions, collaborative and solo, that came with it.",
+    "contextNote": "ClimateTrade is a blockchain-based carbon credit marketplace, with a B2B API for corporate integrators and a B2C marketplace for individual buyers. I was Tech Lead of the developer squad, and part of the cross-functional group behind the decisions below.",
+    "meta": [
+      { "label": "Role", "value": "Tech Lead, developer squad" },
+      { "label": "Status", "value": "Shipped, in production" }
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "heading": "My role",
+        "paragraphs": [
+          "Tech Lead of a developer squad. I mentored the developers on the squad and coordinated across marketing, engineering, systems and delivery, and data analysts.",
+          "For company-wide initiatives like the billing redesign below, decisions were made collaboratively with Product, Finance, and other stakeholders, and I represented the engineering and technical feasibility view in that group. Within my own scope as Tech Lead, I owned the squad's prioritization calls, the data-informed recommendations behind them, and the adoption of new tooling on the team."
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The problem",
+        "paragraphs": [
+          "Clients had to wait days to receive their invoice after buying carbon credits, and the friction wasn't only theirs. Internally, our own billing process depended on first claiming and receiving an invoice from the provider we'd sourced the credits from, before we could issue anything to the client. Every client invoice was hostage to someone else's paperwork first."
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The reframe",
+        "paragraphs": [
+          "The instinct could have been to just chase providers faster. But the real fix wasn't speed, it was removing the dependency altogether: rather than routing every client invoice through a provider's invoice first, the company could bill the client directly."
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "The decision",
+        "paragraphs": [
+          "Together with Product, Finance, and other stakeholders, we decided the company would invoice clients directly, decoupling client billing from the provider invoice cycle entirely. I brought the technical feasibility view to that decision, and then led the squad that built the new billing model. Wait time went from days to instant."
+        ]
+      },
+      {
+        "type": "definition",
+        "heading": "Beyond the flagship decision",
+        "intro": "Other decisions from this period:",
+        "items": [
+          { "term": "Prioritization with an explicit trade-off", "description": "Assessing implementation complexity against user benefit, I made the call to deprioritize a Google login integration that sat in the squad's backlog, redirecting that engineering capacity to higher-value work instead." },
+          { "term": "Turning funnel data into direction", "description": "I analyzed B2C marketplace funnel data in SQL to find where users were dropping off, and synthesized the findings into recommendations that directly shaped what the squad prioritized next." },
+          { "term": "Leading AI-assisted development on the squad", "description": "I introduced AI-assisted workflows (ChatGPT, Claude, Cursor) to the team. Two of five developers adopted Cursor, with an estimated 25% reduction in development time and roughly 50% faster log analysis for metrics and incident review." }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Reflection",
+        "paragraphs": [
+          "This period sharpened two muscles I use constantly now. Shaping the billing redesign with Finance and Product sharpened how I build a case for a technical trade-off in front of non-engineers. Owning the calls that were fully mine, prioritization trade-offs, what the data said to build next, which tools the team adopted, sharpened my instinct for making that call myself and standing behind it."
+        ]
+      }
+    ]
+  }
+}
