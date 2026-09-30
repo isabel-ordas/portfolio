@@ -16,7 +16,7 @@
 .ds-2up{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
 .ds-scroll-row{flex-wrap:wrap}
 /* About hero: headline left, illustration right on desktop; illustration
-   first on mobile. The headline enters as the illustration finishes (3.4s). */
+   first and centered on mobile. The headline enters as the illustration finishes (3.4s). */
 .ds-hero{display:grid;grid-template-columns:var(--two-col);gap:var(--grid-gutter);align-items:center;padding-bottom:var(--space-12)}
 .ds-hero-art{width:100%;max-width:360px;aspect-ratio:1}
 .ds-hero-art svg{display:block;width:100%;height:100%}
@@ -30,7 +30,7 @@
   .ds-shell{padding-left:var(--page-margin-mobile);padding-right:var(--page-margin-mobile)}
   .ds-two-col,.ds-two-col-rev,.ds-card-grid,.ds-card-grid-3,.ds-2up{grid-template-columns:1fr}
   .ds-hero{grid-template-columns:1fr;padding-bottom:var(--space-6)}
-  .ds-hero-art{order:-1;max-width:240px}
+  .ds-hero-art{order:-1;max-width:240px;justify-self:center}
   .ds-hero-headline{font-size:28px}
   .ds-scroll-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}
   .ds-scroll-row>*{flex:0 0 auto}

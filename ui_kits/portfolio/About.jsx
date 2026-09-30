@@ -45,7 +45,7 @@ function HeroArt() {
       {done && !reduceMotion ? (
         <Button variant="ghost" size="sm" aria-label="Replay animation"
                 onClick={()=>{ setDone(false); setRun(r => r + 1); }}
-                style={{position:'absolute',left:0,bottom:0}}>↻ Replay</Button>
+                style={{position:'absolute',right:0,bottom:0}}>↻ Replay</Button>
       ) : null}
     </div>
   );
