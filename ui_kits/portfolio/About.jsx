@@ -1,5 +1,4 @@
 const { Button, Divider, Icon } = window.IsabelBrandSystem_b8d40d;
-const { CV_URL } = window;
 
 const ABOUT_CONTENT = window.CONTENT.about;
 
@@ -62,7 +61,6 @@ function About({ go }) {
 
       <section>
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
-          <Eyebrow accent="blue">About</Eyebrow>
           <h2 style={{font:'var(--text-h1)',margin:0,textWrap:'pretty'}}>{SUBTITLE}</h2>
           <p style={{font:'var(--weight-semibold) 20px/1.5 var(--font-body)',margin:0,textWrap:'pretty'}}>
             {INTRO}
@@ -70,9 +68,6 @@ function About({ go }) {
           {BODY.map((p,i) => (
             <p key={i} style={{color:'var(--text-muted)',maxWidth:'58ch',textWrap:'pretty'}}>{p}</p>
           ))}
-          <div style={{display:'flex',gap:'var(--space-2)',marginTop:'var(--space-2)'}}>
-            <Button variant="secondary" icon="download" iconPosition="left" href={CV_URL} download>Download CV</Button>
-          </div>
         </div>
       </section>
     </Page>
