@@ -24,7 +24,7 @@
 .ds-hero{display:grid;grid-template-columns:3fr 2fr;gap:var(--space-6);align-items:center;padding-bottom:var(--space-12)}
 .ds-hero-art{width:100%;max-width:460px;aspect-ratio:1;justify-self:end}
 .ds-hero-art svg{display:block;width:100%;height:100%}
-.ds-hero-headline{margin:0;font:var(--weight-semibold) 40px/1.2 var(--font-display);letter-spacing:-0.02em;color:var(--ink-black);text-wrap:balance}
+.ds-hero-headline{margin:0;font:var(--weight-semibold) 54px/1.15 var(--font-display);letter-spacing:-0.02em;color:var(--ink-black);text-wrap:balance}
 .ds-post-row{grid-template-columns:160px 1fr auto}
 
 @media (max-width:1024px){
@@ -36,7 +36,7 @@
   .ds-two-col,.ds-two-col-rev,.ds-card-grid,.ds-card-grid-3,.ds-work-grid,.ds-2up{grid-template-columns:1fr}
   .ds-hero{grid-template-columns:1fr;gap:var(--grid-gutter);padding-bottom:var(--space-6)}
   .ds-hero-art{order:-1;max-width:280px;justify-self:center}
-  .ds-hero-headline{font-size:28px}
+  .ds-hero-headline{font-size:34px}
   .ds-scroll-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}
   .ds-scroll-row>*{flex:0 0 auto}
   .ds-post-row{grid-template-columns:1fr auto;row-gap:var(--space-1)}

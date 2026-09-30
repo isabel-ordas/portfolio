@@ -1,5 +1,7 @@
 const { Button, Divider, Icon } = window.IsabelBrandSystem_b8d40d;
 
+const { LOCATION, CV_URL } = window;
+
 const ABOUT_CONTENT = window.CONTENT.about;
 
 const SUBTITLE = ABOUT_CONTENT.subtitle;
@@ -44,7 +46,7 @@ function HeroHeadline() {
     if (i < 0) return;
     parts.push(rest.slice(0, i));
     parts.push(
-      <span key={text} style={{textDecoration:`underline var(--accent-${accent})`,textDecorationThickness:'0.14em',textUnderlineOffset:'0.12em',textDecorationSkipInk:'none'}}>{text}</span>
+      <span key={text} style={{textDecoration:`underline var(--accent-${accent})`,textDecorationThickness:'0.2em',textUnderlineOffset:'0.1em',textDecorationSkipInk:'none'}}>{text}</span>
     );
     rest = rest.slice(i + text.length);
   });
@@ -78,7 +80,16 @@ function About({ go }) {
   return (
     <Page title="About">
       <section className="ds-hero">
-        <h1 className="ds-hero-headline"><HeroHeadline /></h1>
+        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-4)'}}>
+          <h1 className="ds-hero-headline"><HeroHeadline /></h1>
+          <div style={{display:'flex',alignItems:'center',gap:'var(--space-2)',flexWrap:'wrap'}}>
+            <Button variant="primary" icon="arrow-right" onClick={()=>go('home')}>See my work</Button>
+            <Button variant="secondary" icon="download" iconPosition="left" href={CV_URL} download>Download CV</Button>
+            <span style={{display:'inline-flex',alignItems:'center',gap:8,font:'var(--text-label)',color:'var(--text-muted)',marginLeft:'var(--space-1)'}}>
+              <Icon name="map-pin" size={16} />{LOCATION}
+            </span>
+          </div>
+        </div>
         <HeroArt />
       </section>
 
