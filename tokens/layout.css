@@ -1,7 +1,8 @@
 /* Layout utilities: the only place breakpoints live. Two-column sections
    (About hero, Work hero, CaseStudy sections) stack to one column below
    720px; the page margin shrinks from --page-margin-desktop to
-   --page-margin-mobile at the same breakpoint. Filter rows wrap on desktop
+   --page-margin-mobile at the same breakpoint. The Work grid also has a
+   tablet step at 1024px. Filter rows wrap on desktop
    and scroll sideways on mobile, so a long tag list never pushes the
    content below the fold. */
 :root{
@@ -13,6 +14,8 @@
 .ds-two-col-rev{display:grid;grid-template-columns:var(--two-col-rev);gap:var(--grid-gutter)}
 .ds-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gutter)}
 .ds-card-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--grid-gutter)}
+/* Work grid: three cards per row, two on tablets, one on phones. */
+.ds-work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--grid-gutter)}
 .ds-2up{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
 .ds-scroll-row{flex-wrap:wrap}
 /* About hero: headline left, illustration right on desktop; illustration
@@ -26,9 +29,13 @@
 @media (prefers-reduced-motion:reduce){.ds-hero-headline{animation:none}}
 .ds-post-row{grid-template-columns:160px 1fr auto}
 
+@media (max-width:1024px){
+  .ds-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 @media (max-width:720px){
   .ds-shell{padding-left:var(--page-margin-mobile);padding-right:var(--page-margin-mobile)}
-  .ds-two-col,.ds-two-col-rev,.ds-card-grid,.ds-card-grid-3,.ds-2up{grid-template-columns:1fr}
+  .ds-two-col,.ds-two-col-rev,.ds-card-grid,.ds-card-grid-3,.ds-work-grid,.ds-2up{grid-template-columns:1fr}
   .ds-hero{grid-template-columns:1fr;padding-bottom:var(--space-6)}
   .ds-hero-art{order:-1;max-width:240px;justify-self:center}
   .ds-hero-headline{font-size:28px}

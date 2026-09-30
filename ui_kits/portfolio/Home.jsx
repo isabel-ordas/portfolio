@@ -90,7 +90,7 @@ function Home({ go }) {
           <FilterRow label="Type" values={usedTypes} value={type} onChange={setType} />
           <FilterRow label="Impact" values={usedImpacts} value={impact} onChange={setImpact} />
         </div>
-        <div className="ds-card-grid">
+        <div className="ds-work-grid">
           {shown.map(p => <WorkCard key={p.id} project={p} go={go} />)}
         </div>
         {!shown.length ? <p style={{color:'var(--text-muted)'}}>No projects match both filters yet.</p> : null}
