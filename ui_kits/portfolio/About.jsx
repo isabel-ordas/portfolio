@@ -7,7 +7,6 @@ const SUBTITLE = ABOUT_CONTENT.subtitle;
 const INTRO = ABOUT_CONTENT.intro;
 const BODY = ABOUT_CONTENT.body;
 const CLOSING_QUOTE = ABOUT_CONTENT.closingQuote;
-const PORTRAIT_SRC = ABOUT_CONTENT.portrait;
 
 /* Expertise: the same three pillars used as the Work filter taxonomy
    (see Home.jsx PROJECTS.skills and Chrome.jsx PILLAR_COLORS), so a
@@ -23,32 +22,18 @@ const EXPERTISE = ABOUT_CONTENT.expertise.map(block => ({
 
 const TOOLS = ABOUT_CONTENT.tools;
 
-function Portrait() {
-  const [errored, setErrored] = React.useState(false);
-  if (errored) {
-    return (
-      <div style={{background:'var(--gray-100)',aspectRatio:'4 / 5',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:8}}>
-        <Icon name="users" size={24} color="var(--gray-500)" />
-        <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)',textAlign:'center'}}>Portrait — b&amp;w, blue accent<br/>drop file at assets/portrait.jpg</span>
-      </div>
-    );
-  }
-  return (
-    <img src={`/${PORTRAIT_SRC}`} onError={()=>setErrored(true)}
-         alt={`${FULL_NAME} — black and white portrait`}
-         style={{display:'block',width:'100%',aspectRatio:'4 / 5',objectFit:'cover',objectPosition:'center top',filter:'grayscale(1)'}} />
-  );
-}
-
 function About({ go }) {
   return (
     <Page title="About">
-      <section className="ds-two-col" style={{alignItems:'start'}}>
+      <section>
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
           <Eyebrow accent="blue">About</Eyebrow>
           <div>
             <h1 style={{font:'var(--text-display)',letterSpacing:'var(--tracking-display)',margin:0,textWrap:'pretty'}}>{FULL_NAME}</h1>
             <p style={{font:'var(--weight-regular) 24px/1.3 var(--font-display)',color:'var(--text-muted)',margin:'4px 0 0'}}>{SUBTITLE}</p>
+            <div style={{display:'flex',alignItems:'center',gap:8,font:'var(--text-caption)',color:'var(--text-muted)',marginTop:'var(--space-2)'}}>
+              <Icon name="map-pin" size={16} active accent="blue" />{LOCATION}
+            </div>
           </div>
           <p style={{font:'var(--weight-semibold) 20px/1.5 var(--font-body)',margin:0,textWrap:'pretty'}}>
             {INTRO}
@@ -61,12 +46,6 @@ function About({ go }) {
           </div>
           <div style={{display:'flex',gap:'var(--space-2)',marginTop:'var(--space-2)'}}>
             <Button variant="secondary" icon="download" iconPosition="left" href={CV_URL} download>Download CV</Button>
-          </div>
-        </div>
-        <div style={{border:'var(--border-hairline)',padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-          <Portrait />
-          <div style={{display:'flex',alignItems:'center',gap:8,font:'var(--text-caption)',color:'var(--text-muted)'}}>
-            <Icon name="map-pin" size={16} active accent="blue" />{LOCATION}
           </div>
         </div>
       </section>
