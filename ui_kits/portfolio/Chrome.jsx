@@ -43,7 +43,7 @@ function Header({ route, go }) {
           <Logo size={36} />
           <span aria-hidden="true" style={{font:'var(--weight-semibold) 20px/1 var(--font-display)',letterSpacing:'var(--tracking-heading)',color:'var(--ink-black)'}}>IOA</span>
         </a>
-        <nav style={{display:'flex',alignItems:'center',gap:'var(--space-4)'}}>
+        <nav style={{display:'flex',alignItems:'center',gap:'var(--space-4)',marginLeft:'auto'}}>
           {NAV.map(({id,label}) => (
             <a key={id} href={window.Router.routeToPath(id)} onClick={(e)=>{e.preventDefault();go(id)}}
                style={{font:'var(--text-label)',textDecoration:'none',color:'var(--text-body)',
