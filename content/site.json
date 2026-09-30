@@ -11,7 +11,7 @@
     { "id": "home", "label": "Work" }
   ],
   "taxonomies": {
-    "projectTypes": ["Professional work", "Capstone project", "Proof of Concept"],
+    "projectTypes": ["Professional work", "Side project", "Capstone project", "Proof of Concept"],
     "impactTypes": ["Climate", "Circular economy", "Social"],
     "impactColors": {
       "Climate": "green",
