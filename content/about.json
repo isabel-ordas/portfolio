@@ -11,9 +11,11 @@
   },
   "subtitle": "The Circular Product Builder",
   "intro": "I'm the one who builds profitable products that are climate-positive.",
-  "body": [
-    "The best products come from pains you've actually lived. Mine: being a second-hand-first buyer, a zero-waste nerd who keeps running into missing solutions for everyday life. That's why I'm drawn to building products that turn resources nobody wants anymore into something worth paying for.",
-    "I've spent my whole professional life building products — first coding and delivering as a software developer, now discovering, prototyping and testing as a Product Manager, proving, every time, that circular doesn't mean less profitable."
+  "points": [
+    { "lead": "Lived pains make the best products.", "text": "Mine come from being a second-hand-first buyer and a zero-waste nerd, always running into missing solutions for everyday life." },
+    { "lead": "I build products where impact is the business model,", "text": "not a cost." },
+    { "lead": "15+ years building products:", "text": "first coding and shipping as a developer, now discovering, prototyping and testing as a Product Manager." },
+    { "lead": "Circular doesn't mean less profitable,", "text": "and I set out to prove it every time." }
   ],
   "thingsHeading": "{count} things about me",
   "thingsIntro": "The person behind the roadmaps.",

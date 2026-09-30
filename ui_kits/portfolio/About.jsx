@@ -6,7 +6,7 @@ const ABOUT_CONTENT = window.CONTENT.about;
 
 const SUBTITLE = ABOUT_CONTENT.subtitle;
 const INTRO = ABOUT_CONTENT.intro;
-const BODY = ABOUT_CONTENT.body;
+const POINTS = ABOUT_CONTENT.points;
 
 const HERO = ABOUT_CONTENT.hero;
 const THINGS_HEADING = ABOUT_CONTENT.thingsHeading;
@@ -103,11 +103,17 @@ function About({ go }) {
             {INTRO}
           </p>
         </div>
-        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-          {BODY.map((p,i) => (
-            <p key={i} style={{font:'var(--weight-regular) 17px/1.7 var(--font-body)',color:'var(--gray-800)',margin:0,textWrap:'pretty'}}>{p}</p>
+        {/* Bullets, not paragraphs: the bold lead of each carries the message
+            on its own for anyone skimming. */}
+        <ul style={{margin:0,padding:0,listStyle:'none',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
+          {POINTS.map(({lead, text}, i) => (
+            <li key={i} style={{display:'flex',gap:'var(--space-2)',font:'var(--weight-regular) 17px/1.7 var(--font-body)',color:'var(--ink-black)',textWrap:'pretty'}}>
+              {/* Square marker, echoing the logo's squares; sits on the first line. */}
+              <span aria-hidden="true" style={{flex:'0 0 auto',width:8,height:8,background:'var(--ink-black)',marginTop:'0.7em'}} />
+              <span><strong style={{fontWeight:'var(--weight-semibold)'}}>{lead}</strong> {text}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <Divider variant="marker" spacing="var(--section-gap)" />
