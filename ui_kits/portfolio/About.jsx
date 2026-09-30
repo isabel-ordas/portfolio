@@ -7,6 +7,31 @@ const INTRO = ABOUT_CONTENT.intro;
 const BODY = ABOUT_CONTENT.body;
 
 const HERO = ABOUT_CONTENT.hero;
+const THINGS_HEADING = ABOUT_CONTENT.thingsHeading;
+const THINGS = ABOUT_CONTENT.things;
+
+/* Numbered list of personal facts. Each item's top rule cycles through the
+   hero's colors in its order (water, sun, soil, plant); numbers stay black,
+   since yellow fails contrast as text. A null entry is a draft slot. */
+const THING_ACCENTS = ['blue', 'yellow', 'brown', 'green'];
+
+function Things() {
+  return (
+    <section style={{display:'flex',flexDirection:'column',gap:'var(--space-4)'}}>
+      <h2 style={{font:'var(--text-h1)',margin:0}}>{THINGS_HEADING}</h2>
+      <ol className="ds-2up" style={{margin:0,padding:0,listStyle:'none',rowGap:'var(--space-4)'}}>
+        {THINGS.map((text, i) => (
+          <li key={i} style={{borderTop:`4px solid var(--accent-${THING_ACCENTS[i % THING_ACCENTS.length]})`,paddingTop:'var(--space-2)',display:'flex',gap:'var(--space-2)',alignItems:'baseline'}}>
+            <span aria-hidden="true" style={{font:'var(--weight-semibold) 32px/1 var(--font-display)',minWidth:'1.6em'}}>{String(i + 1).padStart(2, '0')}</span>
+            {text
+              ? <span style={{textWrap:'pretty'}}>{text}</span>
+              : <span style={{color:'var(--text-muted)',fontStyle:'italic'}}>Coming soon</span>}
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
 
 /* Each phrase in `headlineAccents` gets a thick underline in the color of
    its element in the illustration (water, sun, soil, plant). Underline
@@ -70,6 +95,10 @@ function About({ go }) {
           ))}
         </div>
       </section>
+
+      <Divider variant="marker" spacing="var(--space-6)" />
+
+      <Things />
     </Page>
   );
 }
