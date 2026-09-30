@@ -1,5 +1,5 @@
 const { Button, Divider, Icon, PullQuote } = window.IsabelBrandSystem_b8d40d;
-const { FULL_NAME, LOCATION, PILLAR_COLORS, CV_URL } = window;
+const { FULL_NAME, LOCATION, CV_URL } = window;
 
 const ABOUT_CONTENT = window.CONTENT.about;
 
@@ -8,19 +8,6 @@ const INTRO = ABOUT_CONTENT.intro;
 const BODY = ABOUT_CONTENT.body;
 const CLOSING_QUOTE = ABOUT_CONTENT.closingQuote;
 
-/* Expertise: the same three pillars used as the Work filter taxonomy
-   (see Home.jsx PROJECTS.skills and Chrome.jsx PILLAR_COLORS), so a
-   color always means the same thing across the site. Content (including
-   each item's optional `linkedCaseStudy` — a project id from
-   Home.jsx PROJECTS) lives in /content/about.json; accent color is looked
-   up here from Chrome.jsx's PILLAR_COLORS so both stay in sync. */
-const EXPERTISE = ABOUT_CONTENT.expertise.map(block => ({
-  title: block.pillar,
-  accent: PILLAR_COLORS[block.pillar],
-  items: block.items
-}));
-
-const TOOLS = ABOUT_CONTENT.tools;
 const HERO = ABOUT_CONTENT.hero;
 
 /* Each phrase in `headlineAccents` gets a thick underline in the color of
@@ -70,30 +57,6 @@ function About({ go }) {
       <section className="ds-hero">
         <h1 className="ds-hero-headline"><HeroHeadline /></h1>
         <HeroArt />
-      </section>
-
-      <section style={{display:'flex',flexDirection:'column',gap:'var(--space-4)'}}>
-        <h2 style={{font:'var(--text-h2)',margin:0}}>Expertise</h2>
-        <div className="ds-card-grid-3">
-          {EXPERTISE.map(block => (
-            <div key={block.title} style={{borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-              <Eyebrow accent={block.accent}>{block.title}</Eyebrow>
-              <ul style={{margin:0,padding:0,listStyle:'none',display:'flex',flexDirection:'column',gap:10}}>
-                {block.items.map((item,i) => (
-                  <li key={i} style={{color:'var(--text-muted)',textWrap:'pretty'}}>
-                    {item.text}
-                    {item.linkedCaseStudy ? (
-                      <a href="#" onClick={(e)=>{e.preventDefault();go('case')}} style={{display:'block',font:'var(--text-caption)',border:0,marginTop:4}}>View case study →</a>
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',color:'var(--text-muted)'}}>
-          Tools: {TOOLS.join(', ')}
-        </div>
       </section>
 
       <Divider variant="marker" spacing="var(--space-6)" />
