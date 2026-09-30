@@ -10,6 +10,7 @@ const BODY = ABOUT_CONTENT.body;
 
 const HERO = ABOUT_CONTENT.hero;
 const THINGS_HEADING = ABOUT_CONTENT.thingsHeading;
+const THINGS_INTRO = ABOUT_CONTENT.thingsIntro;
 const THINGS = ABOUT_CONTENT.things;
 
 /* Numbered list of personal facts. Neutral gray rules and small gray
@@ -18,12 +19,15 @@ const THINGS = ABOUT_CONTENT.things;
    from the list's length. */
 function Things() {
   return (
-    <section style={{display:'flex',flexDirection:'column',gap:'var(--space-4)'}}>
-      <h2 style={{font:'var(--text-h1)',margin:0}}>{THINGS_HEADING.replace('{count}', THINGS.length)}</h2>
-      <ol className="ds-2up" style={{margin:0,padding:0,listStyle:'none',rowGap:'var(--space-3)'}}>
+    <section className="ds-two-col-rev" style={{alignItems:'start'}}>
+      <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
+        <h2 style={{font:'var(--text-h1)',margin:0}}>{THINGS_HEADING.replace('{count}', THINGS.length)}</h2>
+        {THINGS_INTRO ? <p style={{margin:0,color:'var(--text-muted)'}}>{THINGS_INTRO}</p> : null}
+      </div>
+      <ol className="ds-2up" style={{margin:0,padding:0,listStyle:'none',columnGap:'var(--space-6)',rowGap:0}}>
         {THINGS.map((text, i) => (
-          <li key={i} style={{borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)',display:'flex',gap:'var(--space-2)',alignItems:'baseline'}}>
-            <span aria-hidden="true" style={{font:'var(--text-caption)',color:'var(--text-muted)',fontVariantNumeric:'tabular-nums',minWidth:'2ch'}}>{String(i + 1).padStart(2, '0')}</span>
+          <li key={i} style={{borderTop:'var(--border-subtle)',padding:'var(--space-3) 0',display:'flex',gap:'var(--space-3)',alignItems:'baseline'}}>
+            <span aria-hidden="true" style={{font:'var(--weight-semibold) 14px/1 var(--font-body)',color:'var(--text-muted)',fontVariantNumeric:'tabular-nums',minWidth:'2ch'}}>{String(i + 1).padStart(2, '0')}</span>
             <span style={{textWrap:'pretty'}}>{text}</span>
           </li>
         ))}
