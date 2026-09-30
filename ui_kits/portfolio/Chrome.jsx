@@ -38,7 +38,7 @@ function Header({ route, go }) {
   return (
     <header style={{position:'sticky',top:0,zIndex:10,background:'var(--paper-white)',borderBottom:'var(--border-hairline)'}}>
       <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',paddingTop:24,paddingBottom:24,display:'flex',alignItems:'center',justifyContent:'space-between',gap:'var(--space-4)',flexWrap:'wrap'}}>
-        <a href={window.Router.routeToPath('home')} onClick={(e)=>{e.preventDefault();go('home')}} aria-label={`${FULL_NAME} — home`}
+        <a href={window.Router.routeToPath('about')} onClick={(e)=>{e.preventDefault();go('about')}} aria-label={`${FULL_NAME} — home`}
            style={{display:'inline-flex',alignItems:'center',gap:12,border:0,textDecoration:'none'}}>
           <Logo size={36} />
           <span aria-hidden="true" style={{font:'var(--weight-semibold) 20px/1 var(--font-display)',letterSpacing:'var(--tracking-heading)',color:'var(--ink-black)'}}>IOA</span>

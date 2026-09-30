@@ -28,12 +28,13 @@
    serving real static files (this HTML, the .jsx files, content/*.json,
    assets/*) as-is — which is why every reference below is root-absolute
    rather than relative: a relative path resolves against the *visited*
-   URL (e.g. "/about"), not against where this file actually lives. */
+   URL (e.g. "/about"), not against where this file actually lives.
+   About is the landing page: "/" and any unknown path open it. */
 (function(){
-  var ROUTE_BY_PATH = { '/': 'home', '/work': 'home', '/about': 'about', '/writing': 'writing' };
+  var ROUTE_BY_PATH = { '/': 'about', '/work': 'home', '/about': 'about', '/writing': 'writing' };
   var PATH_BY_ROUTE = { home: '/work', about: '/about', writing: '/writing' };
   window.Router = {
-    pathToRoute: function(pathname){ return ROUTE_BY_PATH[pathname] || 'home'; },
+    pathToRoute: function(pathname){ return ROUTE_BY_PATH[pathname] || 'about'; },
     routeToPath: function(route){ return PATH_BY_ROUTE[route] || '/work'; }
   };
 })();
@@ -88,7 +89,7 @@ function App(){
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
-  const View = { home: Home, case: CaseStudy, about: About, writing: Writing }[route] || Home;
+  const View = { home: Home, case: CaseStudy, about: About, writing: Writing }[route] || About;
   return (
     <div>
       <Header route={route} go={go} />

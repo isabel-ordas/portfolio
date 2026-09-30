@@ -7,8 +7,8 @@
   },
   "cvUrl": "assets/cv/CV_IsabelOrdasArnal_PM.pdf",
   "nav": [
-    { "id": "home", "label": "Work" },
-    { "id": "about", "label": "About" }
+    { "id": "about", "label": "About" },
+    { "id": "home", "label": "Work" }
   ],
   "taxonomies": {
     "tagColors": {
