@@ -41,7 +41,7 @@ function Header({ route, go }) {
         <a href={window.Router.routeToPath('about')} onClick={(e)=>{e.preventDefault();go('about')}} aria-label={`${FULL_NAME} — home`}
            style={{display:'inline-flex',alignItems:'center',gap:12,border:0,textDecoration:'none'}}>
           <Logo size={36} />
-          <span aria-hidden="true" style={{font:'var(--weight-semibold) 20px/1 var(--font-display)',letterSpacing:'var(--tracking-heading)',color:'var(--ink-black)'}}>IOA</span>
+          <span aria-hidden="true" style={{font:'var(--weight-semibold) 20px/1 var(--font-display)',letterSpacing:'var(--tracking-heading)',color:'var(--ink-black)',whiteSpace:'nowrap'}}>{FULL_NAME}</span>
         </a>
         <nav style={{display:'flex',alignItems:'center',gap:'var(--space-4)',marginLeft:'auto'}}>
           {NAV.map(({id,label}) => (
