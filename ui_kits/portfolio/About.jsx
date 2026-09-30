@@ -21,36 +21,34 @@ const EXPERTISE = ABOUT_CONTENT.expertise.map(block => ({
 }));
 
 const TOOLS = ABOUT_CONTENT.tools;
+const HERO = ABOUT_CONTENT.hero;
+
+/* Each phrase in `headlineAccents` gets a thick underline in the color of
+   its element in the illustration (water, sun, soil, plant). Underline
+   rather than text color: yellow text on white fails contrast. */
+function HeroHeadline() {
+  const parts = [];
+  let rest = HERO.headline;
+  (HERO.headlineAccents || []).forEach(({ text, accent }) => {
+    const i = rest.indexOf(text);
+    if (i < 0) return;
+    parts.push(rest.slice(0, i));
+    parts.push(
+      <span key={text} style={{textDecoration:`underline var(--accent-${accent})`,textDecorationThickness:'0.14em',textUnderlineOffset:'0.12em',textDecorationSkipInk:'none'}}>{text}</span>
+    );
+    rest = rest.slice(i + text.length);
+  });
+  parts.push(rest);
+  return <>{parts}</>;
+}
 
 function About({ go }) {
   return (
     <Page title="About">
-      <section>
-        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
-          <Eyebrow accent="blue">About</Eyebrow>
-          <div>
-            <h1 style={{font:'var(--text-display)',letterSpacing:'var(--tracking-display)',margin:0,textWrap:'pretty'}}>{FULL_NAME}</h1>
-            <p style={{font:'var(--weight-regular) 24px/1.3 var(--font-display)',color:'var(--text-muted)',margin:'4px 0 0'}}>{SUBTITLE}</p>
-            <div style={{display:'flex',alignItems:'center',gap:8,font:'var(--text-caption)',color:'var(--text-muted)',marginTop:'var(--space-2)'}}>
-              <Icon name="map-pin" size={16} active accent="blue" />{LOCATION}
-            </div>
-          </div>
-          <p style={{font:'var(--weight-semibold) 20px/1.5 var(--font-body)',margin:0,textWrap:'pretty'}}>
-            {INTRO}
-          </p>
-          {BODY.map((p,i) => (
-            <p key={i} style={{color:'var(--text-muted)',maxWidth:'58ch',textWrap:'pretty'}}>{p}</p>
-          ))}
-          <div style={{marginTop:'var(--space-2)'}}>
-            <PullQuote size="lg" accent="blue">{CLOSING_QUOTE}</PullQuote>
-          </div>
-          <div style={{display:'flex',gap:'var(--space-2)',marginTop:'var(--space-2)'}}>
-            <Button variant="secondary" icon="download" iconPosition="left" href={CV_URL} download>Download CV</Button>
-          </div>
-        </div>
+      <section className="ds-hero">
+        <h1 className="ds-hero-headline"><HeroHeadline /></h1>
+        <div className="ds-hero-art" dangerouslySetInnerHTML={{__html: window.CONTENT.aboutHeroSvg}} />
       </section>
-
-      <Divider variant="marker" spacing="var(--space-6)" />
 
       <section style={{display:'flex',flexDirection:'column',gap:'var(--space-4)'}}>
         <h2 style={{font:'var(--text-h2)',margin:0}}>Expertise</h2>
@@ -73,6 +71,33 @@ function About({ go }) {
         </div>
         <div style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',color:'var(--text-muted)'}}>
           Tools: {TOOLS.join(', ')}
+        </div>
+      </section>
+
+      <Divider variant="marker" spacing="var(--space-6)" />
+
+      <section>
+        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
+          <Eyebrow accent="blue">About</Eyebrow>
+          <div>
+            <h2 style={{font:'var(--text-display)',letterSpacing:'var(--tracking-display)',margin:0,textWrap:'pretty'}}>{FULL_NAME}</h2>
+            <p style={{font:'var(--weight-regular) 24px/1.3 var(--font-display)',color:'var(--text-muted)',margin:'4px 0 0'}}>{SUBTITLE}</p>
+            <div style={{display:'flex',alignItems:'center',gap:8,font:'var(--text-caption)',color:'var(--text-muted)',marginTop:'var(--space-2)'}}>
+              <Icon name="map-pin" size={16} active accent="blue" />{LOCATION}
+            </div>
+          </div>
+          <p style={{font:'var(--weight-semibold) 20px/1.5 var(--font-body)',margin:0,textWrap:'pretty'}}>
+            {INTRO}
+          </p>
+          {BODY.map((p,i) => (
+            <p key={i} style={{color:'var(--text-muted)',maxWidth:'58ch',textWrap:'pretty'}}>{p}</p>
+          ))}
+          <div style={{marginTop:'var(--space-2)'}}>
+            <PullQuote size="lg" accent="blue">{CLOSING_QUOTE}</PullQuote>
+          </div>
+          <div style={{display:'flex',gap:'var(--space-2)',marginTop:'var(--space-2)'}}>
+            <Button variant="secondary" icon="download" iconPosition="left" href={CV_URL} download>Download CV</Button>
+          </div>
         </div>
       </section>
     </Page>

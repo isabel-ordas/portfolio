@@ -54,6 +54,13 @@
     }
     return JSON.parse(xhr.responseText);
   }
+  function loadText(path){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', path, false);
+    xhr.send(null);
+    if (xhr.status !== 0 && xhr.status !== 200) throw new Error('Failed to load ' + path + ' (status ' + xhr.status + ').');
+    return xhr.responseText;
+  }
   var projectIds = ['bondly', 'wallapop', 'vinted', 'climatetrade'];
   window.CONTENT = {
     site: loadJSON('/content/site.json'),
@@ -62,6 +69,10 @@
     writing: loadJSON('/content/writing.json'),
     projects: projectIds.map(function(id){ return loadJSON('/content/projects/' + id + '.json'); })
   };
+  /* Inlined, unmodified: the SVG's own <style> drives its animation and
+     depends on its ih-* ids and classes, so it must not go through <img>
+     or an optimizer. Its ids are fixed, so render it once per page. */
+  window.CONTENT.aboutHeroSvg = loadText('/' + window.CONTENT.about.hero.illustration);
 })();
 </script>
 <script type="text/babel" src="/ui_kits/portfolio/Chrome.jsx"></script>

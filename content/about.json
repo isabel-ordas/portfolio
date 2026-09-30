@@ -1,4 +1,14 @@
 {
+  "hero": {
+    "headline": "Product thinking, 15+ years of building and climate-informed judgment: that's how I grow products that are good for people and the planet.",
+    "headlineAccents": [
+      { "text": "Product thinking", "accent": "blue" },
+      { "text": "15+ years of building", "accent": "yellow" },
+      { "text": "climate-informed judgment", "accent": "brown" },
+      { "text": "good for people and the planet", "accent": "green" }
+    ],
+    "illustration": "assets/about/about-hero-v3.svg"
+  },
   "subtitle": "The Circular Product Builder",
   "intro": "I'm the one who builds profitable products that are climate-positive.",
   "body": [
