@@ -95,14 +95,16 @@ function About({ go }) {
 
       <Divider variant="marker" spacing="var(--space-6)" />
 
-      <section>
+      <section className="ds-two-col-rev">
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
-          <h2 style={{font:'var(--text-h1)',margin:0,textWrap:'pretty'}}>{SUBTITLE}</h2>
+          <h2 style={{font:'var(--text-h1)',margin:0,textWrap:'balance'}}>{SUBTITLE}</h2>
           <p style={{font:'var(--weight-semibold) 20px/1.5 var(--font-body)',margin:0,textWrap:'pretty'}}>
             {INTRO}
           </p>
+        </div>
+        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
           {BODY.map((p,i) => (
-            <p key={i} style={{color:'var(--text-muted)',maxWidth:'58ch',textWrap:'pretty'}}>{p}</p>
+            <p key={i} style={{font:'var(--weight-regular) 17px/1.6 var(--font-body)',color:'var(--gray-900)',margin:0,textWrap:'pretty'}}>{p}</p>
           ))}
         </div>
       </section>
