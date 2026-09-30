@@ -59,11 +59,7 @@ function Header({ route, go }) {
 function Footer({ go }) {
   return (
     <footer style={{borderTop:'var(--border-hairline)',marginTop:'var(--space-12)'}}>
-      <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',paddingTop:'var(--space-6)',paddingBottom:'var(--space-6)',display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:'var(--space-4)',flexWrap:'wrap'}}>
-        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-          <Logo size={32} aria-hidden="true" />
-          <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{LOCATION}</span>
-        </div>
+      <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',paddingTop:'var(--space-6)',paddingBottom:'var(--space-6)',display:'flex',justifyContent:'flex-end',alignItems:'center',gap:'var(--space-4)',flexWrap:'wrap'}}>
         <div style={{display:'flex',gap:'var(--space-3)',alignItems:'center'}}>
           <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" style={{display:'flex',border:0}}><Icon name="linkedin" size={20} title="LinkedIn" /></a>
           <a href={`mailto:${CONTACT.email}`} style={{display:'flex',border:0}}><Icon name="mail" size={20} title="Email" /></a>
