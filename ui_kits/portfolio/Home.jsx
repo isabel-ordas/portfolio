@@ -31,9 +31,13 @@ function WorkCard({ project, go }) {
   return (
     <a href="#" onClick={(e)=>{e.preventDefault();go('case', project.id)}}
        onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
-       style={{display:'flex',flexDirection:'column',border:'var(--border-hairline)',background:'var(--surface-card)',textDecoration:'none',color:'var(--text-body)'}}>
+       onFocus={()=>setHover(true)} onBlur={()=>setHover(false)}
+       style={{display:'flex',flexDirection:'column',border:'var(--border-hairline)',background:'var(--surface-card)',textDecoration:'none',color:'var(--text-body)',
+               transform:hover?'translateY(-4px)':'none',transition:'transform var(--duration-slow) var(--ease-standard)'}}>
+      {/* Hover/focus: the card lifts and its B&W photo turns to color — flat
+          brand, so no shadow. */}
       {project.image
-        ? <img src={`/${project.image}`} alt={project.imageAlt || ''} style={{display:'block',width:'100%',aspectRatio:'16 / 9',objectFit:'cover',filter:'grayscale(1)',borderBottom:'var(--border-hairline)'}} />
+        ? <img src={`/${project.image}`} alt={project.imageAlt || ''} style={{display:'block',width:'100%',aspectRatio:'16 / 9',objectFit:'cover',filter:hover?'none':'grayscale(1)',transition:'filter var(--duration-slow) var(--ease-standard)',borderBottom:'var(--border-hairline)'}} />
         : <ThumbnailPlaceholder />}
       <div style={{padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
         <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
