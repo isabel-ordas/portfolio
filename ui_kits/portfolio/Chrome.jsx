@@ -6,6 +6,7 @@ const { Logo, Icon, Button, Divider } = window.IsabelBrandSystem_b8d40d;
    wires it into the UI. */
 const SITE = window.CONTENT.site;
 const FULL_NAME = SITE.fullName;
+const ROLE = SITE.role;
 const LOCATION = SITE.location;
 const NAV = SITE.nav;
 const CONTACT = SITE.contact;
@@ -61,15 +62,33 @@ function Header({ route, go }) {
   );
 }
 
+function FooterLink({ icon, children, ...rest }) {
+  return (
+    <a {...rest} style={{display:'inline-flex',alignItems:'center',gap:8,font:'var(--text-label)',color:'var(--text-body)',border:0,textDecoration:'none'}}>
+      <Icon name={icon} size={16} />{children}
+    </a>
+  );
+}
+
 function Footer({ go }) {
   return (
-    <footer style={{borderTop:'var(--border-hairline)',marginTop:'var(--space-12)'}}>
-      <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',paddingTop:'var(--space-6)',paddingBottom:'var(--space-6)',display:'flex',justifyContent:'flex-end',alignItems:'center',gap:'var(--space-4)',flexWrap:'wrap'}}>
-        <div style={{display:'flex',gap:'var(--space-3)',alignItems:'center'}}>
-          <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" style={{display:'flex',border:0}}><Icon name="linkedin" size={20} title="LinkedIn" /></a>
-          <a href={`mailto:${CONTACT.email}`} style={{display:'flex',border:0}}><Icon name="mail" size={20} title="Email" /></a>
-          <a href={CV_URL} download style={{font:'var(--text-label)'}}>Download CV</a>
+    <footer style={{borderTop:'var(--border-subtle)',marginTop:'var(--space-12)'}}>
+      <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',paddingTop:'var(--space-6)',paddingBottom:'var(--space-6)',display:'flex',flexDirection:'column',gap:'var(--space-6)'}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:'var(--space-4)',flexWrap:'wrap'}}>
+          <div style={{display:'flex',flexDirection:'column',gap:'var(--space-1)'}}>
+            <div style={{display:'flex',alignItems:'center',gap:12}}>
+              <Logo size={24} aria-hidden="true" />
+              <span style={{font:'var(--weight-semibold) 18px/1 var(--font-display)',letterSpacing:'var(--tracking-heading)'}}>{FULL_NAME}</span>
+            </div>
+            <span style={{font:'var(--text-label)',color:'var(--text-muted)'}}>{ROLE} · {LOCATION}</span>
+          </div>
+          <div style={{display:'flex',gap:'var(--space-3)',alignItems:'center',flexWrap:'wrap'}}>
+            <FooterLink icon="mail" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</FooterLink>
+            <FooterLink icon="linkedin" href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</FooterLink>
+            <FooterLink icon="download" href={CV_URL} download>Download CV</FooterLink>
+          </div>
         </div>
+        <span style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>© {new Date().getFullYear()} {FULL_NAME}</span>
       </div>
     </footer>
   );
@@ -116,4 +135,4 @@ function StageBar({ active = [], compact = false }) {
   );
 }
 
-Object.assign(window, { Header, Footer, Page, Eyebrow, StageBar, PROJECT_TYPES, IMPACT_TYPES, IMPACT_COLORS, PILLARS, PILLAR_COLORS, STAGES, PRODUCT_SKILLS, FULL_NAME, LOCATION, CONTACT, CV_URL });
+Object.assign(window, { Header, Footer, Page, Eyebrow, StageBar, PROJECT_TYPES, IMPACT_TYPES, IMPACT_COLORS, PILLARS, PILLAR_COLORS, STAGES, PRODUCT_SKILLS, FULL_NAME, ROLE, LOCATION, CONTACT, CV_URL });
