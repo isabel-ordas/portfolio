@@ -8,6 +8,7 @@
 :root{
   --two-col:7fr 4fr;
   --two-col-rev:4fr 7fr;
+  --section-gap:var(--space-12);  /* space above and below a section divider */
 }
 .ds-shell{padding-left:var(--page-margin-desktop);padding-right:var(--page-margin-desktop)}
 .ds-two-col{display:grid;grid-template-columns:var(--two-col);gap:var(--grid-gutter)}
@@ -16,12 +17,16 @@
 .ds-card-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--grid-gutter)}
 /* Work grid: three cards per row, two on tablets, one on phones. */
 .ds-work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--grid-gutter)}
+/* About sections: two equal halves, or a heading column beside content
+   twice its width. */
+.ds-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gutter)}
+.ds-aside{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--grid-gutter)}
 .ds-2up{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
 .ds-scroll-row{flex-wrap:wrap}
 /* About hero: headline left, illustration right on desktop, vertically
    centered on each other; illustration first and centered on mobile. The
    headline is readable from the first frame; only the illustration animates. */
-.ds-hero{display:grid;grid-template-columns:3fr 2fr;gap:var(--space-6);align-items:center;padding-bottom:var(--space-12)}
+.ds-hero{display:grid;grid-template-columns:3fr 2fr;gap:var(--space-6);align-items:center}
 .ds-hero-art{width:100%;max-width:460px;aspect-ratio:1;justify-self:end}
 .ds-hero-art svg{display:block;width:100%;height:100%}
 .ds-hero-headline{margin:0;font:var(--weight-semibold) 54px/1.15 var(--font-display);letter-spacing:-0.02em;color:var(--ink-black);text-wrap:balance}
@@ -33,8 +38,9 @@
 
 @media (max-width:720px){
   .ds-shell{padding-left:var(--page-margin-mobile);padding-right:var(--page-margin-mobile)}
-  .ds-two-col,.ds-two-col-rev,.ds-card-grid,.ds-card-grid-3,.ds-work-grid,.ds-2up{grid-template-columns:1fr}
-  .ds-hero{grid-template-columns:1fr;gap:var(--grid-gutter);padding-bottom:var(--space-6)}
+  .ds-two-col,.ds-two-col-rev,.ds-split,.ds-aside,.ds-card-grid,.ds-card-grid-3,.ds-work-grid,.ds-2up{grid-template-columns:1fr}
+  :root{--section-gap:var(--space-6)}
+  .ds-hero{grid-template-columns:1fr;gap:var(--grid-gutter)}
   .ds-hero-art{order:-1;max-width:280px;justify-self:center}
   .ds-hero-headline{font-size:34px}
   .ds-scroll-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}

@@ -19,9 +19,9 @@ const THINGS = ABOUT_CONTENT.things;
    from the list's length. */
 function Things() {
   return (
-    <section className="ds-two-col-rev" style={{alignItems:'start'}}>
+    <section className="ds-aside" style={{alignItems:'start'}}>
       <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-        <h2 style={{font:'var(--text-h1)',margin:0}}>{THINGS_HEADING.replace('{count}', THINGS.length)}</h2>
+        <h2 style={{font:'var(--weight-semibold) 36px/1.15 var(--font-display)',margin:0}}>{THINGS_HEADING.replace('{count}', THINGS.length)}</h2>
         {THINGS_INTRO ? <p style={{margin:0,color:'var(--text-muted)'}}>{THINGS_INTRO}</p> : null}
       </div>
       <ol className="ds-2up" style={{margin:0,padding:0,listStyle:'none',columnGap:'var(--space-6)',rowGap:0}}>
@@ -94,23 +94,23 @@ function About({ go }) {
         <HeroArt />
       </section>
 
-      <Divider variant="marker" spacing="var(--space-6)" />
+      <Divider variant="marker" spacing="var(--section-gap)" />
 
-      <section className="ds-two-col-rev">
-        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
-          <h2 style={{font:'var(--text-h1)',margin:0,textWrap:'balance'}}>{SUBTITLE}</h2>
+      <section className="ds-split" style={{alignItems:'start'}}>
+        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)',maxWidth:'460px'}}>
+          <h2 style={{font:'var(--weight-semibold) 36px/1.15 var(--font-display)',margin:0}}>{SUBTITLE}</h2>
           <p style={{font:'var(--weight-semibold) 20px/1.5 var(--font-body)',margin:0,textWrap:'pretty'}}>
             {INTRO}
           </p>
         </div>
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
           {BODY.map((p,i) => (
-            <p key={i} style={{font:'var(--weight-regular) 17px/1.6 var(--font-body)',color:'var(--gray-900)',margin:0,textWrap:'pretty'}}>{p}</p>
+            <p key={i} style={{font:'var(--weight-regular) 17px/1.7 var(--font-body)',color:'var(--gray-800)',margin:0,textWrap:'pretty'}}>{p}</p>
           ))}
         </div>
       </section>
 
-      <Divider variant="marker" spacing="var(--space-6)" />
+      <Divider variant="marker" spacing="var(--section-gap)" />
 
       <Things />
     </Page>
