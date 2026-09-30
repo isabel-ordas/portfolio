@@ -1,5 +1,5 @@
-const { Icon, Button, Tag, Divider, PullQuote, BarChart } = window.IsabelBrandSystem_b8d40d;
-const { TAG_COLORS, PRODUCT_SKILLS, CV_URL } = window;
+const { Icon, Tag } = window.IsabelBrandSystem_b8d40d;
+const { TAG_COLORS, PRODUCT_SKILLS } = window;
 
 const HOME_CONTENT = window.CONTENT.home;
 
@@ -17,12 +17,6 @@ const HOME_CONTENT = window.CONTENT.home;
    study page. `image` / `metric` are placeholders: fill them in per
    project's JSON when ready, or leave null — both degrade gracefully. */
 const PROJECTS = window.CONTENT.projects;
-
-/* Set home.json's `heroMetric` to an object like
-   { value, label, data:[{label,value},...] } to bring the hero stat back —
-   the hero grid switches to two columns again automatically, no other
-   change needed. */
-const HERO_METRIC = HOME_CONTENT.heroMetric;
 
 function ThumbnailPlaceholder() {
   return (
@@ -76,37 +70,9 @@ function Home({ go }) {
   const shown = filter === 'All' ? PROJECTS : PROJECTS.filter(p => p.productSkills.includes(filter));
   return (
     <Page title="Work">
-      <section className="ds-two-col" style={{alignItems:'start'}}>
-        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
-          <Eyebrow>{HOME_CONTENT.eyebrow}</Eyebrow>
-          <h1 style={{font:'var(--text-display)',letterSpacing:'var(--tracking-display)',margin:0,textWrap:'pretty'}}>{HOME_CONTENT.heading}</h1>
-          <p style={{font:'var(--weight-regular) 20px/1.5 var(--font-body)',color:'var(--text-muted)',maxWidth:'46ch',textWrap:'pretty'}}>
-            {HOME_CONTENT.intro}
-          </p>
-          <div style={{display:'flex',gap:'var(--space-2)',marginTop:'var(--space-1)'}}>
-            <Button variant="primary" icon="arrow-right" onClick={()=>go('case', PROJECTS[0] && PROJECTS[0].id)}>{HOME_CONTENT.primaryCta}</Button>
-            <Button variant="secondary" icon="download" iconPosition="left" href={CV_URL} download>{HOME_CONTENT.secondaryCta}</Button>
-          </div>
-        </div>
-        {HERO_METRIC ? (
-          <div style={{border:'var(--border-hairline)',padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-            <Eyebrow accent="yellow">The number that matters</Eyebrow>
-            <div style={{display:'flex',alignItems:'center',gap:'var(--space-2)'}}>
-              <span aria-hidden="true" style={{width:16,height:16,background:'var(--accent-yellow)',flex:'0 0 auto'}} />
-              <span style={{font:'var(--weight-semibold) 64px/1 var(--font-display)',letterSpacing:'var(--tracking-display)'}}>{HERO_METRIC.value}</span>
-            </div>
-            <p style={{font:'var(--text-paragraph)',color:'var(--text-muted)'}}>{HERO_METRIC.label}</p>
-            <Divider variant="rule" width={48} spacing="var(--space-1)" />
-            <BarChart height={96} accent="yellow" highlightIndex={HERO_METRIC.data.length - 1} showValues={false} data={HERO_METRIC.data} />
-          </div>
-        ) : null}
-      </section>
-
-      <Divider variant="marker" spacing="var(--space-6)" />
-
       <section style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:'var(--space-3)',flexWrap:'wrap'}}>
-          <h2 style={{font:'var(--text-h1)',margin:0}}>{HOME_CONTENT.selectedWorkHeading}</h2>
+          <h1 style={{font:'var(--text-h1)',margin:0}}>{HOME_CONTENT.selectedWorkHeading}</h1>
           <div className="ds-scroll-row" style={{display:'flex',gap:8}}>
             {filters.map(f => (
               <Tag key={f} as="button" active={filter===f} onClick={()=>setFilter(f)} style={{cursor:'pointer',border:filter===f?'1px solid var(--ink-black)':'var(--border-subtle)'}}>{f}</Tag>
@@ -119,21 +85,6 @@ function Home({ go }) {
         {!shown.length ? <p style={{color:'var(--text-muted)'}}>Nothing filed under “{filter}” yet.</p> : null}
       </section>
 
-      <Divider variant="marker" spacing="var(--space-6)" />
-
-      <section className="ds-two-col" style={{alignItems:'center'}}>
-        <PullQuote size="lg" accent="blue" attribution={HOME_CONTENT.quote.attribution}>
-          {HOME_CONTENT.quote.text}
-        </PullQuote>
-        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-          {HOME_CONTENT.values.map(({title,description}) => (
-            <div key={title} style={{borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
-              <div style={{font:'var(--text-label)'}}>{title}</div>
-              <div style={{font:'var(--text-caption)',color:'var(--text-muted)',marginTop:4}}>{description}</div>
-            </div>
-          ))}
-        </div>
-      </section>
     </Page>
   );
 }
