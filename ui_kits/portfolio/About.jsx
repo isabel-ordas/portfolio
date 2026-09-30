@@ -42,12 +42,34 @@ function HeroHeadline() {
   return <>{parts}</>;
 }
 
+/* The illustration plays once; a Replay button appears when it ends (its
+   last step is the second leaf, #ih-l2). Replaying remounts the inlined SVG,
+   which restarts its CSS animation. No button under reduced motion, where
+   the SVG's own rule turns the animation off. */
+function HeroArt() {
+  const [run, setRun] = React.useState(0);
+  const [done, setDone] = React.useState(false);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return (
+    <div className="ds-hero-art" style={{position:'relative'}}>
+      <div key={run} style={{width:'100%',height:'100%'}}
+           onAnimationEnd={(e)=>{ if (e.target.id === 'ih-l2') setDone(true); }}
+           dangerouslySetInnerHTML={{__html: window.CONTENT.aboutHeroSvg}} />
+      {done && !reduceMotion ? (
+        <Button variant="ghost" size="sm" aria-label="Replay animation"
+                onClick={()=>{ setDone(false); setRun(r => r + 1); }}
+                style={{position:'absolute',left:0,bottom:0}}>↻ Replay</Button>
+      ) : null}
+    </div>
+  );
+}
+
 function About({ go }) {
   return (
     <Page title="About">
       <section className="ds-hero">
         <h1 className="ds-hero-headline"><HeroHeadline /></h1>
-        <div className="ds-hero-art" dangerouslySetInnerHTML={{__html: window.CONTENT.aboutHeroSvg}} />
+        <HeroArt />
       </section>
 
       <section style={{display:'flex',flexDirection:'column',gap:'var(--space-4)'}}>
