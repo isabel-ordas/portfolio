@@ -37,7 +37,7 @@ const PILLAR_COLORS = SITE.taxonomies.pillarColors;
 function Header({ route, go }) {
   return (
     <header style={{position:'sticky',top:0,zIndex:10,background:'var(--paper-white)',borderBottom:'var(--border-hairline)'}}>
-      <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',padding:'24px 0',display:'flex',alignItems:'center',justifyContent:'space-between',gap:'var(--space-4)',flexWrap:'wrap'}}>
+      <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',paddingTop:24,paddingBottom:24,display:'flex',alignItems:'center',justifyContent:'space-between',gap:'var(--space-4)',flexWrap:'wrap'}}>
         <a href={window.Router.routeToPath('home')} onClick={(e)=>{e.preventDefault();go('home')}} aria-label={`${FULL_NAME} — home`}
            style={{display:'inline-flex',alignItems:'center',gap:12,border:0,textDecoration:'none'}}>
           <Logo size={36} />
@@ -59,7 +59,7 @@ function Header({ route, go }) {
 function Footer({ go }) {
   return (
     <footer style={{borderTop:'var(--border-hairline)',marginTop:'var(--space-12)'}}>
-      <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',padding:'var(--space-6) 0',display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:'var(--space-4)',flexWrap:'wrap'}}>
+      <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',paddingTop:'var(--space-6)',paddingBottom:'var(--space-6)',display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:'var(--space-4)',flexWrap:'wrap'}}>
         <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
           <Logo size={32} aria-hidden="true" />
           <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{LOCATION}</span>
@@ -78,7 +78,7 @@ function Page({ title, children }) {
   React.useEffect(() => {
     document.title = title ? `${title} — ${FULL_NAME}` : `${FULL_NAME} — Product with purpose`;
   }, [title]);
-  return <main className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',padding:'var(--space-12) 0 0'}}>{children}</main>;
+  return <main className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',paddingTop:'var(--space-12)'}}>{children}</main>;
 }
 
 function Eyebrow({ accent = 'green', children }) {

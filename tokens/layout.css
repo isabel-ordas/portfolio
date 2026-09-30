@@ -1,7 +1,9 @@
 /* Layout utilities: the only place breakpoints live. Two-column sections
    (About hero, Work hero, CaseStudy sections) stack to one column below
    720px; the page margin shrinks from --page-margin-desktop to
-   --page-margin-mobile at the same breakpoint. */
+   --page-margin-mobile at the same breakpoint. Filter rows wrap on desktop
+   and scroll sideways on mobile, so a long tag list never pushes the
+   content below the fold. */
 :root{
   --two-col:7fr 4fr;
   --two-col-rev:4fr 7fr;
@@ -12,8 +14,14 @@
 .ds-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gutter)}
 .ds-card-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--grid-gutter)}
 .ds-2up{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
+.ds-scroll-row{flex-wrap:wrap}
+.ds-post-row{grid-template-columns:160px 1fr auto}
 
 @media (max-width:720px){
   .ds-shell{padding-left:var(--page-margin-mobile);padding-right:var(--page-margin-mobile)}
   .ds-two-col,.ds-two-col-rev,.ds-card-grid,.ds-card-grid-3,.ds-2up{grid-template-columns:1fr}
+  .ds-scroll-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}
+  .ds-scroll-row>*{flex:0 0 auto}
+  .ds-post-row{grid-template-columns:1fr auto;row-gap:var(--space-1)}
+  .ds-post-row>:first-child{grid-column:1/-1}
 }

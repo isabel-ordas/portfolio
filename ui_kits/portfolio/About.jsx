@@ -108,8 +108,8 @@ function Writing({ go }) {
       <h1 style={{font:'var(--text-h1)',margin:'var(--space-2) 0 0'}}>{WRITING_CONTENT.heading}</h1>
       <div style={{marginTop:'var(--space-6)',display:'flex',flexDirection:'column'}}>
         {WRITING_CONTENT.posts.map(({date,title,blurb}) => (
-          <a key={title} href="#" onClick={(e)=>e.preventDefault()}
-             style={{display:'grid',gridTemplateColumns:'160px 1fr auto',gap:'var(--space-3)',alignItems:'center',
+          <a key={title} href="#" onClick={(e)=>e.preventDefault()} className="ds-post-row"
+             style={{display:'grid',gap:'var(--space-3)',alignItems:'center',
                      padding:'var(--space-3) 0',textDecoration:'none',border:0,borderTop:'1px solid var(--stroke-subtle)',color:'var(--text-body)'}}>
             <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{date}</span>
             <span>

@@ -107,7 +107,7 @@ function Home({ go }) {
       <section style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:'var(--space-3)',flexWrap:'wrap'}}>
           <h2 style={{font:'var(--text-h1)',margin:0}}>{HOME_CONTENT.selectedWorkHeading}</h2>
-          <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
+          <div className="ds-scroll-row" style={{display:'flex',gap:8}}>
             {filters.map(f => (
               <Tag key={f} as="button" active={filter===f} onClick={()=>setFilter(f)} style={{cursor:'pointer',border:filter===f?'1px solid var(--ink-black)':'var(--border-subtle)'}}>{f}</Tag>
             ))}
