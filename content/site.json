@@ -11,16 +11,12 @@
     { "id": "home", "label": "Work" }
   ],
   "taxonomies": {
-    "tagColors": {
-      "Circular economy": "green",
-      "Product discovery": "green",
-      "Climate tech": "blue",
-      "Data": "blue",
-      "Research": "brown",
-      "Operations": "brown",
-      "Talent development": "yellow",
-      "Social impact": "blue",
-      "Marketplace / C2C": "yellow"
+    "projectTypes": ["Professional work", "Capstone project", "Proof of Concept"],
+    "impactTypes": ["Climate", "Circular economy", "Social"],
+    "impactColors": {
+      "Climate": "green",
+      "Circular economy": "brown",
+      "Social": "blue"
     },
     "stages": ["Discovery", "Definition", "Design", "Build", "Launch", "Growth"],
     "productSkills": [

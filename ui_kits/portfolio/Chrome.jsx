@@ -11,18 +11,22 @@ const NAV = SITE.nav;
 const CONTACT = SITE.contact;
 const CV_URL = `/${SITE.cvUrl}`;
 
-/* Fixed domain → accent mapping so a category tag always reads in the same
-   color everywhere on the site. Extend freely as new domains show up;
-   anything not listed here just renders without a color dot. */
-const TAG_COLORS = SITE.taxonomies.tagColors;
+/* The two Work filters. Each project has one `projectType` (what kind of
+   work it was) and one `impactType` (what it's good for). IMPACT_COLORS
+   gives each impact type a fixed accent, so its tag reads in the same
+   color on the card and the case study page; an unlisted value renders
+   without a color dot. */
+const PROJECT_TYPES = SITE.taxonomies.projectTypes;
+const IMPACT_TYPES = SITE.taxonomies.impactTypes;
+const IMPACT_COLORS = SITE.taxonomies.impactColors;
 
 /* Case-study metadata taxonomy (Work grid cards + case study detail
    pages — see Home.jsx PROJECTS). STAGES is the full product lifecycle,
    in order; a project's `stage` array is a subset of it, always read in
    this order so the segmented bar stays consistent regardless of how the
    project data lists them. PRODUCT_SKILLS is a closed, reusable
-   vocabulary (not freeform per project) so the "Selected work" filter
-   stays meaningful — extend deliberately, don't invent one-off values
+   vocabulary (not freeform per project) so skill chips stay consistent
+   across case studies — extend deliberately, don't invent one-off values
    per case study. */
 const STAGES = SITE.taxonomies.stages;
 const PRODUCT_SKILLS = SITE.taxonomies.productSkills;
@@ -111,4 +115,4 @@ function StageBar({ active = [], compact = false }) {
   );
 }
 
-Object.assign(window, { Header, Footer, Page, Eyebrow, StageBar, TAG_COLORS, PILLARS, PILLAR_COLORS, STAGES, PRODUCT_SKILLS, FULL_NAME, LOCATION, CONTACT, CV_URL });
+Object.assign(window, { Header, Footer, Page, Eyebrow, StageBar, PROJECT_TYPES, IMPACT_TYPES, IMPACT_COLORS, PILLARS, PILLAR_COLORS, STAGES, PRODUCT_SKILLS, FULL_NAME, LOCATION, CONTACT, CV_URL });

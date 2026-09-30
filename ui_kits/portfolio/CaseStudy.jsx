@@ -1,5 +1,5 @@
 const { Button, Tag, Divider, BarChart, Icon } = window.IsabelBrandSystem_b8d40d;
-const { TAG_COLORS, PROJECTS } = window;
+const { IMPACT_COLORS, PROJECTS } = window;
 
 /* Case studies are data-driven (project.caseStudy in /content/projects/*.json)
    so a new project only needs a JSON entry, not a new page. `caseStudy.sections`
@@ -233,7 +233,7 @@ function CaseStudy({ go, id }) {
       <header style={{marginTop:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
         <div className="ds-two-col" style={{alignItems:'end'}}>
           <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-            <Eyebrow accent={TAG_COLORS[project.domain]}>{project.domain}</Eyebrow>
+            <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
             <h1 style={{font:'var(--text-display)',letterSpacing:'var(--tracking-display)',margin:0}}>{project.title}</h1>
             <p style={{font:'var(--weight-regular) 20px/1.5 var(--font-body)',color:'var(--text-muted)',maxWidth:'46ch'}}>
               {caseStudy.subhead}

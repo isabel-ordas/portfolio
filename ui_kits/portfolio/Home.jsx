@@ -1,21 +1,18 @@
 const { Icon, Tag } = window.IsabelBrandSystem_b8d40d;
-const { TAG_COLORS, PRODUCT_SKILLS } = window;
+const { PROJECT_TYPES, IMPACT_TYPES, IMPACT_COLORS } = window;
 
 const HOME_CONTENT = window.CONTENT.home;
 
 /* Project data lives in /content/projects/*.json (see window.CONTENT) — the
-   portable source of truth. `domain` is a single sector/impact-area value,
-   colored via TAG_COLORS and shown as the eyebrow above the card title and
-   the case study H1. `stage` is a subset of Chrome.jsx STAGES (the full
-   product lifecycle) — drives the segmented StageBar on the card (compact)
-   and the case study header (full, with labels). `productSkills` is a
-   subset of Chrome.jsx PRODUCT_SKILLS, the closed vocabulary of specific PM
-   skills — drives the "Selected work" filter below (only skills actually
-   used by a project appear as filter pills) and the skill chips on the card
-   (top 2 + overflow) and case study page (all of them). `toolsFrameworks`
-   is freeform per project — not filtered, shown in full only on the case
-   study page. `image` / `metric` are placeholders: fill them in per
-   project's JSON when ready, or leave null — both degrade gracefully. */
+   portable source of truth. `projectType` and `impactType` drive the two
+   "Selected work" filters (see Chrome.jsx PROJECT_TYPES / IMPACT_TYPES);
+   `impactType` is also the eyebrow above the card title and the case study
+   H1. `stage` is a subset of Chrome.jsx STAGES (the full product lifecycle)
+   — drives the segmented StageBar on the card (compact) and the case study
+   header (full, with labels). `productSkills` shows as chips on the card
+   (top 2 + overflow) and in full on the case study page. `toolsFrameworks`
+   is freeform per project, shown only on the case study page. `image` /
+   `metric` degrade gracefully when null. */
 const PROJECTS = window.CONTENT.projects;
 
 function ThumbnailPlaceholder() {
@@ -39,7 +36,7 @@ function WorkCard({ project, go }) {
         ? <img src={`/${project.image}`} alt={project.imageAlt || ''} style={{display:'block',width:'100%',aspectRatio:'16 / 9',objectFit:'cover',filter:'grayscale(1)',borderBottom:'var(--border-hairline)'}} />
         : <ThumbnailPlaceholder />}
       <div style={{padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-        <Eyebrow accent={TAG_COLORS[project.domain]}>{project.domain}</Eyebrow>
+        <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
         <p style={{font:'var(--text-paragraph)',color:'var(--text-muted)',margin:0,textWrap:'pretty'}}>{project.description}</p>
         <StageBar active={project.stage} compact />
@@ -63,26 +60,40 @@ function WorkCard({ project, go }) {
   );
 }
 
+/* One row of filter pills. Only values some project actually uses are
+   offered, so a pill never leads to an empty grid on its own. */
+function FilterRow({ label, values, value, onChange }) {
+  const options = ['All', ...values];
+  return (
+    <div role="group" aria-label={label} style={{display:'flex',alignItems:'center',gap:'var(--space-2)'}}>
+      <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)',minWidth:'5.5em'}}>{label}</span>
+      <div className="ds-scroll-row" style={{display:'flex',gap:8}}>
+        {options.map(o => (
+          <Tag key={o} as="button" active={value===o} aria-pressed={value===o} onClick={()=>onChange(o)} style={{cursor:'pointer',border:value===o?'1px solid var(--ink-black)':'var(--border-subtle)'}}>{o}</Tag>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Home({ go }) {
-  const [filter, setFilter] = React.useState('All');
-  const usedSkills = PRODUCT_SKILLS.filter(s => PROJECTS.some(p => p.productSkills.includes(s)));
-  const filters = ['All', ...usedSkills];
-  const shown = filter === 'All' ? PROJECTS : PROJECTS.filter(p => p.productSkills.includes(filter));
+  const [type, setType] = React.useState('All');
+  const [impact, setImpact] = React.useState('All');
+  const usedTypes = PROJECT_TYPES.filter(t => PROJECTS.some(p => p.projectType === t));
+  const usedImpacts = IMPACT_TYPES.filter(t => PROJECTS.some(p => p.impactType === t));
+  const shown = PROJECTS.filter(p => (type === 'All' || p.projectType === type) && (impact === 'All' || p.impactType === impact));
   return (
     <Page title="Work">
       <section style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
-        <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:'var(--space-3)',flexWrap:'wrap'}}>
-          <h1 style={{font:'var(--text-h1)',margin:0}}>{HOME_CONTENT.selectedWorkHeading}</h1>
-          <div className="ds-scroll-row" style={{display:'flex',gap:8}}>
-            {filters.map(f => (
-              <Tag key={f} as="button" active={filter===f} onClick={()=>setFilter(f)} style={{cursor:'pointer',border:filter===f?'1px solid var(--ink-black)':'var(--border-subtle)'}}>{f}</Tag>
-            ))}
-          </div>
+        <h1 style={{font:'var(--text-h1)',margin:0}}>{HOME_CONTENT.selectedWorkHeading}</h1>
+        <div style={{display:'flex',flexDirection:'column',gap:'var(--space-1)'}}>
+          <FilterRow label="Type" values={usedTypes} value={type} onChange={setType} />
+          <FilterRow label="Impact" values={usedImpacts} value={impact} onChange={setImpact} />
         </div>
         <div className="ds-card-grid">
           {shown.map(p => <WorkCard key={p.id} project={p} go={go} />)}
         </div>
-        {!shown.length ? <p style={{color:'var(--text-muted)'}}>Nothing filed under “{filter}” yet.</p> : null}
+        {!shown.length ? <p style={{color:'var(--text-muted)'}}>No projects match both filters yet.</p> : null}
       </section>
 
     </Page>
