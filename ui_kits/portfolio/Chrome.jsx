@@ -40,7 +40,7 @@ const PILLAR_COLORS = SITE.taxonomies.pillarColors;
 
 function Header({ route, go }) {
   return (
-    <header style={{position:'sticky',top:0,zIndex:10,background:'var(--paper-white)',borderBottom:'var(--border-hairline)'}}>
+    <header style={{position:'sticky',top:0,zIndex:10,background:'var(--paper-white)',borderBottom:'var(--border-subtle)'}}>
       <div className="ds-shell" style={{maxWidth:'var(--page-max-width)',margin:'0 auto',paddingTop:24,paddingBottom:24,display:'flex',alignItems:'center',justifyContent:'space-between',gap:'var(--space-4)',flexWrap:'wrap'}}>
         <a href={window.Router.routeToPath('about')} onClick={(e)=>{e.preventDefault();go('about')}} aria-label={`${FULL_NAME} — home`}
            style={{display:'inline-flex',alignItems:'center',gap:12,border:0,textDecoration:'none'}}>
@@ -53,7 +53,8 @@ function Header({ route, go }) {
                style={{font:'var(--text-label)',textDecoration:'none',color:'var(--text-body)',
                        borderBottom: route===id ? '2px solid var(--accent-green)' : '2px solid transparent',paddingBottom:4}}>{label}</a>
           ))}
-          <Button variant="primary" accent="black" size="sm" icon="mail" iconPosition="left" href={`mailto:${CONTACT.email}`}>Contact</Button>
+          <Button variant="primary" accent="black" size="sm" icon="mail" iconPosition="left" href={`mailto:${CONTACT.email}`}
+                  style={{textTransform:'none',letterSpacing:'var(--tracking-body)'}}>Contact</Button>
         </nav>
       </div>
     </header>
