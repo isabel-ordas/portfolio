@@ -15,7 +15,7 @@
     "The best products come from pains you've actually lived. Mine: being a second-hand-first buyer, a zero-waste nerd who keeps running into missing solutions for everyday life. That's why I'm drawn to building products that turn resources nobody wants anymore into something worth paying for.",
     "I've spent my whole professional life building products — first coding and delivering as a software developer, now discovering, prototyping and testing as a Product Manager, proving, every time, that circular doesn't mean less profitable."
   ],
-  "thingsHeading": "10 things about me",
+  "thingsHeading": "{count} things about me",
   "things": [
     "Checklist nerd: nothing fuels my day like ticking off the first task.",
     "Desert island essential: a stack of books I haven't read yet.",
@@ -23,9 +23,6 @@
     "I love music, but more often than not I choose silence.",
     "Endlessly curious: I can get hooked on almost any topic, and I'm proud of it.",
     "Home is Barbastro, a small town in Spain: everything within 15 minutes, family close by, and vegetables straight from the garden.",
-    null,
-    null,
-    null,
     "I had eco-anxiety a decade ago, before it had a name. Action was the cure: today I'm an Optimist In Action (OIA, my initials shuffled)."
   ]
 }

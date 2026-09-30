@@ -12,22 +12,19 @@ const HERO = ABOUT_CONTENT.hero;
 const THINGS_HEADING = ABOUT_CONTENT.thingsHeading;
 const THINGS = ABOUT_CONTENT.things;
 
-/* Numbered list of personal facts. Each item's top rule cycles through the
-   hero's colors in its order (water, sun, soil, plant); numbers stay black,
-   since yellow fails contrast as text. A null entry is a draft slot. */
-const THING_ACCENTS = ['blue', 'yellow', 'brown', 'green'];
-
+/* Numbered list of personal facts. Neutral gray rules and small gray
+   numbers, so the list doesn't compete with the colors that mean something
+   elsewhere (hero, Work categories). `{count}` in the heading is filled in
+   from the list's length. */
 function Things() {
   return (
     <section style={{display:'flex',flexDirection:'column',gap:'var(--space-4)'}}>
-      <h2 style={{font:'var(--text-h1)',margin:0}}>{THINGS_HEADING}</h2>
-      <ol className="ds-2up" style={{margin:0,padding:0,listStyle:'none',rowGap:'var(--space-4)'}}>
+      <h2 style={{font:'var(--text-h1)',margin:0}}>{THINGS_HEADING.replace('{count}', THINGS.length)}</h2>
+      <ol className="ds-2up" style={{margin:0,padding:0,listStyle:'none',rowGap:'var(--space-3)'}}>
         {THINGS.map((text, i) => (
-          <li key={i} style={{borderTop:`4px solid var(--accent-${THING_ACCENTS[i % THING_ACCENTS.length]})`,paddingTop:'var(--space-2)',display:'flex',gap:'var(--space-2)',alignItems:'baseline'}}>
-            <span aria-hidden="true" style={{font:'var(--weight-semibold) 32px/1 var(--font-display)',minWidth:'1.6em'}}>{String(i + 1).padStart(2, '0')}</span>
-            {text
-              ? <span style={{textWrap:'pretty'}}>{text}</span>
-              : <span style={{color:'var(--text-muted)',fontStyle:'italic'}}>Coming soon</span>}
+          <li key={i} style={{borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)',display:'flex',gap:'var(--space-2)',alignItems:'baseline'}}>
+            <span aria-hidden="true" style={{font:'var(--text-caption)',color:'var(--text-muted)',fontVariantNumeric:'tabular-nums',minWidth:'2ch'}}>{String(i + 1).padStart(2, '0')}</span>
+            <span style={{textWrap:'pretty'}}>{text}</span>
           </li>
         ))}
       </ol>
