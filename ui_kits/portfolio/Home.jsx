@@ -11,8 +11,8 @@ const HOME_CONTENT = window.CONTENT.home;
    — drives the StageBar in the case study header. `productSkills` and the
    freeform `toolsFrameworks` show only on the case study page. On the card,
    `impact` (`{value, label}` list) sits under its IMPACT_HEADINGS title,
-   and `metrics` (business/process `{value, label}` highlights) follow it;
-   both, and `image`, degrade gracefully when missing. */
+   and `metrics` (`{value, label}` list) under "Impact on business"; both,
+   and `image`, degrade gracefully when missing. */
 const PROJECTS = window.CONTENT.projects;
 
 function ThumbnailPlaceholder() {
@@ -20,6 +20,18 @@ function ThumbnailPlaceholder() {
     <div style={{background:'var(--gray-100)',aspectRatio:'16 / 9',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:8,borderBottom:'var(--border-hairline)'}}>
       <Icon name="eye" size={20} color="var(--gray-500)" />
       <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>Thumbnail — add image</span>
+    </div>
+  );
+}
+
+/* A titled block of card metrics, ruled off from what's above it. */
+function MetricGroup({ heading, metrics }) {
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:'var(--space-1)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
+      <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{heading}</span>
+      <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
+        {metrics.map(m => <Metric key={m.value} {...m} />)}
+      </div>
     </div>
   );
 }
@@ -49,19 +61,8 @@ function WorkCard({ project, go }) {
       <div style={{flex:1,padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
         <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
-        {project.impact?.length ? (
-          <div style={{display:'flex',flexDirection:'column',gap:'var(--space-1)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
-            <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{IMPACT_HEADINGS[project.impactType]}</span>
-            <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
-              {project.impact.map(m => <Metric key={m.value} {...m} />)}
-            </div>
-          </div>
-        ) : null}
-        {project.metrics?.length ? (
-          <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
-            {project.metrics.map(m => <Metric key={m.value} {...m} />)}
-          </div>
-        ) : null}
+        {project.impact?.length ? <MetricGroup heading={IMPACT_HEADINGS[project.impactType]} metrics={project.impact} /> : null}
+        {project.metrics?.length ? <MetricGroup heading={HOME_CONTENT.businessImpactHeading} metrics={project.metrics} /> : null}
         {!project.impact?.length && !project.metrics?.length ? (
           <div style={{font:'var(--text-caption)',color:'var(--text-muted)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>Add a quantified outcome</div>
         ) : null}
