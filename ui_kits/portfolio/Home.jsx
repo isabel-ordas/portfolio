@@ -39,7 +39,6 @@ function WorkCard({ project, go }) {
       <div style={{padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
         <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
-        <p style={{font:'var(--text-paragraph)',color:'var(--text-muted)',margin:0,textWrap:'pretty'}}>{project.description}</p>
         {project.metrics?.length ? (
           <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
             {project.metrics.map(m => (
