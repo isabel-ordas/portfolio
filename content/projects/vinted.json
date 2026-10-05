@@ -14,7 +14,7 @@
     { "value": "5 prototypes", "label": "Built in 20 minutes from a single PRD, ready to test with cross-border buyers." }
   ],
   "caseStudy": {
-    "subhead": "Ask before you buy: a simulated vibe coding interview. Thirty minutes of product sense on cross-border buyer trust, then the same PRD prototyped in two different AI tools.",
+    "subhead": "Ask before you buy: a simulated one-hour vibe coding interview. Forty minutes of product sense on cross-border buyer trust, then twenty minutes prototyping the same PRD in two different AI tools.",
     "contextNote": "This is a simulated vibe coding interview: a timed product sense exercise, followed immediately by rapid AI-assisted prototyping. I ran it solo, as practice for real product interviews that increasingly include a prototyping round.",
     "meta": [
       { "label": "Role", "value": "Self-initiated, solo" },
@@ -38,7 +38,7 @@
       {
         "type": "definition",
         "heading": "Product sense, under a clock",
-        "intro": "Before opening any prototyping tool, I gave myself 30 minutes to frame the problem properly on a FigJam board, the way a real vibe coding interview would start.",
+        "intro": "Before opening any prototyping tool, I gave myself 40 minutes to frame the problem properly on a FigJam board, the way a real vibe coding interview would start.",
         "items": [
           { "term": "Clarifying the scope first", "description": "I treated cross-border as intra-EU for this exercise, and noted early that trust affects buyers and sellers differently, which shaped where I looked for the sharpest problem." },
           { "term": "Segmenting the cross-border user", "description": "Roughly 5% of a marketplace's users buy cross-border, and within that group the motivation splits three ways: price-driven (cheaper abroad), selection-driven (not available locally), and curiosity, with no strong intent. That split mattered for scoping the solution to the segments actually worth solving for." },
@@ -57,7 +57,7 @@
       {
         "type": "definition",
         "heading": "Prototyping, in minutes",
-        "intro": "This is the part of the exercise I most wanted to demonstrate: a well-scoped PRD turns prototyping into something that takes minutes, not days, which is exactly what lets you test whether an idea actually resonates before investing further.",
+        "intro": "This is the part of the exercise I most wanted to demonstrate: a well-scoped PRD turns prototyping into something that takes minutes, not days (here, the last 20 minutes of the hour), which is exactly what lets you test whether an idea actually resonates before investing further.",
         "items": [
           { "term": "Claude Code: five directions, fast", "description": "I prompted Claude Code to prototype the PRD, and rather than settling on one interpretation, it produced five distinct directions in the same short window: a tappable question band on the listing (Quick Ask), a reply-time-estimate framing before asking (Ask and Wait), instant category-based FAQ answers with no live message at all (Smart Ask), social proof from other cross-border buyers' questions (Others Asked), and a seller-responsiveness trust signal (Reply Radar). Seeing five working interpretations of the same brief, that fast, was the clearest signal of how far a tight PRD can stretch a prototyping tool." },
           { "term": "Magic Patterns: the same direction, polished", "description": "I then took \"Ask before you buy,\" the direction closest to the PRD's core scope, into Magic Patterns to see how a second tool would handle it. The output was noticeably more presentation-ready: a full walkthrough of a buyer discovering the prompt on the listing, seeing answers other buyers already got, tapping a ready-made question, watching it translate and send, and reading the seller's reply back in their own language." }

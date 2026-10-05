@@ -55,7 +55,7 @@ The starting point was personal: my sister hesitates to buy from sellers in othe
 
 ## Product sense, under a clock
 
-Before opening any prototyping tool, I gave myself 30 minutes to frame the problem properly on a FigJam board, the way a real vibe coding interview would start.
+Before opening any prototyping tool, I gave myself 40 minutes to frame the problem properly on a FigJam board, the way a real vibe coding interview would start.
 
 **Clarifying the scope first.** I treated cross-border as intra-EU for this exercise, and noted early that trust affects buyers and sellers differently, which shaped where I looked for the sharpest problem.
 
@@ -67,7 +67,7 @@ Before opening any prototyping tool, I gave myself 30 minutes to frame the probl
 
 ## Prototyping, in minutes
 
-This is the part of the exercise I most wanted to demonstrate: a well-scoped PRD turns prototyping into something that takes minutes, not days, which is exactly what lets you test whether an idea actually resonates before investing further.
+This is the part of the exercise I most wanted to demonstrate: a well-scoped PRD turns prototyping into something that takes minutes, not days (here, the last 20 minutes of the hour), which is exactly what lets you test whether an idea actually resonates before investing further.
 
 **Claude Code: five directions, fast.** I prompted Claude Code to prototype the PRD, and rather than settling on one interpretation, it produced five distinct directions in the same short window: a tappable question band on the listing (Quick Ask), a reply-time-estimate framing before asking (Ask and Wait), instant category-based FAQ answers with no live message at all (Smart Ask), social proof from other cross-border buyers' questions (Others Asked), and a seller-responsiveness trust signal (Reply Radar). Seeing five working interpretations of the same brief, that fast, was the clearest signal of how far a tight PRD can stretch a prototyping tool.
 
