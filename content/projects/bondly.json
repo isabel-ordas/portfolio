@@ -10,8 +10,8 @@
   "image": "assets/projects/bondly.jpg",
   "imageAlt": "Three friends laughing together on a bench in a tulip field",
   "metrics": [
-    { "value": "40%+", "label": "Of adults aged 25–40 experience unwanted loneliness." },
-    { "value": "70%+", "label": "Drop-off within three weeks on existing friendship apps." }
+    { "value": "40%+", "label": "Of adults aged 25–40 live with unwanted loneliness: the gap Bondly sets out to reduce." },
+    { "value": "App → in person", "label": "Designed to move people toward real-world friendship, not to maximize app engagement." }
   ],
   "caseStudy": {
     "subhead": "A digital-to-physical friendship platform for adults (25–40) navigating unwanted loneliness. I helped design the research, ran interviews, and led the analysis that shaped the personas.",
