@@ -7,8 +7,8 @@
   "stage": ["Definition", "Build", "Launch", "Growth"],
   "productSkills": ["Cross-functional Leadership", "Stakeholder Alignment", "Prioritization", "Data-Informed Decision Making", "Developer Mentoring", "AI-Assisted Team Workflows"],
   "toolsFrameworks": ["SQL", "Data Warehouse / Metabase", "AWS", "B2B API integrations", "Cursor"],
-  "image": "assets/projects/climatetrade/cover.jpg",
-  "imageAlt": "Isometric illustration of forest and project tiles connected through a central block to a stack of servers",
+  "image": "assets/projects/climatetrade/website.jpg",
+  "imageAlt": "ClimateTrade homepage: \"Offset your carbon footprint and reshape your climate impact\" over an aerial shot of wind turbines, with a Visit the Marketplace button",
   "impact": [{ "value": "3M+ tonnes of CO₂", "label": "Offset through ClimateTrade's marketplace and API, the platform I helped build as Tech Lead." }],
   "metrics": [
     { "value": "Days → instant", "label": "Client invoice wait time after the billing redesign." },
