@@ -19,6 +19,11 @@
       "Circular economy": "brown",
       "Social": "blue"
     },
+    "impactHeadings": {
+      "Climate": "Impact on climate",
+      "Circular economy": "Impact on waste reduction",
+      "Social": "Impact on society"
+    },
     "stages": ["Discovery", "Definition", "Design", "Build", "Launch", "Growth"],
     "productSkills": [
       "User Research", "Competitive Analysis", "Opportunity Mapping", "Strategic Framing",

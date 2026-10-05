@@ -1,5 +1,5 @@
 const { Icon, Tag } = window.IsabelBrandSystem_b8d40d;
-const { PROJECT_TYPES, IMPACT_TYPES, IMPACT_COLORS } = window;
+const { PROJECT_TYPES, IMPACT_TYPES, IMPACT_COLORS, IMPACT_HEADINGS } = window;
 
 const HOME_CONTENT = window.CONTENT.home;
 
@@ -9,9 +9,10 @@ const HOME_CONTENT = window.CONTENT.home;
    `impactType` is also the eyebrow above the card title and the case study
    H1. `stage` is a subset of Chrome.jsx STAGES (the full product lifecycle)
    — drives the StageBar in the case study header. `productSkills` and the
-   freeform `toolsFrameworks` show only on the case study page. `metrics`
-   (1–2 `{value, label}` highlights) is the card's outcome block; `image` /
-   `metrics` degrade gracefully when missing. */
+   freeform `toolsFrameworks` show only on the case study page. On the card,
+   `impact` (`{value, label}`) sits under its IMPACT_HEADINGS title, and
+   `metrics` (business/process `{value, label}` highlights) follow it; both,
+   and `image`, degrade gracefully when missing. */
 const PROJECTS = window.CONTENT.projects;
 
 function ThumbnailPlaceholder() {
@@ -19,6 +20,15 @@ function ThumbnailPlaceholder() {
     <div style={{background:'var(--gray-100)',aspectRatio:'16 / 9',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:8,borderBottom:'var(--border-hairline)'}}>
       <Icon name="eye" size={20} color="var(--gray-500)" />
       <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>Thumbnail — add image</span>
+    </div>
+  );
+}
+
+function Metric({ value, label }) {
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:4}}>
+      <span style={{font:'var(--weight-semibold) 28px/1.1 var(--font-display)'}}>{value}</span>
+      <span style={{font:'var(--text-caption)',color:'var(--text-muted)',textWrap:'pretty'}}>{label}</span>
     </div>
   );
 }
@@ -39,18 +49,20 @@ function WorkCard({ project, go }) {
       <div style={{flex:1,padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
         <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
+        {project.impact ? (
+          <div style={{display:'flex',flexDirection:'column',gap:'var(--space-1)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
+            <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{IMPACT_HEADINGS[project.impactType]}</span>
+            <Metric {...project.impact} />
+          </div>
+        ) : null}
         {project.metrics?.length ? (
           <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
-            {project.metrics.map(m => (
-              <div key={m.value} style={{display:'flex',flexDirection:'column',gap:4}}>
-                <span style={{font:'var(--weight-semibold) 28px/1.1 var(--font-display)'}}>{m.value}</span>
-                <span style={{font:'var(--text-caption)',color:'var(--text-muted)',textWrap:'pretty'}}>{m.label}</span>
-              </div>
-            ))}
+            {project.metrics.map(m => <Metric key={m.value} {...m} />)}
           </div>
-        ) : (
+        ) : null}
+        {!project.impact && !project.metrics?.length ? (
           <div style={{font:'var(--text-caption)',color:'var(--text-muted)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>Add a quantified outcome</div>
-        )}
+        ) : null}
         {/* Styled like the DS secondary Button (md) — a span, since the
             whole card is already the link. Fills on card hover/focus. */}
         <span style={{alignSelf:'flex-start',marginTop:'auto',display:'inline-flex',alignItems:'center',gap:8,padding:'16px 24px',font:'var(--text-label)',

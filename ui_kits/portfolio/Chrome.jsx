@@ -16,10 +16,11 @@ const CV_URL = `/${SITE.cvUrl}`;
    work it was) and one `impactType` (what it's good for). IMPACT_COLORS
    gives each impact type a fixed accent, so its tag reads in the same
    color on the card and the case study page; an unlisted value renders
-   without a color dot. */
+   without a color dot. IMPACT_HEADINGS titles the card's impact block. */
 const PROJECT_TYPES = SITE.taxonomies.projectTypes;
 const IMPACT_TYPES = SITE.taxonomies.impactTypes;
 const IMPACT_COLORS = SITE.taxonomies.impactColors;
+const IMPACT_HEADINGS = SITE.taxonomies.impactHeadings;
 
 /* Case-study metadata taxonomy (Work grid cards + case study detail
    pages — see Home.jsx PROJECTS). STAGES is the full product lifecycle,
@@ -130,4 +131,4 @@ function StageBar({ active = [] }) {
   );
 }
 
-Object.assign(window, { Header, Footer, Page, Eyebrow, StageBar, PROJECT_TYPES, IMPACT_TYPES, IMPACT_COLORS, PILLARS, PILLAR_COLORS, STAGES, PRODUCT_SKILLS, FULL_NAME, ROLE, LOCATION, CONTACT, CV_URL });
+Object.assign(window, { Header, Footer, Page, Eyebrow, StageBar, PROJECT_TYPES, IMPACT_TYPES, IMPACT_COLORS, IMPACT_HEADINGS, PILLARS, PILLAR_COLORS, STAGES, PRODUCT_SKILLS, FULL_NAME, ROLE, LOCATION, CONTACT, CV_URL });
