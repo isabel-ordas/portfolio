@@ -41,12 +41,12 @@ function WorkCard({ project, go }) {
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
         <p style={{font:'var(--text-paragraph)',color:'var(--text-muted)',margin:0,textWrap:'pretty'}}>{project.description}</p>
         {project.metrics?.length ? (
-          <div style={{display:'grid',gridTemplateColumns:'auto 1fr',alignItems:'baseline',columnGap:8,rowGap:'var(--space-1)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
+          <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
             {project.metrics.map(m => (
-              <React.Fragment key={m.value}>
-                <span style={{font:'var(--weight-semibold) 28px/1 var(--font-display)',whiteSpace:'nowrap'}}>{m.value}</span>
-                <span style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>{m.label}</span>
-              </React.Fragment>
+              <div key={m.value} style={{display:'flex',flexDirection:'column',gap:4}}>
+                <span style={{font:'var(--weight-semibold) 28px/1.1 var(--font-display)'}}>{m.value}</span>
+                <span style={{font:'var(--text-caption)',color:'var(--text-muted)',textWrap:'pretty'}}>{m.label}</span>
+              </div>
             ))}
           </div>
         ) : (
