@@ -36,7 +36,7 @@ function WorkCard({ project, go }) {
       {project.image
         ? <img src={`/${project.image}`} alt={project.imageAlt || ''} style={{display:'block',width:'100%',aspectRatio:'16 / 9',objectFit:'cover',filter:hover?'none':'grayscale(1)',transition:'filter var(--duration-slow) var(--ease-standard)',borderBottom:'var(--border-hairline)'}} />
         : <ThumbnailPlaceholder />}
-      <div style={{padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
+      <div style={{flex:1,padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
         <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
         {project.metrics?.length ? (
@@ -51,8 +51,11 @@ function WorkCard({ project, go }) {
         ) : (
           <div style={{font:'var(--text-caption)',color:'var(--text-muted)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>Add a quantified outcome</div>
         )}
-        <span style={{display:'flex',alignItems:'center',gap:8,font:'var(--text-label)',color:hover ? 'var(--accent-green)' : 'var(--text-body)',transition:'var(--transition-color)'}}>
-          View project <Icon name="arrow-right" size={16} style={{transform:hover?'translateX(4px)':'none',transition:'transform var(--duration-base) var(--ease-standard)'}} />
+        {/* Styled like the DS secondary Button (md) — a span, since the
+            whole card is already the link. Fills on card hover/focus. */}
+        <span style={{alignSelf:'flex-start',marginTop:'auto',display:'inline-flex',alignItems:'center',gap:8,padding:'16px 24px',font:'var(--text-label)',
+                      border:'var(--border-hairline)',background:hover?'var(--ink-black)':'transparent',color:hover?'var(--text-inverse)':'var(--text-body)',transition:'var(--transition-color)'}}>
+          View project <Icon name="arrow-right" size={20} style={{transform:hover?'translateX(4px)':'none',transition:'transform var(--duration-base) var(--ease-standard)'}} />
         </span>
       </div>
     </a>
