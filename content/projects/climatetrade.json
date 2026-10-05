@@ -10,7 +10,10 @@
   "image": "assets/projects/climatetrade/cover.jpg",
   "imageAlt": "Isometric illustration of forest and project tiles connected through a central block to a stack of servers",
   "impact": [{ "value": "3M+ tonnes of CO₂", "label": "Offset through ClimateTrade's marketplace and API, the platform I helped build as Tech Lead." }],
-  "metrics": [{ "value": "Days → instant", "label": "Client invoice wait time after the billing redesign." }],
+  "metrics": [
+    { "value": "Days → instant", "label": "Client invoice wait time after the billing redesign." },
+    { "value": "~25%", "label": "Less development time for the developers who adopted the AI-assisted workflows I introduced, with log analysis ~50% faster." }
+  ],
   "caseStudy": {
     "subhead": "Product decisions from inside a developer squad. Leading the squad as Tech Lead for a blockchain-based carbon credit marketplace, and the product decisions, collaborative and solo, that came with it.",
     "contextNote": "ClimateTrade is a blockchain-based carbon credit marketplace, with a B2B API for corporate integrators and a B2C marketplace for individual buyers. I was Tech Lead of the developer squad, and part of the cross-functional group behind the decisions below.",
