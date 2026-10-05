@@ -9,7 +9,10 @@
   "toolsFrameworks": ["Segmentation matrix", "Weighted scoring (ICE-style)", "A/B test design"],
   "image": "assets/projects/wallapop/cover.jpg",
   "imageAlt": "A woman kneeling on a rug at home, sorting a leather bag, sweaters, books, a camera, and records she no longer uses",
-  "impact": { "value": "82%", "label": "Of Wallapop sales replace buying something new, so every reactivated seller means fewer new purchases." },
+  "impact": [
+    { "value": "~0.9M–2.6M", "label": "New purchases avoided per year: 82% of the ~1–3M extra sales would replace buying something new." },
+    { "value": "~0.6M–1.8M", "label": "Items kept from becoming waste: 56% of those sales give a second life to something otherwise discarded." }
+  ],
   "metrics": [
     { "value": "€2.66M–€7.97M", "label": "Potential revenue from activating an estimated 8.5M addressable dormant sellers." }
   ],

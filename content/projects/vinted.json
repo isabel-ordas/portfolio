@@ -9,7 +9,7 @@
   "toolsFrameworks": ["FigJam", "Claude Code", "Magic Patterns"],
   "image": "assets/projects/vinted/magicpatterns-01-cover.jpg",
   "imageAlt": "Cover of the Ask before you buy concept: a phone showing a Vinted listing with pre-translated questions under the price",
-  "impact": { "value": "76%", "label": "Of Vinted orders replace buying something new, so every cross-border sale unblocked means less new production." },
+  "impact": [{ "value": "76%", "label": "Of Vinted orders replace buying something new, so every cross-border sale unblocked means less new production." }],
   "metrics": [
     { "value": "5 prototypes in 1 hour", "label": "40 minutes of product sense, then 20 of AI-assisted prototyping from a single PRD." }
   ],

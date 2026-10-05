@@ -10,9 +10,9 @@ const HOME_CONTENT = window.CONTENT.home;
    H1. `stage` is a subset of Chrome.jsx STAGES (the full product lifecycle)
    — drives the StageBar in the case study header. `productSkills` and the
    freeform `toolsFrameworks` show only on the case study page. On the card,
-   `impact` (`{value, label}`) sits under its IMPACT_HEADINGS title, and
-   `metrics` (business/process `{value, label}` highlights) follow it; both,
-   and `image`, degrade gracefully when missing. */
+   `impact` (`{value, label}` list) sits under its IMPACT_HEADINGS title,
+   and `metrics` (business/process `{value, label}` highlights) follow it;
+   both, and `image`, degrade gracefully when missing. */
 const PROJECTS = window.CONTENT.projects;
 
 function ThumbnailPlaceholder() {
@@ -49,10 +49,12 @@ function WorkCard({ project, go }) {
       <div style={{flex:1,padding:'var(--space-3)',display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
         <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
-        {project.impact ? (
+        {project.impact?.length ? (
           <div style={{display:'flex',flexDirection:'column',gap:'var(--space-1)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
             <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{IMPACT_HEADINGS[project.impactType]}</span>
-            <Metric {...project.impact} />
+            <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)'}}>
+              {project.impact.map(m => <Metric key={m.value} {...m} />)}
+            </div>
           </div>
         ) : null}
         {project.metrics?.length ? (
@@ -60,7 +62,7 @@ function WorkCard({ project, go }) {
             {project.metrics.map(m => <Metric key={m.value} {...m} />)}
           </div>
         ) : null}
-        {!project.impact && !project.metrics?.length ? (
+        {!project.impact?.length && !project.metrics?.length ? (
           <div style={{font:'var(--text-caption)',color:'var(--text-muted)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>Add a quantified outcome</div>
         ) : null}
         {/* Styled like the DS secondary Button (md) — a span, since the

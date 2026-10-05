@@ -9,7 +9,7 @@
   "toolsFrameworks": ["Expert interviews", "User interviews", "Survey", "Competitive analysis"],
   "image": "assets/projects/bondly.jpg",
   "imageAlt": "Three friends laughing together on a bench in a tulip field",
-  "impact": { "value": "40%+", "label": "Of adults aged 25–40 live with unwanted loneliness: the gap Bondly sets out to reduce." },
+  "impact": [{ "value": "40%+", "label": "Of adults aged 25–40 live with unwanted loneliness: the gap Bondly sets out to reduce." }],
   "metrics": [
     { "value": "App → in person", "label": "Designed to move people toward real-world friendship, not to maximize app engagement." }
   ],
