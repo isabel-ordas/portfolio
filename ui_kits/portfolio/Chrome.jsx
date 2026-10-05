@@ -110,27 +110,22 @@ function Eyebrow({ accent = 'green', children }) {
   );
 }
 
-/* Segmented lifecycle indicator shared by the Work grid cards (compact,
-   no labels) and the case study detail header (full, with the active
-   range spelled out below). `active` is a project's `stage` array. */
-function StageBar({ active = [], compact = false }) {
+/* Segmented lifecycle indicator for the case study detail header, with the
+   active range spelled out below. `active` is a project's `stage` array. */
+function StageBar({ active = [] }) {
   const activeLabel = STAGES.filter(s => active.includes(s)).join(' → ') || 'Not started';
   return (
     <div style={{display:'flex',flexDirection:'column',gap:6}} role="img" aria-label={`Stage: ${activeLabel}`}>
       <div style={{display:'flex',gap:3}} aria-hidden="true">
         {STAGES.map(s => (
-          <span key={s} style={{flex:1,height:compact?4:6,background:active.includes(s)?'var(--ink-black)':'var(--gray-200)'}} />
+          <span key={s} style={{flex:1,height:6,background:active.includes(s)?'var(--ink-black)':'var(--gray-200)'}} />
         ))}
       </div>
-      {!compact ? (
-        <>
-          <div style={{display:'flex',justifyContent:'space-between',font:'var(--text-caption)',color:'var(--text-muted)'}} aria-hidden="true">
-            <span>{STAGES[0]}</span>
-            <span>{STAGES[STAGES.length - 1]}</span>
-          </div>
-          <span style={{font:'var(--text-label)'}}>{activeLabel}</span>
-        </>
-      ) : null}
+      <div style={{display:'flex',justifyContent:'space-between',font:'var(--text-caption)',color:'var(--text-muted)'}} aria-hidden="true">
+        <span>{STAGES[0]}</span>
+        <span>{STAGES[STAGES.length - 1]}</span>
+      </div>
+      <span style={{font:'var(--text-label)'}}>{activeLabel}</span>
     </div>
   );
 }

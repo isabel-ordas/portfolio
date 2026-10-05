@@ -9,7 +9,7 @@
   "toolsFrameworks": ["SQL", "Data Warehouse / Metabase", "AWS", "B2B API integrations", "Cursor"],
   "image": "assets/projects/climatetrade/cover.jpg",
   "imageAlt": "Isometric illustration of forest and project tiles connected through a central block to a stack of servers",
-  "metric": { "value": "Days → instant", "label": "Client invoice wait time after the billing redesign." },
+  "metrics": [{ "value": "Days → instant", "label": "Client invoice wait time after the billing redesign." }],
   "caseStudy": {
     "subhead": "Product decisions from inside a developer squad. Leading the squad as Tech Lead for a blockchain-based carbon credit marketplace, and the product decisions, collaborative and solo, that came with it.",
     "contextNote": "ClimateTrade is a blockchain-based carbon credit marketplace, with a B2B API for corporate integrators and a B2C marketplace for individual buyers. I was Tech Lead of the developer squad, and part of the cross-functional group behind the decisions below.",

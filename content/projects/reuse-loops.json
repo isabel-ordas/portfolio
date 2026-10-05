@@ -8,6 +8,6 @@
   "toolsFrameworks": ["Service Blueprint", "Miro"],
   "image": null,
   "imageAlt": "",
-  "metric": null,
+  "metrics": [],
   "caseStudy": null
 }

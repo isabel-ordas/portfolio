@@ -8,11 +8,10 @@ const HOME_CONTENT = window.CONTENT.home;
    "Selected work" filters (see Chrome.jsx PROJECT_TYPES / IMPACT_TYPES);
    `impactType` is also the eyebrow above the card title and the case study
    H1. `stage` is a subset of Chrome.jsx STAGES (the full product lifecycle)
-   — drives the segmented StageBar on the card (compact) and the case study
-   header (full, with labels). `productSkills` shows as chips on the card
-   (top 2 + overflow) and in full on the case study page. `toolsFrameworks`
-   is freeform per project, shown only on the case study page. `image` /
-   `metric` degrade gracefully when null. */
+   — drives the StageBar in the case study header. `productSkills` and the
+   freeform `toolsFrameworks` show only on the case study page. `metrics`
+   (1–2 `{value, label}` highlights) is the card's outcome block; `image` /
+   `metrics` degrade gracefully when missing. */
 const PROJECTS = window.CONTENT.projects;
 
 function ThumbnailPlaceholder() {
@@ -26,8 +25,6 @@ function ThumbnailPlaceholder() {
 
 function WorkCard({ project, go }) {
   const [hover, setHover] = React.useState(false);
-  const topSkills = project.productSkills.slice(0, 2);
-  const overflow = project.productSkills.length - topSkills.length;
   return (
     <a href="#" onClick={(e)=>{e.preventDefault();go('case', project.id)}}
        onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
@@ -43,15 +40,14 @@ function WorkCard({ project, go }) {
         <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
         <p style={{font:'var(--text-paragraph)',color:'var(--text-muted)',margin:0,textWrap:'pretty'}}>{project.description}</p>
-        <StageBar active={project.stage} compact />
-        <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
-          {topSkills.map(s => <Tag key={s}>{s}</Tag>)}
-          {overflow > 0 ? <Tag>{`+${overflow}`}</Tag> : null}
-        </div>
-        {project.metric ? (
-          <div style={{display:'flex',alignItems:'baseline',gap:8,borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
-            <span style={{font:'var(--weight-semibold) 28px/1 var(--font-display)'}}>{project.metric.value}</span>
-            <span style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>{project.metric.label}</span>
+        {project.metrics?.length ? (
+          <div style={{display:'flex',flexDirection:'column',gap:'var(--space-1)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
+            {project.metrics.map(m => (
+              <div key={m.value} style={{display:'flex',alignItems:'baseline',gap:8}}>
+                <span style={{font:'var(--weight-semibold) 28px/1 var(--font-display)',whiteSpace:'nowrap'}}>{m.value}</span>
+                <span style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>{m.label}</span>
+              </div>
+            ))}
           </div>
         ) : (
           <div style={{font:'var(--text-caption)',color:'var(--text-muted)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>Add a quantified outcome</div>

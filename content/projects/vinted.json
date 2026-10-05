@@ -9,7 +9,7 @@
   "toolsFrameworks": ["FigJam", "Claude Code", "Magic Patterns"],
   "image": "assets/projects/vinted/magicpatterns-01-cover.jpg",
   "imageAlt": "Cover of the Ask before you buy concept: a phone showing a Vinted listing with pre-translated questions under the price",
-  "metric": { "value": "5", "label": "Prototype directions explored from a single PRD with Claude Code." },
+  "metrics": [{ "value": "5", "label": "Prototype directions explored from a single PRD with Claude Code." }],
   "caseStudy": {
     "subhead": "Ask before you buy: a simulated vibe coding interview. Thirty minutes of product sense on cross-border buyer trust, then the same PRD prototyped in two different AI tools.",
     "contextNote": "This is a simulated vibe coding interview: a timed product sense exercise, followed immediately by rapid AI-assisted prototyping. I ran it solo, as practice for real product interviews that increasingly include a prototyping round.",
