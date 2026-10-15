@@ -13,15 +13,17 @@
   ],
   "taxonomies": {
     "projectTypes": ["Professional work", "Side project", "Capstone project", "Proof of Concept"],
-    "impactTypes": ["Climate", "Circular economy", "Social"],
+    "impactTypes": ["Climate", "Circular economy", "Nature conservation", "Social"],
     "impactColors": {
       "Climate": "green",
       "Circular economy": "brown",
+      "Nature conservation": "yellow",
       "Social": "blue"
     },
     "impactHeadings": {
       "Climate": "Impact on emissions",
       "Circular economy": "Impact on waste reduction",
+      "Nature conservation": "Impact on nature",
       "Social": "Impact on society"
     },
     "stages": ["Discovery", "Definition", "Design", "Build", "Launch", "Growth"],
