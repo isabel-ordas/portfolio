@@ -1,0 +1,105 @@
+{
+  "id": "basuraleza",
+  "title": "Basuraleza",
+  "description": "A citizen app, built solo with a coding agent in two days, that lets anyone report dumped rubbish without an account and puts every report through human review before it reaches a public map.",
+  "projectType": "Side project",
+  "impactType": "Nature conservation",
+  "stage": ["Definition", "Design", "Build", "Launch"],
+  "productSkills": ["MVP Scoping", "PRD Writing", "Rapid Prototyping", "AI-Assisted Design", "Launch Planning", "Experiment Design"],
+  "toolsFrameworks": ["Claude Code", "Phased delivery", "Next.js", "TypeScript", "Supabase / PostGIS", "Clerk", "Leaflet", "Playwright", "Netlify"],
+  "image": "assets/projects/basuraleza/report-steps.jpg",
+  "imageAlt": "The four steps of a report on a phone: where it is, photos, what's there, and the report received screen",
+  "impact": [{ "value": "5 reports", "label": "Of rubbish dumped in the Somontano countryside on the public map, with 7 photos, to plan clean-ups from." }],
+  "metricsHeading": "Early signals",
+  "metrics": [
+    { "value": "2 days", "label": "To a working, moderated MVP, built solo by directing a coding agent." },
+    { "value": "2 requests", "label": "From people asking for the same tool for other comarcas and groups." }
+  ],
+  "caseStudy": {
+    "subhead": "A moderated map of rubbish dumped in the countryside. A citizen app I built solo with a coding agent in two days: anyone can report without an account, and every report is reviewed by a person before it reaches the public map.",
+    "contextNote": "A live product I built on my own initiative for the Grupo Ecologista del Somontano, the environmental association I'm an active member of.",
+    "heroFit": "full",
+    "link": { "label": "Visit the app", "href": "https://basuraleza-somontano.netlify.app" },
+    "meta": [
+      { "label": "Role", "value": "Self-initiated, solo" },
+      { "label": "Status", "value": "Live, in early real use" }
+    ],
+    "sections": [
+      {
+        "type": "text",
+        "heading": "My role",
+        "paragraphs": [
+          "I did all of it myself, directing Claude Code as a coding agent: the idea, the product brief and scope, design direction, setup, hand-checking each phase, and the launch."
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Problem",
+        "paragraphs": [
+          "Rubbish dumped in the Somontano countryside reached the Grupo, if at all, through scattered WhatsApp messages and calls, so there was no map to plan clean-ups from. I also wanted to give our followers a concrete way to take part."
+        ]
+      },
+      {
+        "type": "table",
+        "heading": "The real problem was trust",
+        "intro": "People who find rubbish won't create an account to report it, and a photo of a dumping site can expose someone through faces, number plates or hidden GPS data. So the product is built on one rule: nothing is published without human review, and nothing published identifies anyone.",
+        "columns": ["Decision", "Why"],
+        "rows": [
+          ["No reporter accounts", "Reporting has to take a minute, with no sign-up"],
+          ["Every report reviewed by a moderator, never by AI", "A person decides what goes public"],
+          ["Original text kept private, editable copy published", "A moderator can remove a name instead of rejecting a useful report"],
+          ["Photo metadata stripped on the server", "Photos carry location, device and date"]
+        ],
+        "note": "I deliberately left out video, because moderating faces in it and stripping its metadata added risk the first version didn't need, along with accounts, comments and any automatic publishing."
+      },
+      {
+        "type": "gallery",
+        "heading": "Human moderation",
+        "images": [
+          { "src": "assets/projects/basuraleza/moderation.jpg", "alt": "Moderation screen: the queue of pending reports on the left, and on the right one report's photos, its original text marked as never published, and an editable copy that will be published", "caption": "The original report stays private; the moderator edits the copy that goes public, for example to remove the number plate and name in this one." }
+        ]
+      },
+      {
+        "type": "toolGroups",
+        "heading": "How it was built",
+        "intro": "I wrote the product brief and split the work into six phases (design, screens, setup, data and moderation, testing, deployment), each with a \"done when\" that I checked by hand before Claude Code moved on.",
+        "groups": [
+          { "layer": "AI development", "tools": ["Claude Code", "Standing brief in AGENTS.md", "One prompt per phase", "Supabase MCP", "Clerk and Supabase agent skills"] },
+          { "layer": "Design", "tools": ["Claude design canvas", "frontend-design skill", "Custom design system"] },
+          { "layer": "Frontend", "tools": ["Next.js", "TypeScript", "Tailwind", "Leaflet", "IGN and IDEAragón map data"] },
+          { "layer": "Auth and roles", "tools": ["Clerk", "Organizations and moderator roles"] },
+          { "layer": "Data and photos", "tools": ["Supabase (Postgres, PostGIS, Storage)", "sharp"] },
+          { "layer": "Testing", "tools": ["Vitest", "Playwright", "137 automated tests"] },
+          { "layer": "Deployment", "tools": ["GitHub", "Netlify"] }
+        ]
+      },
+      {
+        "type": "stats",
+        "heading": "Launch and early signals",
+        "items": [
+          { "value": "2 days", "label": "To a working MVP" },
+          { "value": "5", "label": "Reports on the map" },
+          { "value": "7", "label": "Photos" },
+          { "value": "2", "label": "Requests from other groups" }
+        ],
+        "paragraphs": [
+          "I launched it on the Grupo's Instagram on 5 October 2026. So far all reports come from two members of the Grupo, and the two comments on the post asked for the same tool in other comarcas and groups. The first clean-up organised from the map is planned for the end of October."
+        ]
+      },
+      {
+        "type": "gallery",
+        "heading": "The public map",
+        "images": [
+          { "src": "assets/projects/basuraleza/public-map.jpg", "alt": "Public map of the Somontano with spots to clean, and the detail of one published spot with its photos, description and coordinates", "caption": "Only reviewed reports reach the map. Screens generated with seeded test data." }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": "Reflection",
+        "paragraphs": [
+          "AI made experimenting cheap enough to test an engagement strategy with a real product instead of a post, which moved the bottleneck from building to adoption, and that hypothesis isn't validated yet. The surprise was the demand from other groups. It turned a tool for one association into a citizen initiative others could adopt, and raised the real scaling question: not the code, which already supports multiple territories, but how each group would sustain its own human moderation."
+        ]
+      }
+    ]
+  }
+}
