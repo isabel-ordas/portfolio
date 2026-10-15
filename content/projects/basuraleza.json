@@ -1,14 +1,14 @@
 {
   "id": "basuraleza",
-  "title": "Basuraleza",
+  "title": "Basuraleza en el Somontano",
   "description": "A citizen app, built solo with a coding agent in two days, that lets anyone report dumped rubbish without an account and puts every report through human review before it reaches a public map.",
   "projectType": "Side project",
   "impactType": "Nature conservation",
   "stage": ["Definition", "Design", "Build", "Launch"],
   "productSkills": ["MVP Scoping", "PRD Writing", "Rapid Prototyping", "AI-Assisted Design", "Launch Planning", "Experiment Design"],
-  "toolsFrameworks": ["Claude Code", "Phased delivery", "Next.js", "TypeScript", "Supabase / PostGIS", "Clerk", "Leaflet", "Playwright", "Netlify"],
-  "image": "assets/projects/basuraleza/report-steps.jpg",
-  "imageAlt": "The four steps of a report on a phone: where it is, photos, what's there, and the report received screen",
+  "toolsFrameworks": ["Claude Code", "Next.js", "TypeScript", "Supabase / PostGIS", "Clerk", "Leaflet", "Playwright", "Netlify"],
+  "image": "assets/projects/basuraleza/public-map.jpg",
+  "imageAlt": "Public map of the Somontano with spots to clean, and the detail of one published spot with its photos, description and coordinates",
   "impact": [{ "value": "5 reports", "label": "Of rubbish dumped in the Somontano countryside on the public map, with 7 photos, to plan clean-ups from." }],
   "metricsHeading": "Early signals",
   "metrics": [
@@ -30,6 +30,13 @@
         "heading": "My role",
         "paragraphs": [
           "I did all of it myself, directing Claude Code as a coding agent: the idea, the product brief and scope, design direction, setup, hand-checking each phase, and the launch."
+        ]
+      },
+      {
+        "type": "gallery",
+        "heading": "Reporting in a minute",
+        "images": [
+          { "src": "assets/projects/basuraleza/report-steps.jpg", "alt": "The four steps of a report on a phone: where it is, photos, what's there, and the report received screen", "caption": "The four report steps, with no sign-up. Screens generated with seeded test data." }
         ]
       },
       {
@@ -84,13 +91,6 @@
         ],
         "paragraphs": [
           "I launched it on the Grupo's Instagram on 5 October 2026. So far all reports come from two members of the Grupo, and the two comments on the post asked for the same tool in other comarcas and groups. The first clean-up organised from the map is planned for the end of October."
-        ]
-      },
-      {
-        "type": "gallery",
-        "heading": "The public map",
-        "images": [
-          { "src": "assets/projects/basuraleza/public-map.jpg", "alt": "Public map of the Somontano with spots to clean, and the detail of one published spot with its photos, description and coordinates", "caption": "Only reviewed reports reach the map. Screens generated with seeded test data." }
         ]
       },
       {
