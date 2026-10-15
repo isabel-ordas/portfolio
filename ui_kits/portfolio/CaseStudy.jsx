@@ -282,6 +282,9 @@ function CaseStudy({ go, id }) {
             <p style={{font:'var(--weight-regular) 20px/1.5 var(--font-body)',color:'var(--text-muted)',maxWidth:'46ch'}}>
               {caseStudy.subhead}
             </p>
+            {caseStudy.link ? (
+              <div><Button variant="secondary" icon="arrow-up-right" href={caseStudy.link.href} target="_blank" rel="noopener">{caseStudy.link.label}</Button></div>
+            ) : null}
           </div>
           <dl style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'var(--space-2)',margin:0,borderTop:'var(--border-hairline)',paddingTop:'var(--space-2)'}}>
             {caseStudy.meta.map(({label,value})=>(
