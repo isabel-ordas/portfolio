@@ -9,7 +9,7 @@
   "toolsFrameworks": ["Claude Code", "Next.js", "TypeScript", "Supabase / PostGIS", "Clerk", "Leaflet", "Playwright", "Netlify"],
   "image": "assets/projects/basuraleza/public-map.jpg",
   "imageAlt": "Public map of the Somontano with spots to clean, and the detail of one published spot with its photos, description and coordinates",
-  "impact": [{ "value": "5 reports", "label": "Of rubbish dumped in the Somontano countryside on the public map, with 7 photos, to plan clean-ups from." }],
+  "impact": [{ "value": "5 reports in 1 week", "label": "Of rubbish dumped in the Somontano countryside, with 7 photos, on a public map to plan clean-ups from." }],
   "metricsHeading": "Early signals",
   "metrics": [
     { "value": "2 days", "label": "To a working, moderated MVP, built solo by directing a coding agent." },
@@ -33,6 +33,13 @@
         ]
       },
       {
+        "type": "text",
+        "heading": "Problem",
+        "paragraphs": [
+          "Rubbish dumped in the Somontano countryside reached the Grupo, if at all, through scattered WhatsApp messages and calls, so there was no map to plan clean-ups from. I also wanted to give our followers a concrete way to take part."
+        ]
+      },
+      {
         "type": "gallery",
         "heading": "Reporting in a minute",
         "images": [
@@ -41,23 +48,11 @@
       },
       {
         "type": "text",
-        "heading": "Problem",
+        "heading": "The hypothesis",
         "paragraphs": [
-          "Rubbish dumped in the Somontano countryside reached the Grupo, if at all, through scattered WhatsApp messages and calls, so there was no map to plan clean-ups from. I also wanted to give our followers a concrete way to take part."
+          "More people will report rubbish if they can do it completely anonymously, without handing over any personal details.",
+          "So there are no accounts, and reporting takes a minute. Anonymity needs a safeguard, though: every report is reviewed by a person before it reaches the map, and nothing published identifies anyone."
         ]
-      },
-      {
-        "type": "table",
-        "heading": "The real problem was trust",
-        "intro": "People who find rubbish won't create an account to report it, and a photo of a dumping site can expose someone through faces, number plates or hidden GPS data. So the product is built on one rule: nothing is published without human review, and nothing published identifies anyone.",
-        "columns": ["Decision", "Why"],
-        "rows": [
-          ["No reporter accounts", "Reporting has to take a minute, with no sign-up"],
-          ["Every report reviewed by a moderator, never by AI", "A person decides what goes public"],
-          ["Original text kept private, editable copy published", "A moderator can remove a name instead of rejecting a useful report"],
-          ["Photo metadata stripped on the server", "Photos carry location, device and date"]
-        ],
-        "note": "I deliberately left out video, because moderating faces in it and stripping its metadata added risk the first version didn't need, along with accounts, comments and any automatic publishing."
       },
       {
         "type": "gallery",
@@ -85,7 +80,7 @@
         "heading": "Launch and early signals",
         "items": [
           { "value": "2 days", "label": "To a working MVP" },
-          { "value": "5", "label": "Reports on the map" },
+          { "value": "5", "label": "Reports in the first week" },
           { "value": "7", "label": "Photos" },
           { "value": "2", "label": "Requests from other groups" }
         ],

@@ -42,26 +42,19 @@ the stat strip and one line in "Launch".
 
 I did all of it myself, directing Claude Code as a coding agent: the idea, the product brief and scope, design direction, setup, hand-checking each phase, and the launch.
 
-[HERO: the four report steps on a phone]
-
 ## Problem
 
 Rubbish dumped in the Somontano countryside reached the Grupo, if at all, through scattered WhatsApp messages and calls, so there was no map to plan clean-ups from. I also wanted to give our followers a concrete way to take part.
 
-## The real problem was trust
+[the four report steps on a phone]
 
-People who find rubbish won't create an account to report it, and a photo of a dumping site can expose someone through faces, number plates or hidden GPS data. So the product is built on one rule: nothing is published without human review, and nothing published identifies anyone.
+## The hypothesis
 
-| Decision | Why |
-|---|---|
-| No reporter accounts | Reporting has to take a minute, with no sign-up |
-| Every report reviewed by a moderator, never by AI | A person decides what goes public |
-| Original text kept private, editable copy published | A moderator can remove a name instead of rejecting a useful report |
-| Photo metadata stripped on the server | Photos carry location, device and date |
+More people will report rubbish if they can do it completely anonymously, without handing over any personal details.
+
+So there are no accounts, and reporting takes a minute. Anonymity needs a safeguard, though: every report is reviewed by a person before it reaches the map, and nothing published identifies anyone.
 
 [VISUAL 2: moderation screen, original vs published text]
-
-I deliberately left out video, because moderating faces in it and stripping its metadata added risk the first version didn't need, along with accounts, comments and any automatic publishing.
 
 ## How it was built
 
@@ -79,7 +72,7 @@ I wrote the product brief and split the work into six phases (design, screens, s
 
 ## Launch and early signals
 
-**2 days** to a working MVP · **5 reports** and **7 photos** on the map · **2 requests** from other groups
+**2 days** to a working MVP · **5 reports** in the first week and **7 photos** on the map · **2 requests** from other groups
 
 I launched it on the Grupo's Instagram on 5 October 2026. So far all reports come from two members of the Grupo, and the two comments on the post asked for the same tool in other comarcas and groups. The first clean-up organised from the map is planned for the end of October.
 
