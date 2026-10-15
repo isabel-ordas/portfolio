@@ -191,11 +191,12 @@ function GalleryImage({ image, scroll }) {
 
 function GallerySection({ section }) {
   const scroll = section.layout === 'scroll';
+  const single = section.images.length === 1;
   return (
     <section style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
       <SectionHeading>{section.heading}</SectionHeading>
       {section.intro ? <p style={{margin:0,maxWidth:'62ch',color:'var(--text-muted)'}}>{section.intro}</p> : null}
-      <div className={scroll ? undefined : 'ds-2up'} style={{display:'grid',gap:'var(--space-3)'}}>
+      <div className={scroll || single ? undefined : 'ds-2up'} style={{display:'grid',gap:'var(--space-3)'}}>
         {section.images.map((img,i) => <GalleryImage key={i} image={img} scroll={scroll} />)}
       </div>
     </section>
