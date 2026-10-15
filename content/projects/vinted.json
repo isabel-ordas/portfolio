@@ -51,7 +51,7 @@
         "heading": "The reasoning board",
         "layout": "scroll",
         "images": [
-          { "src": "assets/projects/vinted/product-sense-board.jpg", "alt": "FigJam board branching from clarifications, user, problem, solution, and PRD into the reasoning behind each decision", "caption": "The 30-minute FigJam board, from clarifying questions down to the PRD and its success metrics." }
+          { "src": "assets/projects/vinted/product-sense-board.jpg", "alt": "FigJam board branching from clarifications, user, problem, solution, and PRD into the reasoning behind each decision", "caption": "The 40-minute FigJam board, from clarifying questions down to the PRD and its success metrics." }
         ]
       },
       {
