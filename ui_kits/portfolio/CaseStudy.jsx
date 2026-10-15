@@ -305,7 +305,7 @@ function CaseStudy({ go, id }) {
 
       <Divider spacing="var(--space-6)" />
 
-      <div className="ds-card-grid-3">
+      <div className="ds-2up">
         <div style={{display:'flex',flexDirection:'column',gap:8}}>
           <Eyebrow accent="blue">Stage</Eyebrow>
           <StageBar active={project.stage} />
@@ -314,12 +314,6 @@ function CaseStudy({ go, id }) {
           <Eyebrow accent="blue">Product skills</Eyebrow>
           <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
             {project.productSkills.map(s => <Tag key={s} active>{s}</Tag>)}
-          </div>
-        </div>
-        <div style={{display:'flex',flexDirection:'column',gap:8}}>
-          <Eyebrow accent="blue">Tools &amp; frameworks</Eyebrow>
-          <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
-            {project.toolsFrameworks.map(t => <Tag key={t}>{t}</Tag>)}
           </div>
         </div>
       </div>

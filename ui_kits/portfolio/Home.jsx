@@ -8,8 +8,9 @@ const HOME_CONTENT = window.CONTENT.home;
    "Selected work" filters (see Chrome.jsx PROJECT_TYPES / IMPACT_TYPES);
    `impactType` is also the eyebrow above the card title and the case study
    H1. `stage` is a subset of Chrome.jsx STAGES (the full product lifecycle)
-   — drives the StageBar in the case study header. `productSkills` and the
-   freeform `toolsFrameworks` show only on the case study page. On the card,
+   — drives the StageBar in the case study header. `productSkills` shows
+   only on the case study page; the freeform `toolsFrameworks` isn't
+   rendered for now (kept for a planned tools-by-stage map). On the card,
    `impact` (`{value, label}` list) sits under its IMPACT_HEADINGS title,
    and `metrics` (`{value, label}` list) under "Impact on business", or
    under `metricsHeading` when a project isn't a business (e.g. "Early
