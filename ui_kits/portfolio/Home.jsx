@@ -11,8 +11,9 @@ const HOME_CONTENT = window.CONTENT.home;
    — drives the StageBar in the case study header. `productSkills` and the
    freeform `toolsFrameworks` show only on the case study page. On the card,
    `impact` (`{value, label}` list) sits under its IMPACT_HEADINGS title,
-   and `metrics` (`{value, label}` list) under "Impact on business"; both,
-   and `image`, degrade gracefully when missing. */
+   and `metrics` (`{value, label}` list) under "Impact on business", or
+   under `metricsHeading` when a project isn't a business (e.g. "Early
+   signals"); both, and `image`, degrade gracefully when missing. */
 const PROJECTS = window.CONTENT.projects;
 
 function ThumbnailPlaceholder() {
@@ -62,7 +63,7 @@ function WorkCard({ project, go }) {
         <Eyebrow accent={IMPACT_COLORS[project.impactType]}>{project.impactType}</Eyebrow>
         <h3 style={{font:'var(--text-h2)',margin:0}}>{project.title}</h3>
         {project.impact?.length ? <MetricGroup heading={IMPACT_HEADINGS[project.impactType]} metrics={project.impact} /> : null}
-        {project.metrics?.length ? <MetricGroup heading={HOME_CONTENT.businessImpactHeading} metrics={project.metrics} /> : null}
+        {project.metrics?.length ? <MetricGroup heading={project.metricsHeading || HOME_CONTENT.businessImpactHeading} metrics={project.metrics} /> : null}
         {!project.impact?.length && !project.metrics?.length ? (
           <div style={{font:'var(--text-caption)',color:'var(--text-muted)',borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>Add a quantified outcome</div>
         ) : null}
