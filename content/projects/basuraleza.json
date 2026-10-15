@@ -62,17 +62,34 @@
         ]
       },
       {
-        "type": "toolGroups",
+        "type": "workflow",
         "heading": "How it was built",
-        "intro": "I wrote the product brief and split the work into six phases (design, screens, setup, data and moderation, testing, deployment), each with a \"done when\" that I checked by hand before Claude Code moved on.",
+        "intro": "I worked as the product manager and Claude Code as the engineer. The process kept the agent on scope and every product decision with me.",
+        "steps": [
+          {"title": "A product brief", "text": "What the app is for, who uses it, and what stays out of the first version."},
+          {"title": "A standing brief in AGENTS.md", "text": "The context the agent reads at the start of every session, so it never has to be repeated: the product, the rules that can't be broken (no accounts, nothing published identifies anyone) and the conventions to follow."},
+          {"title": "Six phases, one prompt per phase", "text": "Design, screens, setup, data and moderation, testing, deployment. Each prompt ended with a \"done when\": what had to be true before moving on."},
+          {"title": "A hand check before the next phase", "text": "I tested each phase myself against its \"done when\". Only then did the agent start the next one."}
+        ],
+        "aside": {
+          "heading": "Giving the agent the right context",
+          "items": [
+            {"term": "Supabase MCP", "text": "lets the agent work on the database directly."},
+            {"term": "Clerk and Supabase agent skills", "text": "current, official guidance for auth and data, instead of what the model remembers."},
+            {"term": "frontend-design skill on the Claude design canvas", "text": "set the visual direction and a custom design system before any screen was built."}
+          ]
+        }
+      },
+      {
+        "type": "toolGroups",
+        "heading": "Tools by layer",
         "groups": [
-          { "layer": "AI development", "tools": ["Claude Code", "Standing brief in AGENTS.md", "One prompt per phase", "Supabase MCP", "Clerk and Supabase agent skills"] },
-          { "layer": "Design", "tools": ["Claude design canvas", "frontend-design skill", "Custom design system"] },
-          { "layer": "Frontend", "tools": ["Next.js", "TypeScript", "Tailwind", "Leaflet", "IGN and IDEAragón map data"] },
-          { "layer": "Auth and roles", "tools": ["Clerk", "Organizations and moderator roles"] },
-          { "layer": "Data and photos", "tools": ["Supabase (Postgres, PostGIS, Storage)", "sharp"] },
-          { "layer": "Testing", "tools": ["Vitest", "Playwright", "137 automated tests"] },
-          { "layer": "Deployment", "tools": ["GitHub", "Netlify"] }
+          {"layer": "AI development and design", "tools": [{"name": "Claude Code", "logo": "claude"}, {"name": "Claude design canvas", "logo": "claude"}, "Custom design system"]},
+          {"layer": "Frontend", "tools": [{"name": "Next.js", "logo": "nextdotjs"}, {"name": "TypeScript", "logo": "typescript"}, {"name": "Tailwind CSS", "logo": "tailwindcss"}, {"name": "Leaflet", "logo": "leaflet"}], "note": "Official map data from IGN and IDEAragón."},
+          {"layer": "Auth and roles", "tools": [{"name": "Clerk", "logo": "clerk"}], "note": "Organizations and moderator roles."},
+          {"layer": "Data and photos", "tools": [{"name": "Supabase", "logo": "supabase"}, {"name": "PostGIS", "logo": "postgresql"}, {"name": "sharp", "logo": "sharp"}], "note": "Postgres, PostGIS and Storage; sharp for photo processing."},
+          {"layer": "Testing", "tools": [{"name": "Vitest", "logo": "vitest"}, {"name": "Playwright", "logo": "playwright"}], "note": "137 automated tests."},
+          {"layer": "Deployment", "tools": [{"name": "GitHub", "logo": "github"}, {"name": "Netlify", "logo": "netlify"}]}
         ]
       },
       {

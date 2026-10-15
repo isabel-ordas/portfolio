@@ -26,8 +26,9 @@ Do NOT use the Instagram carousel or live-site captures: they contain
 user-submitted photos with unconfirmed rights.
 
 Citizen initiative: monetization is NOT a goal, never frame it as a business.
-The "How it was built" table must stay visible on the page (Isabel wants
-the tools shown). Render it compactly, e.g. as grouped tool chips per layer.
+The "Tools by layer" map must stay visible on the page (Isabel wants the
+tools shown), as logo tiles grouped by layer. The agent workflow is
+explained separately in "How it was built" as numbered steps.
 Excluded for length (documented in project-dossier.md in the Basuraleza
 repo): architecture details, bugs, the unpublish gap found
 after launch, Instagram assets.
@@ -58,13 +59,26 @@ So there are no accounts, and reporting takes a minute. Anonymity needs a safegu
 
 ## How it was built
 
-I wrote the product brief and split the work into six phases (design, screens, setup, data and moderation, testing, deployment), each with a "done when" that I checked by hand before Claude Code moved on.
+I worked as the product manager and Claude Code as the engineer. The process kept the agent on scope and every product decision with me.
+
+1. **A product brief.** What the app is for, who uses it, and what stays out of the first version.
+2. **A standing brief in AGENTS.md.** The context the agent reads at the start of every session, so it never has to be repeated: the product, the rules that can't be broken (no accounts, nothing published identifies anyone) and the conventions to follow.
+3. **Six phases, one prompt per phase.** Design, screens, setup, data and moderation, testing, deployment. Each prompt ended with a "done when": what had to be true before moving on.
+4. **A hand check before the next phase.** I tested each phase myself against its "done when". Only then did the agent start the next one.
+
+Giving the agent the right context:
+- **Supabase MCP**: lets the agent work on the database directly.
+- **Clerk and Supabase agent skills**: current, official guidance for auth and data, instead of what the model remembers.
+- **frontend-design skill on the Claude design canvas**: set the visual direction and a custom design system before any screen was built.
+
+## Tools by layer
+
+(Rendered as a map of logo tiles, one column per layer.)
 
 | Layer | Tools |
 |---|---|
-| AI development | Claude Code, a standing brief in AGENTS.md, one prompt per phase, Supabase MCP, Clerk and Supabase agent skills |
-| Design | Claude design canvas with the frontend-design skill, custom design system |
-| Frontend | Next.js, TypeScript, Tailwind, Leaflet with official Spanish (IGN) and Aragón (IDEAragón) map data |
+| AI development and design | Claude Code, Claude design canvas, custom design system |
+| Frontend | Next.js, TypeScript, Tailwind CSS, Leaflet; official map data from IGN and IDEAragón |
 | Auth and roles | Clerk, with organizations and moderator roles |
 | Data and photos | Supabase (Postgres, PostGIS, Storage), sharp for photo processing |
 | Testing | Vitest and Playwright, 137 automated tests |
