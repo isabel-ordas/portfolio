@@ -5,7 +5,7 @@ const { IMPACT_COLORS, PROJECTS } = window;
    so a new project only needs a JSON entry, not a new page. `caseStudy.sections`
    is an ordered list of typed blocks — see the switch in <Section> below for the
    supported types (text, hypotheses, table, list, personas, definition, gallery,
-   stats, toolGroups). Keep
+   stats, toolGroups, workflow). Keep
    the vocabulary closed: extend it deliberately when a new case study needs a
    genuinely new shape, rather than growing a one-off per project. */
 
@@ -226,21 +226,76 @@ function StatsSection({ section }) {
   );
 }
 
-/* Tools grouped by layer: one row per layer, its tools as chips. */
+/* Tools grouped by layer, as a map of tiles: one column per layer, each
+   tool with its logo when it has one. A tool is a string or `{name, logo}`;
+   `logo` is a monochrome SVG in /assets/logos, painted as a mask so it
+   takes the ink colour (and follows dark mode). A layer's optional `note`
+   is a muted line under its tiles. At most three columns, so six layers
+   make a balanced 3×2. */
+function ToolTile({ tool }) {
+  const { name, logo } = typeof tool === 'string' ? { name: tool } : tool;
+  return (
+    <div style={{display:'flex',alignItems:'center',gap:8,padding:'8px 12px',border:'var(--border-subtle)',background:'var(--surface-card)'}}>
+      {logo ? <span aria-hidden="true" style={{flex:'none',width:20,height:20,background:'var(--text-body)',WebkitMask:`url(/assets/logos/${logo}.svg) center / contain no-repeat`,mask:`url(/assets/logos/${logo}.svg) center / contain no-repeat`}} /> : null}
+      <span style={{font:'var(--text-caption)',color:'var(--text-body)'}}>{name}</span>
+    </div>
+  );
+}
+
 function ToolGroupsSection({ section }) {
+  return (
+    <section style={{display:'flex',flexDirection:'column',gap:'var(--space-3)'}}>
+      <SectionHeading>{section.heading}</SectionHeading>
+      {section.intro ? <p style={{margin:0,maxWidth:'62ch'}}>{section.intro}</p> : null}
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(max(200px,calc((100% - 2 * var(--space-3)) / 3)),1fr))',gap:'var(--space-3)'}}>
+        {section.groups.map((g,i) => (
+          <div key={i} style={{display:'flex',flexDirection:'column',gap:8,borderTop:'1px solid var(--ink-black)',paddingTop:'var(--space-1)'}}>
+            <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{g.layer}</span>
+            {g.tools.map((t,j) => <ToolTile key={j} tool={t} />)}
+            {g.note ? <span style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>{g.note}</span> : null}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* A process as numbered steps (title, text, optional bullets), then an
+   optional `aside`: a titled bullet list for what supported the process. */
+function WorkflowSection({ section }) {
   return (
     <section className="ds-two-col-rev">
       <SectionHeading>{section.heading}</SectionHeading>
-      <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)',maxWidth:'72ch'}}>
+      <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)',maxWidth:'72ch'}}>
         {section.intro ? <p style={{margin:0}}>{section.intro}</p> : null}
-        {section.groups.map((g,i) => (
-          <div key={i} style={{display:'flex',flexDirection:'column',gap:8,borderTop:'var(--border-subtle)',paddingTop:'var(--space-1)'}}>
-            <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{g.layer}</span>
-            <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
-              {g.tools.map(t => <Tag key={t}>{t}</Tag>)}
-            </div>
+        <ol style={{listStyle:'none',margin:0,padding:0,display:'flex',flexDirection:'column'}}>
+          {section.steps.map((st,i) => (
+            <li key={i} style={{display:'grid',gridTemplateColumns:'40px 1fr',columnGap:'var(--space-2)'}}>
+              {/* Number on a vertical rule that links the steps. */}
+              <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+                <span style={{width:32,height:32,flex:'none',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid var(--ink-black)',font:'var(--weight-semibold) 14px/1 var(--font-display)'}}>{i + 1}</span>
+                {i < section.steps.length - 1 ? <span style={{flex:1,width:1,background:'var(--ink-black)'}} /> : null}
+              </div>
+              <div style={{display:'flex',flexDirection:'column',gap:4,paddingBottom:i < section.steps.length - 1 ? 'var(--space-3)' : 0,paddingTop:4}}>
+                <span style={{fontWeight:'var(--weight-semibold)'}}>{st.title}</span>
+                {st.text ? <p style={{margin:0,color:'var(--text-muted)'}}>{st.text}</p> : null}
+                {st.bullets ? (
+                  <ul style={{margin:0,paddingLeft:'1.2em',color:'var(--text-muted)'}}>
+                    {st.bullets.map((b,j) => <li key={j}>{b}</li>)}
+                  </ul>
+                ) : null}
+              </div>
+            </li>
+          ))}
+        </ol>
+        {section.aside ? (
+          <div style={{display:'flex',flexDirection:'column',gap:8,borderTop:'var(--border-subtle)',paddingTop:'var(--space-2)'}}>
+            <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{section.aside.heading}</span>
+            <ul style={{margin:0,paddingLeft:'1.2em',display:'flex',flexDirection:'column',gap:4}}>
+              {section.aside.items.map((it,j) => <li key={j}><strong style={{fontWeight:'var(--weight-semibold)'}}>{it.term}</strong>{it.text ? <span style={{color:'var(--text-muted)'}}>: {it.text}</span> : null}</li>)}
+            </ul>
           </div>
-        ))}
+        ) : null}
       </div>
     </section>
   );
@@ -257,6 +312,7 @@ function Section({ section }) {
     case 'gallery': return <GallerySection section={section} />;
     case 'stats': return <StatsSection section={section} />;
     case 'toolGroups': return <ToolGroupsSection section={section} />;
+    case 'workflow': return <WorkflowSection section={section} />;
     default: return null;
   }
 }
