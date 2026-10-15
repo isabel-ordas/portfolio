@@ -9,6 +9,9 @@ const { IMPACT_COLORS, PROJECTS } = window;
    the vocabulary closed: extend it deliberately when a new case study needs a
    genuinely new shape, rather than growing a one-off per project. */
 
+/* `caseStudy.heroFit: "full"` shows the whole image at its own aspect
+   ratio instead of a 360px cover crop, for composites (e.g. a row of phone
+   screens) that a crop would cut through. */
 function HeroImage({ project }) {
   const [errored, setErrored] = React.useState(false);
   if (!project.image || errored) {
@@ -22,7 +25,7 @@ function HeroImage({ project }) {
   return (
     <img src={`/${project.image}`} onError={()=>setErrored(true)}
          alt={project.imageAlt}
-         style={{display:'block',width:'100%',height:360,objectFit:'cover',marginTop:'var(--space-6)',border:'var(--border-hairline)',filter:'grayscale(1)'}} />
+         style={{display:'block',width:'100%',height:project.caseStudy.heroFit === 'full' ? 'auto' : 360,objectFit:'cover',marginTop:'var(--space-6)',border:'var(--border-hairline)',filter:'grayscale(1)'}} />
   );
 }
 
