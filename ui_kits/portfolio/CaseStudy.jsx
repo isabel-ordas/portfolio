@@ -4,7 +4,8 @@ const { IMPACT_COLORS, PROJECTS } = window;
 /* Case studies are data-driven (project.caseStudy in /content/projects/*.json)
    so a new project only needs a JSON entry, not a new page. `caseStudy.sections`
    is an ordered list of typed blocks — see the switch in <Section> below for the
-   supported types (text, hypotheses, table, list, personas, definition, gallery). Keep
+   supported types (text, hypotheses, table, list, personas, definition, gallery,
+   stats, toolGroups). Keep
    the vocabulary closed: extend it deliberately when a new case study needs a
    genuinely new shape, rather than growing a one-off per project. */
 
@@ -201,6 +202,46 @@ function GallerySection({ section }) {
   );
 }
 
+/* A row of big numbers (the "stat strip"), then optional paragraphs. */
+function StatsSection({ section }) {
+  return (
+    <section className="ds-two-col-rev">
+      <SectionHeading>{section.heading}</SectionHeading>
+      <div style={{display:'flex',flexDirection:'column',gap:'var(--space-3)',maxWidth:'72ch'}}>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(120px,1fr))',gap:'var(--space-3)'}}>
+          {section.items.map((s,i) => (
+            <div key={i} style={{borderTop:'1px solid var(--ink-black)',paddingTop:'var(--space-1)',display:'flex',flexDirection:'column',gap:4}}>
+              <span style={{font:'var(--weight-semibold) 36px/1.1 var(--font-display)'}}>{s.value}</span>
+              <span style={{font:'var(--text-caption)',color:'var(--text-muted)'}}>{s.label}</span>
+            </div>
+          ))}
+        </div>
+        {(section.paragraphs || []).map((p,i) => <p key={i} style={{margin:0,color:'var(--text-muted)'}}>{p}</p>)}
+      </div>
+    </section>
+  );
+}
+
+/* Tools grouped by layer: one row per layer, its tools as chips. */
+function ToolGroupsSection({ section }) {
+  return (
+    <section className="ds-two-col-rev">
+      <SectionHeading>{section.heading}</SectionHeading>
+      <div style={{display:'flex',flexDirection:'column',gap:'var(--space-2)',maxWidth:'72ch'}}>
+        {section.intro ? <p style={{margin:0}}>{section.intro}</p> : null}
+        {section.groups.map((g,i) => (
+          <div key={i} style={{display:'flex',flexDirection:'column',gap:8,borderTop:'var(--border-subtle)',paddingTop:'var(--space-1)'}}>
+            <span style={{font:'var(--text-caption)',letterSpacing:'var(--tracking-caption)',textTransform:'uppercase',color:'var(--text-muted)'}}>{g.layer}</span>
+            <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
+              {g.tools.map(t => <Tag key={t}>{t}</Tag>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Section({ section }) {
   switch (section.type) {
     case 'text': return <TextSection section={section} />;
@@ -210,6 +251,8 @@ function Section({ section }) {
     case 'definition': return <DefinitionSection section={section} />;
     case 'personas': return <PersonasSection section={section} />;
     case 'gallery': return <GallerySection section={section} />;
+    case 'stats': return <StatsSection section={section} />;
+    case 'toolGroups': return <ToolGroupsSection section={section} />;
     default: return null;
   }
 }
